@@ -1,0 +1,22 @@
+Q: once everything is on the page such as [loaded] images and posts, wouldnt the javascript start to look choppy? (talking about the sliding effects that move the page, such as comments)
+
+----------------------------------------------------------------
+things to do (javascript/php) (MAINLY FOR CHARLIE) also add when you think of stuff:
+
+for people using IE9(+), have a message on top of the page asking them to download a different browser (with links)
+
+create a fade effect for the (navbar)links changing the gradients to the :hover gradients (about <0.4s).
+
+add slide effect for drop down links pushing the head along with the right column. (slide to show div <0.5s>, fade to show new links <0.2s)
+
+add slide show on top of the page (10 images?) (slides to the left slowly). When clicked, fades out the right column (EXCEPT NAVBAR), opens the image to the center of the right column, fade in buttons on the image to go through image library. (whole transition about <2s)
+
+comments: add slide effect (underneath) to extend comments from post <0.5s. Also make a max of 10 comments that slide out. have a button that says 'next 10' (left?) and 'see all' (right?). when those buttons get pressed, just extend the new comments.
+
+
+////////
+have the links on the (left) bar hide, show and slide out
+   (also have them close on a click not in that area)
+some things to contemplate.....
+have the side bar fixed.
+a menu bar!
