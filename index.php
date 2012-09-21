@@ -21,14 +21,15 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
     <!-- we should also have a guest account -->
   </div>
   <br/>
-  <p onclick="showHideId('resources');hideId('catagories');hideId('important-dates');">Resources</p>
+  <div class="link-box">
+  <p onclick="showHideId('resources');hideId('catagories');hideId('important-dates');">>Resources</p>
   <ul id="resources">
-     <li><a href="#">FRC Website</a></li>
+     <li><a href="#">>FRC Website</a></li>
      <ul>
          <li><a href="#">FRC Competition Manuals</a></li>
          <li><a href="#">FRC Q&A System</a></li>
      </ul>
-     <li><a href="#">WPILib</a></li>
+     <li><a href="#">>WPILib</a></li>
      <ul>
          <li><a href="#">WPILib Cookbook</a></li>
          <li><a href="#">WPILib Users Guide</a></li>
@@ -37,7 +38,7 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
      <li><a href="#">Facebook Page</a></li>
      <li><a href="#">ORHS</a></li>
   </ul>
-<p onclick="showHideId('catagories');hideId('resources');hideId('important-dates');">Catagories</p>
+<p onclick="showHideId('catagories');hideId('resources');hideId('important-dates');">>Catagories</p>
   <ul id="catagories">
      <li><a href="#">Blog and events</a></li>
      <li><a href="#">Competition</a></li>
@@ -47,7 +48,7 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
      <li><a href="#">Robot</a></li>
      <li><a href="#">Sponsors</a></li>
   </ul>
-<p onclick="showHideId('important-dates');hideId('catagories');hideId('resources');">Important Dates</p>
+<p onclick="showHideId('important-dates');hideId('catagories');hideId('resources');">>Important Dates</p>
 	<ul id="important-dates">
      <li><a href="#">Example</a></li>
      <li><a href="#">Example</a></li>
@@ -55,7 +56,7 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
      <li><a href="#">Example</a></li>
      <li><a href="#">Example</a></li>
 	</ul>
-  
+  </div>
   <br/>
   <p class="sponsorsTitle"><strong>Sponsors</strong></p>
   <a href="#"><img id="sponsor-img" src="/files/default.jpg" width="200px" class="sponsor"/></a>

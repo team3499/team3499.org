@@ -25,15 +25,26 @@ include(getenv("DOCUMENT_ROOT")."/php/headExtra.php");
 
 <script>
 
+
+      function sleep(delay) {
+        var start = new Date().getTime();
+        while (new Date().getTime() < start + delay);
+      }
+
+
 // have this do a fade in and out here...
 function toggleImg(){
-  src = document.getElementById("sponsor-img");
-  if(src.src == "http://localhost/files/default.jpg"){
-    src.src = '/files/default2.jpg';
+  img = document.getElementById("sponsor-img");
+  $('#sponsor-img').fadeOut('slow', function(){ 
+  //charlie do some fancy logic here.
+  if(img.src == "http://localhost/files/default.jpg"){
+    img.src = '/files/default2.jpg';
   } else {
-    src.src = '/files/default.jpg';
+    img.src = '/files/default.jpg';
   }
-  setTimeout(toggleImg, 1000);
+  $('#sponsor-img').fadeIn('slow');
+  setTimeout(toggleImg, 5000);
+  });
 }
 
 <!-- this is to hide/show the links -->
