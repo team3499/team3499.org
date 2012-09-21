@@ -301,12 +301,13 @@ div.header {
   width:auto;
   padding:5px 10px 3px 10px;
   background-color:#444444;
-  border-bottom:1px solid white;
+  border-bottom:1px solid #777;
   left:0px;
   right:0px;
   font-size:20px;
   color:#e5e5e5;
   text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+  z-index:10;
 }
 
 div.header-right{

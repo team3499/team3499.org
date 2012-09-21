@@ -58,7 +58,7 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
   
   <br/>
   <p class="sponsorsTitle"><strong>Sponsors</strong></p>
-  <a href="#"><img src="/files/default.jpg" width="200px" class="sponsor"/></a>
+  <a href="#"><img id="sponsor-img" src="/files/default.jpg" width="200px" class="sponsor"/></a>
   <!-- Here, cycle through images, starting with a random one, and change the link that they go to when they change -->
 	
 </div>

@@ -16,16 +16,28 @@ include(getenv("DOCUMENT_ROOT")."/php/headExtra.php");
 <script>
 	addEventListener('load', function() {
 		setTimeout(hideAddressBar, 0);
+    setTimeout(toggleImg, 0);
 	}, false);
 	function hideAddressBar() {
 		window,scrollTo(0, 1);
 	}
 </script>
 
-<!-- this is to hide/show the links -->
-<!-- please make this (slide) smoother -->
 <script>
 
+// have this do a fade in and out here...
+function toggleImg(){
+  src = document.getElementById("sponsor-img");
+  if(src.src == "http://localhost/files/default.jpg"){
+    src.src = '/files/default2.jpg';
+  } else {
+    src.src = '/files/default.jpg';
+  }
+  setTimeout(toggleImg, 1000);
+}
+
+<!-- this is to hide/show the links -->
+<!-- please make this (slide) smoother -->
 function showHideId(id){
 	var x = document.getElementById(id);
 	if (x.currentStyle)
