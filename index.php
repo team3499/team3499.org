@@ -15,10 +15,14 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
 
 <!-- left column -->
 <div class="left">
-  <!-- home picture -->
-  <a href="/"><img class="sitelogo" width="210px" src="/files/logo.png"/></a>
-  <p>Resources</p>
-  <ul>
+  <br/>
+  <div class="user">
+    <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;User<a href="<!-- edit user account settings -->"><i style="float:right;margin-right:15px;">edit</i></a></p>
+    <!-- we should also have a guest account -->
+  </div>
+  <br/>
+  <p onclick="showHideId('resources');hideId('catagories');hideId('important-dates');">Resources</p>
+  <ul id="resources">
      <li><a href="#">FRC Website</a></li>
      <ul>
          <li><a href="#">FRC Competition Manuals</a></li>
@@ -33,8 +37,8 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
      <li><a href="#">Facebook Page</a></li>
      <li><a href="#">ORHS</a></li>
   </ul>
-<p>Catagories</p>
-  <ul>
+<p onclick="showHideId('catagories');hideId('resources');hideId('important-dates');">Catagories</p>
+  <ul id="catagories">
      <li><a href="#">Blog and events</a></li>
      <li><a href="#">Competition</a></li>
      <li><a href="#">Events</a></li>
@@ -43,19 +47,20 @@ include(getenv("DOCUMENT_ROOT")."/php/top.php");
      <li><a href="#">Robot</a></li>
      <li><a href="#">Sponsors</a></li>
   </ul>
-<p>Important Dates</p>
-	<ul>
+<p onclick="showHideId('important-dates');hideId('catagories');hideId('resources');">Important Dates</p>
+	<ul id="important-dates">
      <li><a href="#">Example</a></li>
      <li><a href="#">Example</a></li>
      <li><a href="#">Example</a></li>
      <li><a href="#">Example</a></li>
      <li><a href="#">Example</a></li>
 	</ul>
-	
+  
+  <br/>
   <p class="sponsorsTitle"><strong>Sponsors</strong></p>
-  <a href="#"><img src="/files/default.jpg" width="200px" /></a><br />
-  <a href="#"><img src="/files/default.jpg" width="200px" /></a><br />
-  <a href="#"><img src="/files/default.jpg" width="200px" /></a>
+  <a href="#"><img src="/files/default.jpg" width="200px" class="sponsor"/></a>
+  <!-- Here, cycle through images, starting with a random one, and change the link that they go to when they change -->
+	
 </div>
 
 <!-- right column -->

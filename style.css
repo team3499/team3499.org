@@ -22,7 +22,9 @@ div.container {
 }
 div.left {
 	float: left;
-	width: 20%;
+  position:fixed;
+	width: 16%;
+  height:90%;
 	border-right:1px #bbb solid;
 	padding-right:5px;
   color: #fff;
@@ -130,6 +132,7 @@ div.headTitle {
 }
 div.headSearch {
   margin:0px;
+  margin-right:8px;
   width:200px;
   float:left;
   padding:0px;
@@ -230,8 +233,8 @@ img.sitelogo {
   margin-right:20px;
 }
 p.sponsorsTitle {
-  margin: 10px;
-  text-align:center;
+  margin: 10px 10px 10px 10px;
+  text-align:left;
   font-size:16px;
   border-bottom:1px solid #bbb;
   width:70%;
@@ -299,6 +302,11 @@ div.header {
   padding:5px 10px 3px 10px;
   background-color:#444444;
   border-bottom:1px solid white;
+  left:0px;
+  right:0px;
+  font-size:20px;
+  color:#e5e5e5;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
 }
 
 div.header-right{
@@ -312,6 +320,7 @@ div.header-left{
   border-bottom-right-radius:5px;
   border-right:1px solid white;
   left:0px;
+  width:auto;
 }
 
 form{
@@ -319,8 +328,21 @@ form{
   padding:0px;
 }
 
+div.float-right{
+  float:right;
+}
+div.float-left{
+  float:left;
+}
 
+div.user{
+  background-color:rgba(0,0,0,0.5);
+  padding:5px;
+  margin:0px;
+  border-radius:8px;
+}
 
-
-
+img.sponsor{
+  border-radius:15px;
+}
 
