@@ -28,11 +28,11 @@
 <link rel="shortcut icon" href="/core/favicon.ico" type="image/x-icon" />
 
 <script src="/core/jquery172.js"></script>
+<script src="/core/jquery.history.js"></script>
 <script src="/core/main.js"></script>
 <script>
 	var loadonload = "<?php if($initcall){echo $initcommand;} ?>";
 </script>
-<!-- this head is here in case you want to put other stuff here pertaining to one document-->
 </head>
 <body>
 <br/>
@@ -127,77 +127,24 @@
 <!-- right column -->
 <div class="right">
 
-<div class="navbar">
-    <div class="linksbox">
-        <span class="links"><a href="/">Home</a></span>
-        <span class="links"><a href="#">About</a></span>
-        <span class="links"><a href="#">Images</a></span>
-        <span class="links"><a href="#">Task List</a></span>
-        <span class="links"><a href="#">Link 12345</a></span>
-        <span class="linksDonate"><a href="#">Donate</a></span>
-        <div class="head">
-            <div class="headTitle"><p><strong>River's Edge Robotics</strong><p></div>
-        </div>
-    </div>
-    <br style="clear:both;" />
-</div>
-
-<!-- a common post -->
-<div class="post">
-    <div class="postTitle">
-        <span class="postTitle"><strong>Title</strong></span>
-        <div class="postDate">9/17/2012</div>
-    </div>
-    <div class="postPadding">
-        <div class="postImg"><img height="100px" width="100px" src="/core/img/default.jpg" /></div>
-        <div class="postText">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <br />
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="postCata">
-            <a href="#">Blog and Events</a>
-        </div>
-        <div class="postCommentButton">
-            <a href="#"><img width="25px" src="/core/img/bubble.png" /></a>
-            <div class="postCommentNum">
-                <a href="#">5</a>
+    <div class="navbar">
+        <div class="linksbox">
+            <span class="links"><a href="/">Home</a></span>
+            <span class="links"><a href="#">About</a></span>
+            <span class="links"><a href="#">Images</a></span>
+            <span class="links"><a href="#">Task List</a></span>
+            <span class="links"><a href="#">Link 12345</a></span>
+            <span class="linksDonate"><a href="#">Donate</a></span>
+            <div class="head">
+                <div class="headTitle"><p><strong>River's Edge Robotics</strong><p></div>
             </div>
         </div>
+        <br style="clear:both;" />
     </div>
-</div>
-  <!-- common post end -->
 
-    <!-- a common post -->
-  <div class="post">
-    <div class="postTitle">
-      <span class="postTitle"><strong>Title</strong></span>
-      <div class="postDate">
-      9/17/2012
-      </div>
-    </div>
-    <div class="postPadding">
-      <div class="postImg"><img height="100px" width="100px" src="/core/img/default.jpg" />
-      </div>
-      <div class="postText">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br /><br />
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br /><br />
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-      <div class="postCata">
-      <a href="#">Blog and Events</a>
-      </div>
-      <div class="postCommentButton">
-      <a href="#"><img width="25px" src="/core/img/bubble.png" /></a>
-        <div class="postCommentNum">
-        <a href="#">10</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- common post end -->
+    <div id="content">
 
+    </div>
 </div>
 <!-- end stuff here -->
 </div>

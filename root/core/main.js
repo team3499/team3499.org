@@ -1,4 +1,4 @@
-
+var cleanload = true;
 
 $(document).ready(function() {
     $('#resources').hide();
@@ -66,7 +66,7 @@ function loadContent(value){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            cleanload = 0;
+            cleanload = false;
             /*DEBUG*/console.log("  ::PLAIN::  " + xmlhttp.responseText);
             response = JSON.parse(xmlhttp.responseText);
             //if(history.pushState && history.replaceState) {
@@ -76,9 +76,8 @@ function loadContent(value){
             //}
             document.title = response.pagetitle;
             $('#contstyle').html(response.style);
-            $('#pagecontent').html(response.content);
+            $('#content').html(response.content);
 			$('#contscript').html(response.script);
-            $('#shellcont').append(response.shell);
             /*if(settings['shell-background-color'] != "#000"){
                 $('#shellin, #shellout').css("background-color", settings['shell-background-color']);
                 $('#shellout').css("box-shadow", "0 0 15px "+settings['shell-background-color']);
