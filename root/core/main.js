@@ -4,8 +4,22 @@ $(document).ready(function() {
     $('#resources').hide();
     $('#categories').hide();
     $('#important-dates').hide();
+    $('#user-info-box').hide();
+    
+    var totalSponsorImages = 2;
+    // start = rand() % totalSponsorImages;
+    // but for now:
+    start = 1;
+    
+    for( i = 1; i <= totalSponsorImages; i++){
+        if( start != i){
+            $('#sponsor-img-'+i).hide();
+	}
+        setTimeout(toggleImg, 5000); // need to make this pick a random... it cant pick a new random one without a switch with each function
+    }
+    
+    
     setTimeout(hideAddressBar, 0);
-    setTimeout(toggleImg, 0);
 	$('input[type="search"]').addClass("headSearch");
 	$('input[type="search"]').focus(function() {
         if(this.value == this.defaultValue){
@@ -28,6 +42,14 @@ $(document).ready(function() {
     });
     $('#important-dates-title').click(function(){
         $('#categories').fadeOut(function () { $('#resources').fadeOut(function () { $('#important-dates').fadeToggle(); }) });
+    });
+    
+    $('#user-span').click(function () {
+        $('#user-info-box').fadeToggle();
+    });
+    
+    $('.link-image').click( function () {
+      window.open($(this).attr('href'));
     });
     
     loadContent(loadonload);

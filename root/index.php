@@ -43,8 +43,8 @@
           <input class="searchBar" type="search" name="search" value="Search..."/>
     </div>
     <div class="headIcons">
-    <a href="#"><img width="25px" src="/core/img/facebook.png" class="head-icons"/></a>
-    <a href="#"><img width="24px" src="/core/img/rss.png" class="head-icons"/></a>
+    <img width="25px" src="/core/img/facebook.png" class="head-icons link-image" href="http://www.facebook.com/groups/137871619595813/"/>
+    <img width="24px" src="/core/img/rss.png" class="head-icons link-image" href="http://www.google.com"/>
     </div>
   </div>
   <div class="float-left" style="width:300px">
@@ -66,19 +66,24 @@
 <div class="left">
     <br/>
     <div class="user">
-        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;User<a href="<!-- edit user account settings -->"><i style="float:right;margin-right:15px;">edit</i></a></p>
+        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><a href="<!-- edit user account settings -->"><i style="float:right;margin-right:15px;">edit</i></a></p>
+        <div id="user-info-box">
+        <p>Content goes here</p>
+        <p>Username</p>
+        <p>Something</p>
+        </div>
     <!-- we should also have a guest account -->
     </div>
     <br/>
     <div class="link-box">
-		<p id="resources-title">>Resources</p>
+		<p id="resources-title">> Resources</p>
 		<ul id="resources">
-			<li><a href="#">>FRC Website</a></li>
+			<li><a href="#">FRC Website</a></li>
 			<ul>
 				 <li><a href="#">FRC Competition Manuals</a></li>
 				 <li><a href="#">FRC Q&A System</a></li>
 			</ul>
-			<li><a href="#">>WPILib</a></li>
+			<li><a href="#">WPILib</a></li>
 			<ul>
 				<li><a href="#">WPILib Cookbook</a></li>
 				<li><a href="#">WPILib Users Guide</a></li>
@@ -87,7 +92,7 @@
 			<li><a href="#">Facebook Page</a></li>
 			<li><a href="#">ORHS</a></li>
 		</ul>
-		<p id="categories-title">>Categories</p>
+		<p id="categories-title">> Categories</p>
 		<ul id="categories">
 			<li><a href="#">Blog and events</a></li>
 			<li><a href="#">Competition</a></li>
@@ -97,7 +102,7 @@
 			<li><a href="#">Robot</a></li>
 			<li><a href="#">Sponsors</a></li>
 		</ul>
-		<p id="important-dates-title">>Important Dates</p>
+		<p id="important-dates-title">> Important Dates</p>
 		<ul id="important-dates">
 			<li><a href="#">Example</a></li>
 			<li><a href="#">Example</a></li>
@@ -109,8 +114,12 @@
     <br/>
     <p class="sponsorsTitle"><strong>Sponsors</strong></p>
     <div>
-        <a href="http://www.google.com" id="sponsor-img-1"><img src="/core/img/default.jpg" width="200px" class="sponsor"/></a>
-        <a href="http://www.yahoo.com" id="sponsor-img-2"><img src="/core/img/default2.jpg" width="200px" class="sponsor"/></a>
+<!--         <a href="http://www.google.com" id="sponsor-img-1"> -->
+<img src="/core/img/default.jpg" class="sponsor" id="sponsor-img-1" href="http://www.google.com"/>
+<!-- </a> -->
+<!--         <a href="http://www.yahoo.com" id="sponsor-img-2"> -->
+<img src="/core/img/default2.jpg" class="sponsor" id="sponsor-img-2" href="http://www.google.com"/>
+<!-- </a> -->
     </div>
   <!-- Here, cycle through images, starting with a random one, and change the link that they go to when they change -->
 </div>
