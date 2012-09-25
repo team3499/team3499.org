@@ -21,19 +21,13 @@ $(document).ready(function() {
 		}
 	});
     $('#resources-title').click(function(){
-        $('#resources').toggle();
-        $('#categories').hide();
-        $('#important-dates').hide();
+        $('#categories').fadeOut(function () { $('#important-dates').fadeOut(function () { $('#resources').fadeToggle(); }) });
     });
     $('#categories-title').click(function(){
-        $('#categories').toggle();
-        $('#resources').hide();
-        $('#important-dates').hide();
+        $('#resources').fadeOut(function () { $('#important-dates').fadeOut(function () { $('#categories').fadeToggle(); }) });
     });
     $('#important-dates-title').click(function(){
-        $('#important-dates').toggle();
-        $('#categories').hide();
-        $('#resources').hide();
+        $('#categories').fadeOut(function () { $('#resources').fadeOut(function () { $('#important-dates').fadeToggle(); }) });
     });
     
     loadContent(loadonload);

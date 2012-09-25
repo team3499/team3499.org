@@ -13,7 +13,7 @@
 		$initcall = true;
 	}
 	
-	require_once("browser_check.php");
+	require_once("../phpfiles/browser_check.php");
 ?>
 <!DOCTYPE html>
 <html>
