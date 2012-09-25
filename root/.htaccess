@@ -1,0 +1,15 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} =/
+RewriteRule ^(.*)$ /index.php
+
+<FilesMatch "\.css$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+#<Directory "E:\XAMPP\htdocs\core\css">
+#    <FilesMatch "\.css$">
+#        SetHandler application/x-httpd-php
+#    </FilesMatch>
+#</Directory>

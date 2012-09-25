@@ -10,13 +10,12 @@ create a fade effect for the (navbar)links changing the gradients to the :hover 
 add slide effect for drop down links pushing the head along with the right column. (slide to show div <0.5s>, fade to show new links <0.2s)
 
 add slide show on top of the page (10 images?) (slides to the left slowly). When clicked, fades out the right column (EXCEPT NAVBAR), opens the image to the center of the right column, fade in buttons on the image to go through image library. (whole transition about <2s)
+---CHAOS: Is this still relevant for the home page, or just the gallery page?
 
-comments: add slide effect (underneath) to extend comments from post <0.5s. Also make a max of 10 comments that slide out. have a button that says 'next 10' (left?) and 'see all' (right?). when those buttons get pressed, just extend the new comments.
-
+comments: add slide effect (underneath) to extend comments from post <0.5s. Also make a max of 10 comments that slide out. have a button that says 'next 10' (left?) and 'see all' (right?). when those buttons get pressed, just extend the new comments. (also have them close on a click not in that area)
+---CHAOS: I can make it appear / disappear, but I need you to actually make the html markup and css for the dropdown.
 
 ////////
-have the links on the (left) bar hide, show and slide out
-   (also have them close on a click not in that area)
 some things to contemplate.....
 have the side bar fixed.
 a menu bar!

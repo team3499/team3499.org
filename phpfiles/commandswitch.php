@@ -77,7 +77,7 @@
         }
     }
     $command_info = commandParser($command);
-	$out = array('pagetitle' => NULL, 'path' => NULL, 'title' => NULL, 'content' => NULL, 'script' => NULL, 'style' => NULL, 'shell' => NULL, 'defaultpage' => true, 'pushsettings' => false);
+	$out = array('pagetitle' => NULL, 'path' => NULL, 'content' => NULL, 'script' => NULL, 'style' => NULL, 'pushsettings' => false);
     
 	include("commandclass.php");
     if(is_array($command_info)){
@@ -90,27 +90,21 @@
 		$out['path'] .= "/".$val;
 	}
 	$out['pagetitle'] = SITE." - ".$command[0];
-    $out['shell'] = $command[0]."<br/>";
     
 	$comclass = new Commands($command, $out, $rawcommand, $command_info, $pushsettings);
 	$classout = $comclass->resolveCommand();
     
     $mergeout = array_merge($out, $classout);
-    if($mergeout['defaultpage']){
-        $pageoutcont = "<div id='titlebox'><div id='titlecontent'>".$mergeout['title']."</div></div><div id='contentbox'><div id='content'>".$mergeout['content']."</div></div>";
-    } else {
-        $pageoutcont = $mergeout['content'];
-    }
+    
     if($pushsettings || $mergeout['pushsettings']){
         $mergeout['script'] .= set_js_settings();
     }
     $pageout = [
         'pagetitle' => $mergeout['pagetitle'],
         'path' => $mergeout['path'],
-        'content' => $pageoutcont,
+        'content' => $mergeout['content'],
 		'script' => '<script>'.$mergeout['script']."</script>",
         'style' => '<style>'.$mergeout['style']."</style>",
-        'shell' => $mergeout['shell'],
     ];
 	echo json_encode($pageout);
 ?>
