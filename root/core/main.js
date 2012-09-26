@@ -18,7 +18,6 @@ $(document).ready(function() {
         setTimeout(toggleImg, 5000); // need to make this pick a random... it cant pick a new random one without a switch with each function
     }
     
-    
     setTimeout(hideAddressBar, 0);
 	$('input[type="search"]').addClass("headSearch");
 	$('input[type="search"]').focus(function() {
@@ -28,6 +27,7 @@ $(document).ready(function() {
         if(this.value != this.defaultValue){
           this.select();
         }
+        this.style.width = 200;
 	});
 	$('input[type="search"]').blur(function(){
 		if($.trim(this.value == '')){
@@ -105,6 +105,8 @@ function sleep(delay){
 	var start = new Date().getTime();
 	while (new Date().getTime() < start + delay);
 }
+<?php echo "alert(\"PHP WORKS\");" ?>
+
 function toggleImg(){
     $('#sponsor-img-2').fadeIn(1000);
     $('#sponsor-img-1').fadeOut(1000, function(){

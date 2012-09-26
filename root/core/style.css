@@ -171,8 +171,13 @@ input.searchBar {
 	padding:0px;
 	margin-right:auto;
 	margin-top:0px;
-	width:200px;
+	width:100px;
 	border-radius:5px;
+	margin-left:100px;
+}
+input.searchBar:focus{
+  width:200px;
+  margin-left:000px;
 }
 div.headIcons {
 	/*border:1px solid #000;
