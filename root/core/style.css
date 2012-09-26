@@ -229,16 +229,17 @@ div.postPadding {
 div.postImg {
     float:left;
     width:100px;
-    height:100px;
     padding:10px;
 }
 div.postText {
     padding:5px;
     text-shadow:0px 1px 0px rgba(255,255,255,0.5);
     border-bottom:1px solid #aaa;
+    min-height:110px;
 }
 div.postCata {
     font-size:12px;
+    border-top:1px solid #aaa;
 }
 div.postCommentButton {
     float:right;
@@ -248,6 +249,29 @@ div.postCommentButton {
 div.postCommentNum {
   margin: -20px 0 0 6px;
   font-size:10px;
+}
+div.postComments {
+  padding:10px;
+  width:90%;
+  margin:0 auto;
+}
+div.postCommentsComment {
+  border:1px solid #bbb;
+  padding:0 0 10px 0;
+  border-radius:5px;
+  min-height:140px;
+}
+div.postCommentsCommentUser {
+  width:120px;
+  float:left;
+  padding:6px 0 10px 10px;
+  line-height:20px;
+}
+div.postCommentsCommentUserImage {
+  float:left;
+}
+div.postCommentsCommentText {
+  padding:6px;
 }
 a:link, a:visited {
 	color:#116DCC;
