@@ -5,15 +5,17 @@ things to do (javascript/php) (MAINLY FOR CHARLIE) also add when you think of st
 
 for people using IE9(+), have a message on top of the page asking them to download a different browser (with links)
 
-create a fade effect for the (navbar)links changing the gradients to the :hover gradients (about <0.4s).
-
-add slide effect for drop down links pushing the head along with the right column. (slide to show div <0.5s>, fade to show new links <0.2s)
+create a fade effect for the (navbar)links changing the gradients to the :hover gradients (about <0.2s).
+(also for the buttons as well
+---UPDATE -EXAMPLE: http://jsfiddle.net/Damien_at_SF/paDmg/
 
 add slide show on top of the page (10 images?) (slides to the left slowly). When clicked, fades out the right column (EXCEPT NAVBAR), opens the image to the center of the right column, fade in buttons on the image to go through image library. (whole transition about <2s)
 ---CHAOS: Is this still relevant for the home page, or just the gallery page?
+---JP:This is irrelevent for now. This idea can be for when we start adding a gallery.
 
 comments: add slide effect (underneath) to extend comments from post <0.5s. Also make a max of 10 comments that slide out. have a button that says 'next 10' (left?) and 'see all' (right?). when those buttons get pressed, just extend the new comments. (also have them close on a click not in that area)
 ---CHAOS: I can make it appear / disappear, but I need you to actually make the html markup and css for the dropdown.
+---JP: Done for now, I think.
 
 ////////
 some things to contemplate.....
