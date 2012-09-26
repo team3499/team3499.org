@@ -114,12 +114,8 @@
     <br/>
     <p class="sponsorsTitle"><strong>Sponsors</strong></p>
     <div>
-<!--         <a href="http://www.google.com" id="sponsor-img-1"> -->
-<img src="/core/img/default.jpg" class="sponsor" id="sponsor-img-1" href="http://www.google.com"/>
-<!-- </a> -->
-<!--         <a href="http://www.yahoo.com" id="sponsor-img-2"> -->
-<img src="/core/img/default2.jpg" class="sponsor" id="sponsor-img-2" href="http://www.google.com"/>
-<!-- </a> -->
+<img src="/core/img/default.jpg" class="sponsor link-image" id="sponsor-img-1" href="http://www.yahoo.com"/>
+<img src="/core/img/default2.jpg" class="sponsor link-image" id="sponsor-img-2" href="http://www.google.com"/>
     </div>
   <!-- Here, cycle through images, starting with a random one, and change the link that they go to when they change -->
 </div>
