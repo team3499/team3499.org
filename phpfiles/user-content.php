@@ -1,6 +1,6 @@
 <div class="sub-box">
     <div class="sub-box-title">
-        <span class="sub-box-title"><strong>User: %username%</strong></span>
+        <span class="sub-box-title"><strong>%username%'s Page</strong></span>
     </div>
     <div class="sub-box-padding">
         <div class="sub-box-img"><img height="100px" width="100px" src="/core/img/default.jpg" /></div>
