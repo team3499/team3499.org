@@ -23,8 +23,8 @@
             </div>
             <div class="postCommentsBarAdd">
               <form><textarea class="addComment" maxlength="500" type="text"></textarea></form>
-              <div class="postCommentsBarMax"> <!--charlie, can you make it so when someone clicks the Form to 'show' the max characters and post Button --> 
-                <p>Max Character Length: 500</p>
+              <div class="postCommentsBarMax"> <!--charlie, can you make it so when someone clicks the Form to 'show' the max characters and post Button (the "characters left" and "Add comment" button would be hidden initially) --> 
+                <p>Characters Left: 500</p> <!-- make it so when someone types something in the Textarea, the 'characters' count down. -->
               </div>
               <div class="postCommentsBarAddButton">
                 <button type="button" class="addComment">Add Comment</button>
