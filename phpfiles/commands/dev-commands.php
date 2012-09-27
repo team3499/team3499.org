@@ -22,18 +22,18 @@
             $out['content'] = default_content($session);
             return $out;
         }
-		protected function echo_com(){
-			$command = $this->command;
-			$rawcommand = $this->rawcommand;
-			$out['title'] = default_title("Echo");
-			$cont = $rawcommand."<br/>";
-			ob_start();
-			var_dump($command);
-			$cont .= ob_get_contents();
-			ob_clean();
-			$out['content'] = default_content($cont);
-			return $out;
-		}
+        protected function echo_com(){
+            $command = $this->command;
+            $rawcommand = $this->rawcommand;
+            $out['title'] = default_title("Echo");
+            $cont = $rawcommand."<br/>";
+            ob_start();
+            var_dump($command);
+            $cont .= ob_get_contents();
+            ob_clean();
+            $out['content'] = default_content($cont);
+            return $out;
+        }
         protected function blank(){
             $out['defaultpage'] = false;
             $out['content'] = '<div class="white"></div>';

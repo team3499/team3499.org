@@ -45,8 +45,8 @@
             }
             return $out;
         }
-		protected function settings(){
-			$command = $this->command;
+        protected function settings(){
+            $command = $this->command;
             $err = false;
             $errc = "Bad Synatx";
             $good = false;
@@ -103,6 +103,13 @@
                 "}"."</script>".nows_file("settings-content.php");
 			}
 			return $out;
-		}
+        }
+
+
+        protected function user(){
+            $out['title'] = "Title Goes Here!";
+            $out['content'] = nows_file("user-content.php");
+            return $out;
+        }
     }
 ?>

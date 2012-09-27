@@ -1,16 +1,18 @@
 <?php
+// note: commands are in alphabetical order, first by the file they are in, then by their name
+
     //  --USAGE:--
-	// [
-    //  	length => [
-	//	      	"base of command" => [["command parts", ...], "function", "child class file",
-	//	      	"usage", 
-	//	      	"description", 
-	//	      	"information", 
-	//	      	security],
-    //      	...
-    //  	],
-    //  	...
-	//	]
+    // [
+    //      length => [
+    //        "base of command" => [["command parts", ...], "function", "child class file",
+    //        "usage", 
+    //        "description", 
+    //        "information", 
+    //        security],
+    //          ...
+    //      ],
+    //      ...
+    //    ]
     
     $command_index = [
         4 => [
@@ -44,6 +46,11 @@
                 "Displays parsed command", 
                 "", 
                 0],
+            "user" => [["user"], "user", "user-commands.php", 
+                "", 
+                "User-properties!", 
+                "Opens a page for user properties", 
+                0]
         ],
         5 => [
             "login" => [["login"], "login", "user-commands.php", 

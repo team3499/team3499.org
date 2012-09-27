@@ -24,8 +24,9 @@
 <meta name="viewport" content="width=400;" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="/core/style.css" media="all" />
-<link rel="icon" href="/core/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/core/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/core/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/core/img/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/core/img/favicon.ico" />
 
 <script src="/core/jquery172.js"></script>
 <script src="/core/jquery.history.js"></script>
@@ -66,7 +67,7 @@
 <div class="left">
     <br/>
     <div class="user">
-        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><a href="<!-- edit user account settings -->"><i style="float:right;margin-right:15px;">edit</i></a></p>
+        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><a href="/user"><i style="float:right;margin-right:15px;">edit</i></a></p>
         <div id="user-info-box">
         <p>Content goes here</p>
         <p>Username</p>

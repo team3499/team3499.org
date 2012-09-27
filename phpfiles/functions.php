@@ -35,7 +35,7 @@
 	function default_file($file){
 		return '<p class="default-content">'.file_get_contents(getenv("DOCUMENT_ROOT")."/core/files/".$file).'</p>';
 	}
-	function nows_file($file){
+	function nows_file($file){ //no-white-space_file
         return str_replace(["\n", "\t", "  "], "", file_get_contents($file, true));
 	}
     function php_js_css_files($path, $name){

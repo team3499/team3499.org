@@ -197,7 +197,7 @@ img.head-icons{
 	background-color:#555555;
 }
 
-div.post {
+div.post , div.sub-box{
 	border-radius:4px;
 	box-shadow:0px 0px 3px rgba(0,0,0,0.4);
 	margin:0 auto;
@@ -209,7 +209,7 @@ div.post {
 	background: linear-gradient(to bottom, #ededed 0%,#d3d3d3 100%);
 	margin-bottom:30px;
 }
-div.postTitle {
+div.postTitle, div.sub-box-title {
 	text-align:center;
 	text-shadow:0px 1px 0px rgba(255,255,255,0.5);
 	padding:5px;
@@ -221,23 +221,23 @@ div.postTitle {
 	background: -ms-linear-gradient(top, #cfd2d7 0%,#848d96 100%);
 	background: linear-gradient(to bottom,  #cfd2d7 0%,#848d96 100%);
 }
-span.postTitle {
+span.postTitle, span.sub-box-title  {
 	font-size:18px;
 }
 div.postDate {
 	float:right;
 	font-size:10px;
 }
-div.postPadding {
+div.postPadding, div.sub-box-padding{
     padding:5px;
 }
-div.postImg {
+div.postImg, div.sub-box-img {
     float:left;
     width:100px;
     height:100px;
     padding:10px;
 }
-div.postText {
+div.postText , div.sub-box-text {
     padding:5px;
     text-shadow:0px 1px 0px rgba(255,255,255,0.5);
     border-bottom:1px solid #aaa;
@@ -385,3 +385,16 @@ div#user-info-box {
   cursor:pointer;
 }
 
+
+div.sub-box {
+    border-radius:4px;
+    box-shadow:0px 0px 3px rgba(0,0,0,0.4);
+    margin:0 auto;
+    background: #ededed;
+    background: -moz-linear-gradient(top, #ededed 0%, #d3d3d3 100%);
+    background: -webkit-linear-gradient(top, #ededed 0%,#d3d3d3 100%);
+    background: -o-linear-gradient(top, #ededed 0%,#d3d3d3 100%);
+    background: -ms-linear-gradient(top, #ededed 0%,#d3d3d3 100%);
+    background: linear-gradient(to bottom, #ededed 0%,#d3d3d3 100%);
+    margin-bottom:30px;
+}
