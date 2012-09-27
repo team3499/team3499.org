@@ -1,3 +1,4 @@
+<?php header('Content-type: text/javascript'); ?>
 var cleanload = true;
 
 $(document).ready(function() {
@@ -6,19 +7,23 @@ $(document).ready(function() {
     $('#important-dates').hide();
     $('#user-info-box').hide();
     
-    var totalSponsorImages = 2;
+    //var totalSponsorImages = 2;
     // start = rand() % totalSponsorImages;
     // but for now:
-    start = 1;
-    
-    for( i = 1; i <= totalSponsorImages; i++){
+    //start = 1;
+    //var sponsors = new Array();
+    //sponsors[1] = toggleImg;
+    //sponsors[2] = toggleImg2;
+    //setTimeout(sponsors[Math.floor(Math.random()*sponsors.length)], 5000);
+    /*for( i = 1; i <= totalSponsorImages; i++){
         if( start != i){
             $('#sponsor-img-'+i).hide();
-	}
+        }
         setTimeout(toggleImg, 5000); // need to make this pick a random... it cant pick a new random one without a switch with each function
-    }
-    
+    }*/
+    setTimeout(toggleImg, 5000);
     setTimeout(hideAddressBar, 0);
+    
 	$('input[type="search"]').addClass("headSearch");
 	$('input[type="search"]').focus(function() {
         if(this.value == this.defaultValue){
@@ -44,12 +49,16 @@ $(document).ready(function() {
         $('#categories').fadeOut(function () { $('#resources').fadeOut(function () { $('#important-dates').fadeToggle(); }) });
     });
     
-    $('#user-span').click(function () {
+    $('#user-span').click(function(){
         $('#user-info-box').fadeToggle();
     });
     
-    $('.link-image').click( function () {
+    $('.link-image').click(function(){
       window.open($(this).attr('href'));
+    });
+    
+    $('.link').click(function(){
+        sendCommand($(this).attr('command'));
     });
     
     loadContent(loadonload);
@@ -76,7 +85,7 @@ function loadContent(value){
             //}
             document.title = response.pagetitle;
             $('#contstyle').html(response.style);
-            $('#content').html(response.content);
+            $('#pagecontent').html(response.content);
 			$('#contscript').html(response.script);
             /*if(settings['shell-background-color'] != "#000"){
                 $('#shellin, #shellout').css("background-color", settings['shell-background-color']);
@@ -105,7 +114,7 @@ function sleep(delay){
 	var start = new Date().getTime();
 	while (new Date().getTime() < start + delay);
 }
-<?php echo "alert(\"PHP WORKS\");" ?>
+<?php //echo"alert('PHP WORKS');" ?>
 
 function toggleImg(){
     $('#sponsor-img-2').fadeIn(1000);

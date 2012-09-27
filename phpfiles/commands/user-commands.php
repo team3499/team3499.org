@@ -105,10 +105,9 @@
 			return $out;
         }
 
-
         protected function user(){
-            $out['title'] = "Title Goes Here!";
-            $out['content'] = nows_file("user-content.php");
+            $command = $this->command;
+            $out['content'] = parse_phpHtml_file("user-content.php");
             return $out;
         }
     }

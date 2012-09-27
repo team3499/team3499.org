@@ -42,7 +42,10 @@
         $name = strtolower($name);
         return '<script type="text/javascript">'.nows_file($path."/".$name."/".$name.".js").'</script><style type="text/css">'.nows_file($path."/".$name."/".$name.".css").'</style>'.nows_file($path."/".$name."/".$name.".php");
     }
-    function parse_phpHtml_file($path, $var){
+    function parse_phpHtml_file($path){
+        if(isset(func_get_args()[1])){
+            $vars = func_get_args()[1];
+        }
 		$html = "";
         $file = file_get_contents($path, true);
 		$count1 = substr_count($file, "<?php");

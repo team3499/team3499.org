@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Team 3499 River's Edge Robotics</title>
+<title>Team 3499</title>
 <meta name="description" content="We are Team 3499, River\'s Edge Robotics part of Oyster River High School located in Hew Hampshire." />
 <meta name="keywords" content="team 3499, rivers edge robotics, first, oyster river, 3499" />
 <meta name="viewport" content="width=400;" />
@@ -34,6 +34,8 @@
 <script>
 	var loadonload = "<?php if($initcall){echo $initcommand;} ?>";
 </script>
+<div id="contscript"></div>
+<div id="contstyle"></div>
 </head>
 <body>
 <br/>
@@ -126,12 +128,12 @@
 
     <div class="navbar">
         <div class="linksbox">
-            <span class="links"><a href="/">Home</a></span>
-            <span class="links"><a href="#">About</a></span>
-            <span class="links"><a href="#">Images</a></span>
-            <span class="links"><a href="#">Task List</a></span>
-            <span class="links"><a href="#">Link 12345</a></span>
-            <span class="linksDonate"><a href="#">Donate</a></span>
+            <span class="link tab-links" command="home">Home</span>
+            <span class="link tab-links" command="about">About</span>
+            <span class="tab-links" >Images</span>
+            <span class="tab-links">Task List</span>
+            <span class="tab-links">Link 12345</span>
+            <span class="tab-links linkDonate">Donate</span>
             <div class="head">
                 <div class="headTitle"><p><strong>River's Edge Robotics</strong><p></div>
             </div>
@@ -139,7 +141,7 @@
         <br style="clear:both;" />
     </div>
 
-    <div id="content">
+    <div id="pagecontent">
 
     </div>
 </div>

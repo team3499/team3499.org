@@ -84,7 +84,7 @@ div.linksbox{
 	font-size:18px;
 	margin:0px;
 }
-span.links, span.linksDonate {
+span.tab-links {
 	box-shadow:0px -3px 3px rgba(0,0,0,0.2);
 	padding:5px;
 	border-radius:8px 8px 0 0;
@@ -94,8 +94,12 @@ span.links, span.linksDonate {
 	background: -o-linear-gradient(top,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
 	background: -ms-linear-gradient(top, #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
 	background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
+    color:#006CFF;
 }
-span.linksDonate {
+span.tab-links:hover{
+    color:#00DCFE;
+}
+span.linkDonate {
 	float:right;
 	margin-top:-5px;
 }
@@ -500,8 +504,7 @@ div.sub-box {
     background: linear-gradient(to bottom, #ededed 0%,#d3d3d3 100%);
     margin-bottom:30px;
 }
-
-p#resources-title, p#categories-title, p#important-dates-title {
-  cursor:pointer;
-}
  <?php// note: this does make the pointer (cursor) show on the right of the 'links' ?>
+p#resources-title, p#categories-title, p#important-dates-title {
+    cursor:pointer;
+}

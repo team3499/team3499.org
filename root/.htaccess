@@ -7,6 +7,9 @@ RewriteRule ^(.*)$ /index.php
 <FilesMatch "\.css$">
     SetHandler application/x-httpd-php
 </FilesMatch>
+<FilesMatch "\.js$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
 
 #<Directory "E:\XAMPP\htdocs\core\css">
 #    <FilesMatch "\.css$">

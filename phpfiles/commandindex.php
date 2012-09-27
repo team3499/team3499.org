@@ -50,7 +50,7 @@
                 "", 
                 "User-properties!", 
                 "Opens a page for user properties", 
-                0]
+                0],
         ],
         5 => [
             "login" => [["login"], "login", "user-commands.php", 
