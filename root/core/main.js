@@ -21,7 +21,7 @@ $(document).ready(function() {
         }
         setTimeout(toggleImg, 5000); // need to make this pick a random... it cant pick a new random one without a switch with each function
     }*/
-    setTimeout(toggleImg, 5000);
+    setTimeout(toggleImg, 0);
     setTimeout(hideAddressBar, 0);
     
 	$('input[type="search"]').addClass("headSearch");

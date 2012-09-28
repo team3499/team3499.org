@@ -504,7 +504,24 @@ div.sub-box {
     background: linear-gradient(to bottom, #ededed 0%,#d3d3d3 100%);
     margin-bottom:30px;
 }
- <?php// note: this does make the pointer (cursor) show on the right of the 'links' ?>
-p#resources-title, p#categories-title, p#important-dates-title {
+ <?php // note: this does make the pointer (cursor) show on the right of the 'links' ?>
+span#resources-title-span, span#categories-title, span#important-dates-title, span#user-span {
     cursor:pointer;
 }
+
+span#user-edit {
+  float:right;
+  margin-right:15px;
+  color:#006CFF;
+  cursor:pointer;
+}
+
+<?php // easter egg that originally had purpose. ?>
+div#scroll-padding {
+    position:fixed;
+    bottom:-10px;
+    top:101%;
+}
+
+<?php // always show the scroll bar ?>
+html {overflow-y: scroll;}

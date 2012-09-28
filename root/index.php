@@ -69,7 +69,7 @@
 <div class="left">
     <br/>
     <div class="user">
-        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><a href="/user"><i style="float:right;margin-right:15px;">edit</i></a></p>
+        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><span id="user-edit" class="link" command="user"><i>edit</i></span></p>
         <div id="user-info-box">
         <p>Content goes here</p>
         <p>Username</p>
@@ -79,40 +79,40 @@
     </div>
     <br/>
     <div class="link-box">
-		<p id="resources-title">> Resources</p>
-		<ul id="resources">
-			<li><a href="#">FRC Website</a></li>
-			<ul>
-				 <li><a href="#">FRC Competition Manuals</a></li>
-				 <li><a href="#">FRC Q&A System</a></li>
-			</ul>
-			<li><a href="#">WPILib</a></li>
-			<ul>
-				<li><a href="#">WPILib Cookbook</a></li>
-				<li><a href="#">WPILib Users Guide</a></li>
-				<li><a href="#">WPILib C++ Getting Started Guide</a></li>
-			</ul>
-			<li><a href="#">Facebook Page</a></li>
-			<li><a href="#">ORHS</a></li>
-		</ul>
-		<p id="categories-title">> Categories</p>
-		<ul id="categories">
-			<li><a href="#">Blog and events</a></li>
-			<li><a href="#">Competition</a></li>
-			<li><a href="#">Events</a></li>
-			<li><a href="#">Meetings</a></li>
-			<li><a href="#">Programming</a></li>
-			<li><a href="#">Robot</a></li>
-			<li><a href="#">Sponsors</a></li>
-		</ul>
-		<p id="important-dates-title">> Important Dates</p>
-		<ul id="important-dates">
-			<li><a href="#">Example</a></li>
-			<li><a href="#">Example</a></li>
-			<li><a href="#">Example</a></li>
-			<li><a href="#">Example</a></li>
-			<li><a href="#">Example</a></li>
-		</ul>
+        <p id="resources-title"><span id="resources-title-span">> Resources</span></p>
+        <ul id="resources">
+        <li><a href="#">FRC Website</a></li>
+            <ul>
+                <li><a href="#">FRC Competition Manuals</a></li>
+                <li><a href="#">FRC Q&A System</a></li>
+            </ul>
+                <li><a href="#">WPILib</a></li>
+            <ul>
+                <li><a href="#">WPILib Cookbook</a></li>
+                <li><a href="#">WPILib Users Guide</a></li>
+                <li><a href="#">WPILib C++ Getting Started Guide</a></li>
+            </ul>
+        <li><a href="#">Facebook Page</a></li>
+            <li><a href="#">ORHS</a></li>
+        </ul>
+        <p id="categories-title"><span id="catagories-title-span">> Categories</span></p>
+        <ul id="categories">
+            <li><a href="#">Blog and events</a></li>
+            <li><a href="#">Competition</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Meetings</a></li>
+            <li><a href="#">Programming</a></li>
+            <li><a href="#">Robot</a></li>
+            <li><a href="#">Sponsors</a></li>
+        </ul>
+        <p id="important-dates-title"><span id="important-dates-title">> Important Dates</span></p>
+        <ul id="important-dates">
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+        </ul>
     </div>
     <br/>
     <p class="sponsorsTitle"><strong>Sponsors</strong></p>
@@ -143,6 +143,9 @@
 
     <div id="pagecontent">
 
+    </div>
+    <div id="scroll-padding">
+    Easter Egg!
     </div>
 </div>
 <!-- end stuff here -->
