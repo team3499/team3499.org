@@ -51,6 +51,11 @@
                 "User-properties!", 
                 "Opens a page for user properties", 
                 0],
+            "gallery" => [["gallery"], "gallery", "commands.php",
+                "", 
+                "Gallery Index", 
+                "", 
+                0],
         ],
         5 => [
             "login" => [["login"], "login", "user-commands.php", 

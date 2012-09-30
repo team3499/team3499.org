@@ -130,7 +130,7 @@
         <div class="linksbox">
             <span class="link tab-links" command="home">Home</span>
             <span class="link tab-links" command="about">About</span>
-            <span class="tab-links" >Images</span>
+            <span class="link tab-links" command="gallery">Gallery</span>
             <span class="tab-links">Task List</span>
             <span class="tab-links">Link 12345</span>
             <span class="tab-links linkDonate">Donate</span>
