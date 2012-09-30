@@ -7,11 +7,6 @@
             $out['content'] = nows_file("home-content.php");
             return $out;
         }
-        protected function gallery(){
-            $out['content'] = parse_phpHtml_file("/gallery/gallery-content.php");
-         // $out['script'] = nows_file("/gallery/main.js");
-            return $out;
-        }
         protected function help(){
             global $command_index;
             $command = $this->command;
@@ -243,6 +238,10 @@
             }
             return $out;
         }
-
+        protected function gallery(){
+            $out['content'] = parse_phpHtml_file("gallery/gallery-content.php");
+            //$out['script'] = nows_file("gallery/main.js");
+            return $out;
+        }
     }
 ?>

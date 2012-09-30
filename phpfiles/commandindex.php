@@ -51,11 +51,6 @@
                 "User-properties!", 
                 "Opens a page for user properties", 
                 0],
-            "gallery" => [["gallery"], "gallery", "commands.php",
-                "", 
-                "Gallery Index", 
-                "", 
-                0],
         ],
         5 => [
             "login" => [["login"], "login", "user-commands.php", 
@@ -79,6 +74,13 @@
                 "", 
                 "Logout", 
                 "Logs the Current User Out", 
+                0],
+        ],
+        7 => [
+            "gallery" => [["gallery"], "gallery", "commands.php",
+                "", 
+                "Gallery Index", 
+                "", 
                 0],
         ],
         8 => [
