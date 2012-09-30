@@ -241,6 +241,7 @@
         protected function gallery(){
             $out['content'] = parse_phpHtml_file("gallery/gallery-content.php");
             //$out['script'] = nows_file("gallery/main.js");
+            $out['style'] = nows_file("gallery/gstyle.css");
             return $out;
         }
     }
