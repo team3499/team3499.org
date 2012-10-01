@@ -2,7 +2,9 @@
 * {
 	margin: 0;
 }
-
+html {
+  overflow-y: scroll;
+}
 body {
 	font-family: "Lucida Grande",Verdana,sans-serif;
 	padding-top:20px;
@@ -86,29 +88,37 @@ span.tab-links {
 	background: -ms-linear-gradient(top, #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
 	background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
     color:#006CFF;
+    
 }
 span.tab-links:hover{
     color:#00DCFE;
+    cursor:pointer;
+    background: #eaeaea;
+  background: -moz-linear-gradient(top,  #eaeaea 0%, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
+  background: -o-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
+  background: -ms-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
+  background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%);
 }
 span.linkDonate {
 	float:right;
 	margin-top:-5px;
 }
-span.links:hover{
+/*span.links:hover{
 	background: #c9c9c9;
 	background: -moz-linear-gradient(top, #c9c9c9 0%, #ffffff 100%);
 	background: -webkit-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
 	background: -o-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
 	background: -ms-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
 	background: linear-gradient(to bottom, #c9c9c9 0%,#ffffff 100%);
-}
-span.linksDonate:hover{
-	background: #00b6ff;
-	background: -moz-linear-gradient(top, #00b6ff 0%, #ffffff 100%);
-	background: -webkit-linear-gradient(top, #00b6ff 0%,#ffffff 100%);
-	background: -o-linear-gradient(top, #00b6ff 0%,#ffffff 100%);
-	background: -ms-linear-gradient(top, #00b6ff 0%,#ffffff 100%);
-	background: linear-gradient(to bottom, #00b6ff 0%,#ffffff 100%);
+}*/
+span.linkDonate:hover{
+  background: #9bd7ff;
+  background: -moz-linear-gradient(top,  #9bd7ff 0%, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
+  background: -o-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
+  background: -ms-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
+  background: linear-gradient(to bottom,  #9bd7ff 0%,#ffffff 50%);
 }
 div.head {
 	width:100%;
@@ -136,7 +146,6 @@ div.headSearch {
 	margin-right:8px;
 	width:200px;
 	float:left;
-	padding:0px;
 }
 div.headImageBox {
 	position:absolute;
@@ -152,14 +161,14 @@ div.headImageBox {
 
 	overflow:hidden; /* comment out to see images */
 }
-div.headImages {
+/*div.headImages {
 	-webkit-transform: skew(45deg);
 	-moz-transform: skew(45deg);
 	-o-transform: skew(45deg);
-	width:1000px; /* used to fit 3 images */
+	width:1000px;
 	margin-top:-30px;
 	margin-left:-65px;
-}
+}*/
 input.searchBar {
 	font-size:18px;
 	border:1px solid #555555;
@@ -266,11 +275,15 @@ textarea.addComment {
   min-width:50%;
   max-width:80%;
   min-height:60px;
+  max-height:400px;
   border-radius:5px;
   box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
   border:1px solid rgba(0,0,0,0.3);
   background-color:rgba(255,255,255,0.4);
   padding:5px;
+}
+textarea.addComment:hover {
+  background-color:rgba(255,255,255,0.9);
 }
 div.postCommentsBarMax {
   position:absolute;
@@ -352,13 +365,12 @@ p.sponsorsTitle {
   border-bottom:1px solid #bbb;
   width:70%;
 }
-input, textarea {
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
-	-o-transition: all 0.30s ease-in-out;
+input, textarea, span.link.tab-links, span.tab-links {
+	-webkit-transition: all 0.20s ease-in-out;
+	-moz-transition: all 0.20s ease-in-out;
+	-ms-transition: all 0.20s ease-in-out;
+	-o-transition: all 0.20s ease-in-out;
 	outline: none;
-	border: 1px solid #DDDDDD;
 }
 li{
   margin-left: -5px;
@@ -366,6 +378,7 @@ li{
 input:focus, textarea:focus {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 	border: 1px solid rgba(81, 203, 238, 1);
+  background-color:rgba(255,255,255,0.9);
 }
 a img, a:hover img {
 	text-decoration:none;
@@ -514,5 +527,4 @@ div#scroll-padding {
     top:101%;
 }
 
-<?php // always show the scroll bar ?>
-html {overflow-y: scroll;}
+<?php // always show the scroll bar -- moved to top of style ?>
