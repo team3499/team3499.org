@@ -79,7 +79,7 @@
     </div>
     <br/>
     <div class="link-box">
-        <p id="resources-title"><span id="resources-title-span">> Resources</span></p>
+        <p><span id="resources-title-span">> Resources</span></p>
         <ul id="resources">
         <li><a href="#">FRC Website</a></li>
             <ul>
@@ -95,7 +95,7 @@
         <li><a href="#">Facebook Page</a></li>
             <li><a href="#">ORHS</a></li>
         </ul>
-        <p id="categories-title"><span id="catagories-title-span">> Categories</span></p>
+        <p><span id="categories-title-span">> Categories</span></p>
         <ul id="categories">
             <li><a href="#">Blog and events</a></li>
             <li><a href="#">Competition</a></li>
@@ -105,7 +105,7 @@
             <li><a href="#">Robot</a></li>
             <li><a href="#">Sponsors</a></li>
         </ul>
-        <p id="important-dates-title"><span id="important-dates-title">> Important Dates</span></p>
+        <p><span id="important-dates-title-span">> Important Dates</span></p>
         <ul id="important-dates">
             <li><a href="#">Example</a></li>
             <li><a href="#">Example</a></li>

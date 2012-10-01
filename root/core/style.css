@@ -16,15 +16,6 @@ body {
 	font-size:14px;
 	width:100%;
 }
-div#resources-title{
-	cursor:pointer;
-}
-div#categories-title{
-	cursor:default;
-}
-div#important-dates-title{
-	cursor:default;
-}
 
 #sponsor-img-1{
     position:absolute;
@@ -505,7 +496,7 @@ div.sub-box {
     margin-bottom:30px;
 }
  <?php // note: this does make the pointer (cursor) show on the right of the 'links' ?>
-span#resources-title-span, span#categories-title, span#important-dates-title, span#user-span {
+span#resources-title-span, span#categories-title-span, span#important-dates-title-span, span#user-span {
     cursor:pointer;
 }
 

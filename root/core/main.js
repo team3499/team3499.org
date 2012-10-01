@@ -39,13 +39,20 @@ $(document).ready(function() {
 			this.value = (this.defaultValue ? this.defaultValue : '');
 		}
 	});
-    $('#resources-title').click(function(){
+    <?php //       Heights:
+          // All Closed:      54
+          // resources open:  342 -- 288px for 4 elements, 3 2line elements, 2 3line elements
+          // catagories:      180 -- 126px for 7 elements
+          // important dates: 144 -- 90px for 5 elements
+          //
+          ?>
+    $('#resources-title-span').click(function(){
         $('#categories').fadeOut(function () { $('#important-dates').fadeOut(function () { $('#resources').fadeToggle(); }) });
     });
-    $('#categories-title').click(function(){
+    $('#categories-title-span').click(function(){
         $('#resources').fadeOut(function () { $('#important-dates').fadeOut(function () { $('#categories').fadeToggle(); }) });
     });
-    $('#important-dates-title').click(function(){
+    $('#important-dates-title-span').click(function(){
         $('#categories').fadeOut(function () { $('#resources').fadeOut(function () { $('#important-dates').fadeToggle(); }) });
     });
     
