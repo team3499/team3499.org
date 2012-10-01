@@ -76,6 +76,13 @@
                 "Logs the Current User Out", 
                 0],
         ],
+        7 => [
+            "gallery" => [["gallery"], "gallery", "commands.php",
+                "", 
+                "Gallery Index", 
+                "", 
+                0],
+        ],
         8 => [
             "settings" => [["settings"], "settings", "user-commands.php", 
                 "[\"name of setting\"=value]", 
