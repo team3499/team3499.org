@@ -90,5 +90,12 @@
                 "Changes settings for the curently logged in user, or if no user is logged in, only for the current session.", 
                 0],
         ],
+        11 => [
+            "gallery2012" => [["gallery2012"], "gallery2012", "commands.php",
+                "", 
+                "Gallery Index of 2012", 
+                "", 
+                0],
+        ],
     ];
 ?>

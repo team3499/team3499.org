@@ -517,8 +517,7 @@ div.sub-box {
     background: linear-gradient(to bottom, #ededed 0%,#d3d3d3 100%);
     margin-bottom:30px;
 }
- <?php // note: this does make the pointer (cursor) show on the right of the 'links' ?>
-span#resources-title-span, span#categories-title, span#important-dates-title, span#user-span {
+span#resources-title-span, span#catagories-title-span, span#important-dates-title, span#user-span {
     cursor:pointer;
 }
 
