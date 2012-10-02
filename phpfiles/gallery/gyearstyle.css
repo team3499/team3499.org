@@ -1,0 +1,12 @@
+div.galleryYearContent {
+
+}
+table {
+  margin:0 -5px;
+}
+tr, td {
+  padding:5px;
+}
+table tr td img {
+  width:100%;
+}
