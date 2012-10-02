@@ -2,22 +2,26 @@ div.galleryContent {
 
 }
 div.galleryFeature {
-  width:600px;
-  height:520px;
-  border:1px solid #fff;
+  width:60%;
+  /*height:37%;*/
+  /*border:1px solid #fff;*/
   float:left;
   margin:0 10px 10px 0;
 }
 div.galleryLink {
-  width:295px;
-  height:255px;
-  border:1px solid #fff;
+  width:29.5%;
+  /*height:23%; */
+  /*border:1px solid #fff;*/
   float:left;
   margin:0 10px 10px 0; /* t r b l */
 }
 div.galleryYear {
   font-size:20px;
   text-align:center;
-  background-color:rgba(0,0,0,0.5);
+  /*background-color:rgba(0,0,0,0.5);*/
+  margin-top:-30px;
+  text-shadow:0 0 5px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,1);
+}
+div.galleryYear a {
   color:#fff;
 }
