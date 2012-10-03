@@ -12,12 +12,24 @@ div.galleryFeature {
   float:left;
   margin:0 10px 10px 0;
 }
+div.galleryFeature, div.galleryLink {
+  -webkit-transition: all 0.10s ease-in-out;
+	-moz-transition: all 0.10s ease-in-out;
+	-ms-transition: all 0.10s ease-in-out;
+	-o-transition: all 0.10s ease-in-out;
+  border: 1px solid rgba(0,0,0,0.5);
+  background-color:rgba(0,0,0,0.5);
+}
+div.galleryFeature:hover, div.galleryLink:hover {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	border: 1px solid rgba(81, 203, 238, 1);
+}
 div.galleryLink {
   width:29.5%;
   float:left;
   margin:0 10px 10px 0; /* t r b l */
 }
-div.galleryLink img {
+div.galleryFeature img, div.galleryLink img {
   width:100%;
 }
 div.galleryYear {
