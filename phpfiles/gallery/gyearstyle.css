@@ -1,12 +1,40 @@
 div.galleryYearContent {
 
 }
-table {
+table.images {
   margin:0 -5px;
 }
-tr, td {
-  padding:5px;
+td {
+  display:block;
+  float:left;
+  width:23.7%;
+  border: 1px solid rgba(0,0,0,0.5);
+  padding:0px;
+  margin:4px;
+  -webkit-transition: all 0.10s ease-in-out;
+	-moz-transition: all 0.10s ease-in-out;
+	-ms-transition: all 0.10s ease-in-out;
+	-o-transition: all 0.10s ease-in-out;
+  background-color:rgba(0,0,0,0.5);
 }
-table tr td img {
+td:hover {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	border: 1px solid rgba(81, 203, 238, 1);
+}
+table.images tr td img {
   width:100%;
+  height:100%;
+  float:left;
+}
+a.tooltip span {
+    display: none;
+}
+a.tooltip:hover span {
+    padding:5px;
+    display:block;
+    margin:10px;
+    position:absolute;
+    background-color:rgba(0,0,0,0.5);
+    border-radius:4px;
+    color:#fff;
 }
