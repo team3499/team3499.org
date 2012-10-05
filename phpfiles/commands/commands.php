@@ -244,5 +244,11 @@
             $out['style'] = nows_file("gallery/gstyle.css");
             return $out;
         }
+        protected function gallery2012(){
+            $out['content'] = parse_phpHtml_file("gallery/gallery-2012-content.php");
+            $out['script'] = nows_file("gallery/main.js");
+            $out['style'] = nows_file("gallery/gyearstyle.css");
+            return $out;
+        }
     }
 ?>
