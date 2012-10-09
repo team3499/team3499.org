@@ -26,7 +26,7 @@
             $command_info = $this->command_info;
             if(is_array($command_info)){
                 $return = call_user_func([$this, $command_info[1]]);
-            }else{
+            } else {
                 $return = $this->unknowncommand();
             }
             $out = array_merge($this->out, $return);

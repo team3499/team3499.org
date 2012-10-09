@@ -3,6 +3,7 @@ div.galleryYearContent {
 }
 table.images {
   margin:0 -5px;
+  width:100%;
 }
 td {
   display:block;
@@ -26,17 +27,28 @@ table.images tr td img {
   height:100%;
   float:left;
 }
-td.tooltip-td span.tooltip-span {
+td.tooltip-td span.tooltip-span, td.tooltip-td span.tooltip-span-2{
     display: none;
 }
 td.tooltip-td:hover span.tooltip-span {
     padding:5px;
     display:block;
     margin:10px;
-    position:absolute;
+    float:left;
     background-color:rgba(0,0,0,0.5);
     border-radius:4px;
     color:#fff;
+    cursor:pointer;
+}
+td.tooltip-td:hover span.tooltip-span-2 {
+    padding:5px;
+    display:block;
+    margin:10px;
+    float:right;
+    background-color:rgba(0,0,0,0.5);
+    border-radius:4px;
+    color:#fff;
+    cursor:pointer;
 }
 
 td.tooltip-td {
