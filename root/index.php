@@ -43,16 +43,16 @@
 <div class="header">
   <div class="float-right" width="30%">
     <div class="headSearch">
-          <input class="searchBar" type="search" name="search" value="Search..."/>
+          <input class="searchBar" maxlength="200" type="search" name="search" value="Search..."/>
     </div>
     <div class="headIcons">
     <img width="25px" src="/core/img/facebook.png" class="head-icons link-image" href="http://www.facebook.com/groups/137871619595813/"/>
     <img width="24px" src="/core/img/rss.png" class="head-icons link-image" href="http://www.google.com"/>
     </div>
   </div>
-  <div class="float-left" style="width:300px">
+  <div class="float-left" style="width:600px">
     <a href="/"><img class="sitelogo" height="25px" src="/core/img/logo.png"/></a>
-    <p>River's Edge Robotics</p>
+    <p>River's Edge Robotics Team 3499 <i class="small">Our robot goes [--this--] fast.</i></p>
   </div>
 <!-- </div>
 <div class="header header-left"> -->
@@ -66,8 +66,9 @@
 <!-- enter stuff here -->
 
 <!-- left column -->
+<div class="leftWrapper">
 <div class="left">
-    <br/>
+  <a href="/"><img width="100%" src="/core/img/logo.png"/></a> <?php //get rid of if you don't like it where it is. I do think we should have a large logo somewhere though ?>
     <div class="user">
         <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><span id="user-edit" class="link" command="user"><i>edit</i></span></p>
         <div id="user-info-box">
@@ -81,19 +82,19 @@
     <div class="link-box">
         <p><span id="resources-title-span">> Resources</span></p>
         <ul id="resources">
-        <li><a href="#">FRC Website</a></li>
+        <li><a href="http://www.usfirst.org/roboticsprograms/frc" target="_blank">FRC Website</a></li>
             <ul>
-                <li><a href="#">FRC Competition Manuals</a></li>
-                <li><a href="#">FRC Q&A System</a></li>
+                <li><a href="http://www.usfirst.org/roboticsprograms/frc/competition-manual-and-related-documents" target="_blank">FRC Competition Manuals</a></li>
+                <li><a href="http://www.usfirst.org/roboticsprograms/frc/game-q-and-a" target="_blank">FRC Q&A System</a></li>
             </ul>
-                <li><a href="#">WPILib</a></li>
+                <li><a href="http://firstforge.wpi.edu/sf/projects/wpilib" target="_blank">WPILib</a></li>
             <ul>
-                <li><a href="#">WPILib Cookbook</a></li>
-                <li><a href="#">WPILib Users Guide</a></li>
-                <li><a href="#">WPILib C++ Getting Started Guide</a></li>
+                <li><a href="http://firstforge.wpi.edu/sf/go/doc1297?nav=1" target="_blank">WPILib Cookbook</a></li>
+                <li><a href="http://firstforge.wpi.edu/sf/go/doc1196?nav=1" target="_blank">WPILib Users Guide</a></li>
+                <li><a href="http://firstforge.wpi.edu/sf/go/doc1197?nav=1" target="_blank">WPILib C++ Getting Started Guide</a></li>
             </ul>
-        <li><a href="#">Facebook Page</a></li>
-            <li><a href="#">ORHS</a></li>
+        <li><a href="http://www.facebook.com/groups/137871619595813/" target="_blank">Facebook Page</a></li>
+            <li><a href="http://orcsd.org/school/orhs" target="_blank">ORHS</a></li>
         </ul>
         <p><span id="categories-title-span">> Categories</span></p>
         <ul id="categories">
@@ -121,6 +122,7 @@
 <img src="/core/img/default2.jpg" class="sponsor link-image" id="sponsor-img-2" href="http://www.google.com"/>
     </div>
 </div>
+</div>
 
 <!-- right column -->
 <div class="right">
@@ -130,11 +132,12 @@
             <span class="link tab-links" command="home">Home</span>
             <span class="link tab-links" command="about">About</span>
             <span class="link tab-links" command="gallery">Gallery</span>
-            <span class="tab-links">Task List</span>
-            <span class="tab-links">Link 12345</span>
+            <span class="tab-links">Task Schedual</span> <!-- calender! -->
+            <span class="tab-links">FIRST</span>
             <span class="tab-links linkDonate">Donate</span>
             <div class="head">
-                <div class="headTitle"><p><strong>River's Edge Robotics</strong><p></div>
+                <div class="headTitle"><p><strong>River's Edge Robotics </strong><p></div>
+                <span style="float:right;">#######TWITTER FEED</span> <!-- charlie or ethan plz -->
             </div>
         </div>
         <br style="clear:both;" />
@@ -148,6 +151,9 @@
     </div>
 </div>
 <!-- end stuff here -->
+</div>
+<div class="footer">
+Copyright &copy; 2012,<a href="/">Team3499.org</a>
 </div>
 </body>
 </html>
