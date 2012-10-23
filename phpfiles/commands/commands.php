@@ -175,16 +175,24 @@
             }else{
                 $usernameid = "Not Logged In<br/>";
             }
-            $out['content'] = default_content(
+            $out['content'] = parse_phpHtml_file("about/about.php");
+            //$out['style'] = nows_file("about/aboutstyle.css");
+            /*$out['content'] = default_content(		//sorry i have no idea what im doing
                 "Site: ".SITE."<br/>",
                 "Version: ".VERSION."<br/>",
                 "Author: ".AUTHOR."<br/>",
                 "Number of Pages: ".$comnums."<br/>",
                 "Last Updated: ".UPDATE."<br/>",
                 $usernameid
-            );
+            );*/
             return $out;
         }
+        /*
+        protected function about(){
+	  $out['content'] = parse_phpHtml_file("about/about.php");
+	  $out['style'] = nows_file("about/aboutstyle.css");
+	  return $out;
+        }*/
         
         protected function projects(){
             $command = $this->command;
