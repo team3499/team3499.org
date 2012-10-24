@@ -248,8 +248,7 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
 <!-- a common post -->
 <div class="post">
     <div class="postTitle">
-        <!--<span class="postTitle" style="">--><strong>Integrating Git with FRC Workbench</strong><!--</span>-->
-      <span class="post-user" style="float:right; background-color:rgba(255,255,255,.3);"><a href="">Brian Turnball</a></span>
+        <!--<span class="postTitle" style="">--><span class="postTitle post-user" style="; background-color:rgba(255,255,255,.1);"><strong>Integrating Git with FRC Workbench</strong> - <span class="span-2" style="font-size:13px;"><a href="">Brian Turnball</a></span></span><!--</span>-->A
         <div class="postDate" style="float:right; padding-right:4px;"><i>1/18/12</i></div>
     </div>
     <div class="postPadding">
