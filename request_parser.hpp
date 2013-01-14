@@ -4,8 +4,8 @@
 #include <boost/logic/tribool.hpp>
 #include <boost/tuple/tuple.hpp>
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 struct request;
 

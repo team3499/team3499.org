@@ -3,8 +3,8 @@
 
 #include <string>
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 struct header
 {

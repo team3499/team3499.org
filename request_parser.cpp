@@ -1,8 +1,8 @@
 #include "request_parser.hpp"
 #include "request.hpp"
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 request_parser::request_parser()
   : state_(method_start)

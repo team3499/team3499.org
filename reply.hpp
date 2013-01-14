@@ -6,8 +6,8 @@
 #include <boost/asio.hpp>
 #include "header.hpp"
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 /// A reply to be sent to a client.
 struct reply

@@ -5,8 +5,8 @@
 #include <vector>
 #include "header.hpp"
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 /// A request received from a client.
 struct request

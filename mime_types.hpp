@@ -3,8 +3,8 @@
 
 #include <string>
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 namespace mime_types {
 
 /// Convert a file extension into a MIME type.

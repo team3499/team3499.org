@@ -2,9 +2,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(BoostWebApp)
-FIND_PACKAGE(Boost COMPONENTS system filesystem REQUIRED)
-SET(BOOST_LIBRARYDIR /usr/lib/boost)
-SET(BOOST_INCLUDEDIR /usr/include/boost)
 
 SET(CMAKE_GENERATOR "Unix Makefiles")
 
@@ -35,12 +32,14 @@ INCLUDE_DIRECTORIES(
     ../Boost_Source/boost
 )
 
-#ADD_DEFINITIONS(-L../Boost_Source/bin.v2/libs/system/build/gcc-4.6.1/release/link-static/threading-multi)
-#ADD_DEFINITIONS(-lboost_system)
-#ADD_DEFINITIONS(-L/home/chaos/Projects/Boost_Source/stage/lib)
-#ADD_DEFINITIONS(-lboost_systems)
-#ADD_DEFINITIONS(-lboost_thread)
-#ADD_DEFINITIONS(-lpthread)
+ADD_CUSTOM_TARGET(resources
+    COMMAND echo Refreshing Resources ...
+    COMMAND rm -Rf ${CMAKE_BINARY_DIR}/docroot
+    COMMAND cp -R ${CMAKE_SOURCE_DIR}/docroot ${CMAKE_BINARY_DIR}/docroot
+    COMMAND echo Done.
+)
 
+LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/libs)
 ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})
-TARGET_LINK_LIBRARIES(webapp ${Boost_SYSTEM_LIBRARY})
+TARGET_LINK_LIBRARIES(webapp boost_system boost_thread)
+ADD_DEPENDENCIES(webapp resources)

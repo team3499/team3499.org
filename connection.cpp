@@ -3,11 +3,11 @@
 #include <boost/bind.hpp>
 #include "request_handler.hpp"
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 connection::connection(boost::asio::io_service& io_service,
-    request_handler& handler)
+    RequestHandler& handler)
   : strand_(io_service),
     socket_(io_service),
     request_handler_(handler)

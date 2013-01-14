@@ -1,14 +1,13 @@
-
 #include "server.hpp"
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
-server::server(const std::string& address, const std::string& port,
+HttpServer::HttpServer(const std::string& address, const std::string& port,
     const std::string& doc_root, std::size_t thread_pool_size)
   : thread_pool_size_(thread_pool_size),
     signals_(io_service_),
@@ -24,7 +23,7 @@ server::server(const std::string& address, const std::string& port,
 #if defined(SIGQUIT)
   signals_.add(SIGQUIT);
 #endif // defined(SIGQUIT)
-  signals_.async_wait(boost::bind(&server::handle_stop, this));
+  signals_.async_wait(boost::bind(&HttpServer::handle_stop, this));
 
   // Open the acceptor with the option to reuse the address (i.e. SO_REUSEADDR).
   boost::asio::ip::tcp::resolver resolver(io_service_);
@@ -38,7 +37,7 @@ server::server(const std::string& address, const std::string& port,
   start_accept();
 }
 
-void server::run()
+void HttpServer::run()
 {
   // Create a pool of threads to run all of the io_services.
   std::vector<boost::shared_ptr<boost::thread> > threads;
@@ -54,15 +53,15 @@ void server::run()
     threads[i]->join();
 }
 
-void server::start_accept()
+void HttpServer::start_accept()
 {
   new_connection_.reset(new connection(io_service_, request_handler_));
   acceptor_.async_accept(new_connection_->socket(),
-      boost::bind(&server::handle_accept, this,
+      boost::bind(&HttpServer::handle_accept, this,
         boost::asio::placeholders::error));
 }
 
-void server::handle_accept(const boost::system::error_code& e)
+void HttpServer::handle_accept(const boost::system::error_code& e)
 {
   if (!e)
   {
@@ -72,7 +71,7 @@ void server::handle_accept(const boost::system::error_code& e)
   start_accept();
 }
 
-void server::handle_stop()
+void HttpServer::handle_stop()
 {
   io_service_.stop();
 }

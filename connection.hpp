@@ -11,8 +11,8 @@
 #include "request_handler.hpp"
 #include "request_parser.hpp"
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 /// Represents a single connection from a client.
 class connection
@@ -22,7 +22,7 @@ class connection
 public:
   /// Construct a connection with the given io_service.
   explicit connection(boost::asio::io_service& io_service,
-      request_handler& handler);
+      RequestHandler& handler);
 
   /// Get the socket associated with the connection.
   boost::asio::ip::tcp::socket& socket();
@@ -45,7 +45,7 @@ private:
   boost::asio::ip::tcp::socket socket_;
 
   /// The handler used to process the incoming request.
-  request_handler& request_handler_;
+  RequestHandler& request_handler_;
 
   /// Buffer for incoming data.
   boost::array<char, 8192> buffer_;

@@ -9,17 +9,17 @@
 #include "connection.hpp"
 #include "request_handler.hpp"
 
-namespace http {
-namespace server3 {
+namespace Http {
+namespace Server3 {
 
 /// The top-level class of the HTTP server.
-class server
+class HttpServer
   : private boost::noncopyable
 {
 public:
   /// Construct the server to listen on the specified TCP address and port, and
   /// serve up files from the given directory.
-  explicit server(const std::string& address, const std::string& port,
+  explicit HttpServer(const std::string& address, const std::string& port,
       const std::string& doc_root, std::size_t thread_pool_size);
 
   /// Run the server's io_service loop.
@@ -51,7 +51,7 @@ private:
   connection_ptr new_connection_;
 
   /// The handler for all incoming requests.
-  request_handler request_handler_;
+  RequestHandler request_handler_;
 };
 
 } // namespace server3
