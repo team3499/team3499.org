@@ -2,7 +2,7 @@ TARGET = BoostWebApp
 TEMPLATE = app
 CONFIG += CONSOLE
 
-INCLUDEPATH += $$PWD
+INCLUDEPATH += ./include/
 
 HEADERS += \
     server.hpp \
