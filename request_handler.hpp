@@ -3,12 +3,10 @@
 
 #include <string>
 #include <boost/noncopyable.hpp>
+#include "homepage.h"
 
-namespace Http {
-namespace Server3 {
-
-struct reply;
-struct request;
+struct Reply;
+struct Request;
 
 /// The common handler for all incoming requests.
 class RequestHandler
@@ -19,7 +17,7 @@ public:
   explicit RequestHandler(const std::string& doc_root);
 
   /// Handle a request and produce a reply.
-  void handle_request(const request& req, reply& rep);
+  void handle_request(Request& req, Reply& rep);
 
 private:
   /// The directory containing the files to be served.
@@ -27,10 +25,9 @@ private:
 
   /// Perform URL-decoding on a string. Returns false if the encoding was
   /// invalid.
-  static bool url_decode(const std::string& in, std::string& out);
-};
+  static bool urlDecode(const std::string& in, std::string& out);
 
-} // namespace server3
-} // namespace http
+  void staticFile(Request &req, Reply &rep);
+};
 
 #endif // HTTP_SERVER3_REQUEST_HANDLER_HPP

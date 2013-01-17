@@ -1,73 +1,93 @@
 ## BoostWebApp CMakeLists.txt
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+SET(CMAKE_GENERATOR "Unix Makefiles")
 
 PROJECT(BoostWebApp)
 
-IF(UNIX)
-SET(CMAKE_GENERATOR "Unix Makefiles")
-ELSE()
-SET(CMAKE_GENERATOR "MinGW Makefiles")
-ENDIF()
+FIND_PACKAGE(Qt4 REQUIRED)
+SET(QT_DONT_USE_QTGUI TRUE)
 
 SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
-    server.hpp
-    request_parser.hpp
+    global.h
+    pagescommin.h
     request_handler.hpp
-    request.hpp
-    reply.hpp
-    mime_types.hpp
-    connection.hpp
-    header.hpp
+    websession.h
+# Server
+    server/connection.hpp
+    server/logger.h
+    server/mime_types.hpp
+    server/reply.hpp
+    server/request.hpp
+    server/request_parser.hpp
+    server/server.hpp
+# Pages
+    pages/homepage.h
+    pages/derppage.h
+    pages/missingpage.h
+# Zennix Libs
+    zlib/asar.h
+    #zlib/database.h
+    zlib/zfile.h
+    zlib/zstring.h
+    #zlib/SQLite/sqlite3.h
+    #zlib/SQLite/sqlite3ext.h
 )
 
 SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     main.cpp
-    server.cpp
-    request_parser.cpp
     request_handler.cpp
-    reply.cpp
-    mime_types.cpp
-    connection.cpp
+    websession.cpp
+    pagescommon.cpp
+# Server
+    server/server.cpp
+    server/request_parser.cpp
+    server/reply.cpp
+    server/mime_types.cpp
+    server/connection.cpp
+    server/logger.cpp
+# Pages
+    pages/homepage.cpp
+    pages/derppage.cpp
+    pages/missingpage.cpp
+# Zennix Libs
+    #zlib/asar.tpp
+    #zlib/database.cpp
+    zlib/zfile.cpp
+    zlib/zstring.cpp
+    #zlib/SQLite/sqlite3.c
+# Boost
     lib/system/error_code.cpp
-#    lib/thread/future.cpp
-#    lib/thread/tss_null.cpp
-#    lib/thread/win32/thread.cpp
-#    lib/thread/win32/tss_dll.cpp
-#    lib/thread/win32/tss_pe.cpp
-#    lib/thread/pthread/once.cpp
-#    lib/thread/pthread/thread.cpp
 )
 
+INCLUDE(${QT_USE_FILE})
+ADD_DEFINITIONS(${QT_DEFINITIONS})
+
 INCLUDE_DIRECTORIES(
-    .
-    lib/include
-    lib/system
+    /usr/include
+    ./
+    server/
+    pages/
+    zlib/
+    zlib/SQLite/
 )
 
 ADD_CUSTOM_TARGET(resources
     COMMAND echo Refreshing Resources ...
     COMMAND rm -Rf ${CMAKE_BINARY_DIR}/docroot
+    COMMAND rm -Rf ${CMAKE_BINARY_DIR}/sessions
+    COMMAND rm -Rf ${CMAKE_BINARY_DIR}/logs
+    COMMAND rm -Rf ${CMAKE_BINARY_DIR}/parts
     COMMAND cp -R ${CMAKE_SOURCE_DIR}/docroot ${CMAKE_BINARY_DIR}/docroot
+    COMMAND cp -R ${CMAKE_SOURCE_DIR}/parts ${CMAKE_BINARY_DIR}/parts
+    COMMAND mkdir ${CMAKE_BINARY_DIR}/sessions
+    COMMAND mkdir ${CMAKE_BINARY_DIR}/logs
     COMMAND echo Done.
 )
 
-ADD_DEFINITIONS(-D_WIN32_WINNT=0x0501)
-#ADD_DEFINITIONS(-D BOOST_ALL_DYN_LINK)
-ADD_DEFINITIONS(-D BOOST_ALL_NO_LIB)
+ADD_DEFINITIONS(-D USE_QT)
 
-IF(UNIX)
-LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/lib/unix)
-ELSE()
-LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/lib/win32)
-ENDIF()
-
+LINK_DIRECTORIES(/usr/lib/boost)
 ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})
-
-IF(UNIX)
-TARGET_LINK_LIBRARIES(webapp boost_system boost_thread)
-ELSE()
-#TARGET_LINK_LIBRARIES(webapp boost_system boost_thread wsock32 ws2_32)
-TARGET_LINK_LIBRARIES(webapp boost_thread wsock32 ws2_32)
-ENDIF()
+TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} boost_thread)
 
 ADD_DEPENDENCIES(webapp resources)

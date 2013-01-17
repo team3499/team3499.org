@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
 
         // Initialise the server.
         std::size_t num_threads = boost::lexical_cast<std::size_t>(argv[3]);
-        Http::Server3::HttpServer s(argv[1], argv[2], argv[4], num_threads);
+        HttpServer s(argv[1], argv[2], argv[4], num_threads);
 
         // Run the server until stopped.
         s.run();
