@@ -165,15 +165,15 @@ ZString::ZString(char str){
     operator=(str);
 }
 ZString &ZString::operator=(char str){
-    data = "";
-    data[0] = str;
+    data.clear();
+    data += str;
     return *this;
 }
 ZString ZString::operator+(char str){
     return ZString(data.append(ZString(str).str()));
 }
 ZString &ZString::operator+=(char str){
-    data = data.append(ZString(str).str());
+    data += str;
     return *this;
 }
 ZString &ZString::operator<<(char str){

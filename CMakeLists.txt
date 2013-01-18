@@ -23,7 +23,7 @@ SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
 # Pages
     pages/homepage.h
     pages/derppage.h
-    pages/missingpage.h
+    pages/errorpage.h
 # Zennix Libs
     zlib/asar.h
     #zlib/database.h
@@ -48,7 +48,7 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
 # Pages
     pages/homepage.cpp
     pages/derppage.cpp
-    pages/missingpage.cpp
+    pages/errorpage.cpp
 # Zennix Libs
     #zlib/asar.tpp
     #zlib/database.cpp
@@ -84,7 +84,11 @@ ADD_CUSTOM_TARGET(resources
     COMMAND echo Done.
 )
 
+#ADD_DEFINITIONS(-D ZFILE_USE_QT)
 ADD_DEFINITIONS(-D USE_QT)
+
+ADD_DEFINITIONS(-g)
+#ADD_DEFINITIONS(-O3)
 
 LINK_DIRECTORIES(/usr/lib/boost)
 ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})

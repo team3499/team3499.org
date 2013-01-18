@@ -1,8 +1,20 @@
-#include "missingpage.h"
+#include "errorpage.h"
 
-MissingPage::MissingPage(){}
+ErrorPage::ErrorPage(){}
 
-void MissingPage::page(Request &req, Reply &rep){
+void ErrorPage::page(int mode, Request &req, Reply &rep){
+    switch(mode){
+    case MISSING:
+        missing(req, rep);
+        break;
+    case BAD_REQUEST:
+        break;
+    default:
+        missing(req, rep);
+        break;
+    }
+}
+void ErrorPage::missing(Request &req, Reply &rep){
     AsArZ values;
     values["pagetitle"] = "ZS - Missing";
     values["style"] = "";

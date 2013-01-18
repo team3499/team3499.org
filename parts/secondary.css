@@ -1,0 +1,124 @@
+@font-face{
+    font-family:ethnocentric;
+    src:url("/core/fonts/ethnocentric-rg.otf");
+}
+@font-face{
+    font-family:ethnocentric;
+    src:url("/core/fonts/ethnocentric-ital.otf");
+    font-style:italic;
+}
+@font-face{
+    font-family:coolvetica;
+    src:url("/core/fonts/coolvetica-rg.otf");
+}
+p.home-title{
+    font-family:ethnocentric;
+    font-size:54px;
+    text-shadow:0 0 0.1em #ccc;
+    text-align:center;
+}
+p.content-body{
+    font-family:coolvetica;
+    font-size:24px;
+    text-align:center;
+    margin:5px;
+}
+p.default-title{
+    font-family:ethnocentric;
+    font-size:28px;
+}
+p.default-content{
+    font-family:coolvetica;
+    font-size:20px;
+}
+p.centered-title{
+    font-family:ethnocentric;
+    font-size:20px;
+    text-align:center;
+}
+p.ethnocentric{
+    font-family:ethnocentric;
+}
+p.coolvetica{
+    font-family:coolvetica;
+}
+p.center{
+    text-align:center;
+}
+p.body{
+    font-size:20px;
+}
+p.large{
+    font-size:36px;
+}
+p.bold{
+    font-weight:bold;
+}
+p.underline{
+    text-decoration:underline;
+}
+p.overline{
+    text-decoration:overline;
+}
+p.overandunder{
+    text-decoration:underline overline;
+}
+img.center{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+img.border{
+    border:2px solid #3cf;
+}
+span.bold-bolder{
+    font-weight:600;
+}
+span.bold-bolder:hover{
+    font-weight:900;
+}
+span.ajax-link{
+    font-family:coolvetica;
+    font-size:24px;
+    color:rgb(0, 150, 255);
+    text-align:center;
+    width:50px;
+    margin:5px;
+    cursor:pointer;
+}
+span.ajax-link:hover{
+    font-weight:bold;
+}
+span.center{
+    text-align:center;
+}
+div.center{
+    text-align:center;
+}
+span.bubble{
+    padding:2px 8px;
+    color:#666;
+    border-radius:10px;
+    font-family:coolvetica;
+    font-size:20px;
+}
+span.bubble-red{
+    background-color:#a00;
+}
+span.bubble-blue{
+    background-color:#00f;
+}
+span.bubble-green{
+    background-color:#0f0;
+}
+span.bubble-yellow{
+    background-color:#ff0;
+}
+span.bubble-gray{
+    background-color:#aaa;
+}
+div.default-wrapper{
+    margin:5px;
+    text-align:center;
+    padding:5px;
+}

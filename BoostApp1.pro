@@ -27,7 +27,7 @@ HEADERS += \
     websession.h \
     server/logger.h \
     pages/derppage.h \
-    pages/missingpage.h
+    pages/errorpage.h
 
 SOURCES += \
     main.cpp \
@@ -48,7 +48,13 @@ SOURCES += \
     server/logger.cpp \
     lib/system/error_code.cpp \
     pages/derppage.cpp \
-    pages/missingpage.cpp
+    pages/errorpage.cpp
 
 OTHER_FILES += \
-    CMakeLists.txt
+    CMakeLists.txt \
+    parts/secondary.css \
+    parts/main.js \
+    parts/main.css \
+    parts/jquery.js \
+    parts/home.html \
+    parts/functions.js

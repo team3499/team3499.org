@@ -7,30 +7,26 @@
 #include "mime_types.hpp"
 #include "reply.hpp"
 #include "request.hpp"
-#include "zstring.h"
 #include "homepage.h"
 #include "derppage.h"
-#include "missingpage.h"
+#include "errorpage.h"
 #include "logger.h"
 
 using namespace std;
 
 RequestHandler::RequestHandler(const std::string& doc_root) : doc_root_(doc_root){}
 
-void RequestHandler::handle_request(Request& req, Reply& rep){
-    // Decode url to path.
-    std::string request_path;
-    if (!urlDecode(req.uri, request_path)){
-        rep = Reply::stock_reply(Reply::bad_request);
+void RequestHandler::handle_request(Request &req, Reply &rep){
+    if(!urlDecode(req.uri, req.rawpath)){
+        ErrorPage().page(BAD_REQUEST, req, rep);
         return;
     }
-    req.rawpath = request_path;
-    req.path = ZString(request_path).explode('/').shift();
+    req.path = ZString(req.rawpath).explode('/').shift();
     getSession(req, rep);
 
-    for(unsigned i = 0; i < req.headers.size(); ++i){
-        cout << req.headers.I(i) << " : " << req.headers[i].str() << endl;
-    }
+    //for(unsigned i = 0; i < req.headers.size(); ++i){
+    //    cout << req.headers.I(i) << " : " << req.headers[i].str() << endl;
+    //}
 
     /*if(req.getParameter("ps") != "1"){
         if(req.getParameter("a") != ""){
@@ -45,15 +41,15 @@ void RequestHandler::handle_request(Request& req, Reply& rep){
 
     req.comm = req.path;
 
-    cout << STAMP " -- RequestHandler: Directing Query" << endl;
-    cout << STAMP " -- RequestHandler: Path:";
+    LOG("RequestHandler: Directing Query")
+    cout << STAMP "RequestHandler: Path=";
     for(unsigned i = 0; i < req.comm.size(); ++i){
         cout << " -" << req.comm[i].str() << "-";
     }
     cout << endl;
 
-    Logger log;
-    log << "Some Text";
+    //Logger log;
+    //log << "Some Text\n";
 
     if(req.comm[0] == "" || req.comm[0] == "home"){
         HomePage().page(req, rep);
@@ -62,19 +58,18 @@ void RequestHandler::handle_request(Request& req, Reply& rep){
     } else if(req.comm[0] == "core"){
         staticFile(req, rep);
     } else {
-        MissingPage().page(req, rep);
+        ErrorPage().page(MISSING, req, rep);
     }
+    return;
 }
 
-bool RequestHandler::urlDecode(const std::string& in, std::string& out){
-    out.clear();
-    out.reserve(in.size());
-    for(std::size_t i = 0; i < in.size(); ++i){
+bool RequestHandler::urlDecode(std::string in, ZString& out){
+    for(size_t i = 0; i < in.size(); ++i){
         if(in[i] == '%'){
             if(i + 3 <= in.size()){
                 int value = 0;
-                std::istringstream is(in.substr(i + 1, 2));
-                if(is >> std::hex >> value){
+                istringstream is(in.substr(i + 1, 2));
+                if(is >> hex >> value){
                     out += static_cast<char>(value);
                     i += 2;
                 } else {
@@ -93,11 +88,11 @@ bool RequestHandler::urlDecode(const std::string& in, std::string& out){
 }
 
 void RequestHandler::staticFile(Request &req, Reply &rep){
-    std::string request_path;
-    if (!urlDecode(req.uri, request_path)){
+    std::string request_path = req.rawpath.str();
+    /*if (!urlDecode(req.uri, request_path)){
         rep = Reply::stock_reply(Reply::bad_request);
         return;
-    }
+    }*/
 
     // Request path must be absolute and not contain "..".
     if (request_path.empty() || request_path[0] != '/' || request_path.find("..") != std::string::npos){
@@ -129,8 +124,8 @@ void RequestHandler::staticFile(Request &req, Reply &rep){
     // Fill out the reply to be sent to the client.
     rep.status = Reply::ok;
     char buf[512];
-    while (is.read(buf, sizeof(buf)).gcount() > 0)
-        rep.content += buf, is.gcount();
+    while(is.read(buf, sizeof(buf)).gcount() > 0)
+        rep.content += buf;
     rep.headers["Content-Length"] = boost::lexical_cast<std::string>(rep.content.size());
     rep.headers["Content-Type"] = MimeTypes::extension_to_type(extension);
 }

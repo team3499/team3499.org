@@ -48,7 +48,7 @@ bool ZFile::open(int mode, ZString name){
     return open(name);
 }
 
-#ifdef USE_QT
+#ifdef ZFILE_USE_QT
 
 bool ZFile::open(ZString name){
     fl = new QFile(name.QS());
@@ -111,7 +111,7 @@ bool ZFile::exists(ZString name){
 bool ZFile::open(ZString name){
     if(readable && !writeable){
         //file = new std::fstream(name.cc(), std::ios::in);
-        in = new std::ifstream(name.cc());
+        in = new std::ifstream(name.cc(), std::ios::in | std::ios::binary);
         if(in)
             return true;
     } else if(writeable && !readable){
@@ -129,11 +129,18 @@ bool ZFile::open(ZString name){
     return false;
 }
 
-ZFile::~ZFile(){
-    in->close();
-    out->close();
+void ZFile::close(){
+    //if(in)
+    //    in->close();
+    //if(out)
+    //    out->close();
 }
 
+ZFile::~ZFile(){
+    close();
+}
+
+/* v1
 ZString ZFile::read(){
     ZString cont;
     if(readable){
@@ -145,7 +152,17 @@ ZString ZFile::read(){
     }
     cont = cont.str().substr(0, cont.length() - 1);
     return cont;
+}*/
+
+// v2
+ZString ZFile::read(){
+    ZString buffer;
+    char buf[1024];
+    while(in->read(buf, sizeof(buf)).gcount() > 0)
+        buffer += buf;
+    return buffer;
 }
+
 bool ZFile::write(ZString cont){
     if(writeable){
         if(out->is_open()){
@@ -156,6 +173,14 @@ bool ZFile::write(ZString cont){
         }
     }
     return false;
+}
+
+bool ZFile::remove(){
+    return true;
+}
+
+bool ZFile::exists(ZString name){
+    return true;
 }
 
 #endif

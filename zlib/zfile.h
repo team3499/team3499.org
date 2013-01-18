@@ -2,7 +2,7 @@
 #define ZFILE_H
 
 #include "zstring.h"
-#ifdef USE_QT
+#ifdef ZFILE_USE_QT
     #include <QFile>
     #include <QTextStream>
 #else
@@ -32,7 +32,7 @@ class ZFile{
         bool readable;
         bool writeable;
         //std::fstream *file;
-#ifdef USE_QT
+#ifdef ZFILE_USE_QT
         QFile *fl;
 #else
         std::ifstream *in;

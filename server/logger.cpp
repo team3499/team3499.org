@@ -1,4 +1,6 @@
 #include "logger.h"
+#include "global.h"
+#include <QDateTime>
 
 Logger::Logger(){
     logfile.open(WRITE, "logs/main.log");
@@ -6,7 +8,7 @@ Logger::Logger(){
 
 Logger &Logger::operator<<(ZString text){
     std::cout << text.str();
-    logfile.write(text);
+    IF_LOG(logfile.write(text), "Logger", "Good Write", "Bad Write")
     return *this;
 }
 

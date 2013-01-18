@@ -1,0 +1,112 @@
+html{}
+
+body{
+    margin:0;
+    padding:0;
+    font-family:verdana, geneva, sans-serif;
+    color:#cccccc;
+    background-color:#666666;
+}
+p{
+    font-size:16px;
+    margin:10px 15px 14px 15px;
+}
+
+div#contscript, div#contstyle{
+    display:none;
+}
+
+div#pagecontent{
+    margin-bottom:50px;
+}
+div#titlebox{
+    margin:10px;
+    border:2px solid #1b1bb3;
+    border-radius:15px 15px 0px 0px;
+    box-shadow:0 0 10px blue, inset 0 0 10px #1b1bb3;
+    overflow:hidden;
+}
+div#titlecontent{
+    font-size:16px;
+}
+div#contentbox{
+    margin:10px;
+    border:2px solid #b10026;
+    border-radius:0px 0px 15px 15px;
+    box-shadow:0 0 10px red, inset 0 0 10px #b10026;
+    overflow:hidden;
+}
+div#content{
+    font-size:16px;
+}
+
+div#shellinbox{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:40px;
+    background: linear-gradient(to bottom, rgba(204,204,204,1) 0%,rgba(155,155,155,1) 50%,rgba(155,155,155,1) 51%,rgba(204,204,204,1) 100%);
+}
+span#shellblink{
+    font-family:inherit;
+    color:inherit;
+    font-size:inherit;
+    font-weight:bold;
+    display:inline;
+}
+div#shellin{
+    background-color:#000;
+    border:0 solid transparent;
+    color:#fff;
+    font-size:14px;
+    border-radius:5px;
+    height:26px;
+    margin:7px;
+}
+input#shellline{
+    height:100%;
+    font-family:inherit;
+    color:inherit;
+    border:none;
+    background-color:transparent;
+    font-size:16px;
+    display:inline;
+}
+div#shellout{
+    position:fixed;
+    background-color:#000;
+    border:0 solid transparent;
+    box-shadow:0 0 15px #000;
+    left:0;
+    top:0;
+    width:40%;
+    height:100%;
+    visibility:hidden;
+    overflow:hidden;
+}
+div#shellcont{
+    color:#fff;
+    font-size:14px;
+    position:absolute;
+    width:100%;
+    bottom:0;
+    left:0;
+    margin-bottom:45px;
+}
+
+div#status{
+    margin:10px;
+    border:2px solid green;
+    padding:15px;
+    overflow:hidden;
+}
+code#plain{
+    font-size:16px;
+    white-space:pre-wrap;
+}
+div#php{
+    margin:10px;
+    border:2px solid orange;
+    padding:15px;
+    overflow:hidden;
+}

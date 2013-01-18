@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><?pagetitle?></title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<style><?maincss?></style>
+<style><?secondcss?></style>
+
+<script src="/core/jquery-min.js"></script>
+<script src="/core/jquery.history.js" ></script>
+<script><?mainjs?></script>
+
+</head>
+<body>
+
+<div id="contscript"><script><?script?></script></div>
+<div id="contstyle"><style><?style?></style></div>
+
+<div id="pagecontent"><?contout?></div>
+<!--<div id="status"></div><div id="php">';  var_dump($command); echo $text; echo ' "'.session_id().'"'; echo' </div>-->
+<div id="shellout">
+    <div id="shellcont"><?shellout?></div>
+</div>
+<div id="shellinbox">
+    <div id="shellin">
+        <span id="shellblink">> </span><input id="shellline" type="text" value="<?prompttxt?>" />
+    </div>
+</div>
+
+</body>
+</html>

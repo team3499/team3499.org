@@ -14,6 +14,7 @@ struct Mapping {
     { "png", "image/png" },
     { "js", "text/javascript" },
     { "css", "text/css" },
+    { "otf", "font/opentype" },
     { 0, 0 } // Marks end of list.
 };
 
