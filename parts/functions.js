@@ -33,3 +33,4 @@ function updateStatus(value){
     //$('#status').html(comarray.length+" "+comindex+" \""+value+'" "'+comarray[comindex]+'"' + "<br/>" + fullarray);
     //document.getElementById('status').innerHTML = "Array Length: "+comarray.length+"</br>Current Index: "+comindex+'</br>"'+value+'" "'+comarray[comindex]+'"' + "<br/>" + fullarray;
 }
+

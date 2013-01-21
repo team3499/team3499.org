@@ -37,6 +37,7 @@ class ZFile{
 #else
         std::ifstream *in;
         std::ofstream *out;
+        std::fstream file;
 #endif
 };
 

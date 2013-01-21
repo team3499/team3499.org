@@ -11,48 +11,68 @@ void getSession(Request &request, Reply &reply){
     }
     //ZString sessioncookie = request.getCookie(COOKIE_NAME);
 
-    //qDebug("RequestMapper: session=%s", sessioncookie.cc());
+    LOG("RequestMapper" << sessioncookie.str())
     request.sess.updateSessions(); // Deletes Sessions Past Expiry
     // Get current session, or create a new one
     if(request.sess.exists(sessioncookie)){
         //qDebug() << "Updating Session";
         request.sess.setId(sessioncookie);
-        request.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + sessioncookie;
+        //reply.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + sessioncookie;
         request.sess.update();
         request.sess.readData();
     } else {
         //qDebug() << "Creating New Session";
         request.sess.generateId();
-        request.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + sessioncookie;
+        reply.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + sessioncookie;
         request.sess.create();
         request.sess.readData();
     }
+}
+
+ZString readFile(ZString name){
+    fstream file;
+    file.open(name.cc(), std::ios::in);
+
+    file.seekg(0, ios::end);
+    int length = file.tellg();
+    file.seekg(0, ios::beg);
+    char buf[length];
+
+    file.read(buf, length);
+    file.close();
+
+    ZString buffer = buf;
+    return buffer;
 }
 
 void finalDoc(Request &request, Reply &reply, AsArZ values){
     if(!request.ajax){
         reply.headers["Content-Type"] = "text/html; charset=utf-8";
 
-        ZFile fl("parts/home.html");
-        reply.body = fl.read();
+        //ZFile fl("parts/home.html");
+        //reply.body = fl.read();
+        reply.body = readFile("parts/home.html");
 
-        ZFile maincssfl("parts/main.css");
-        ZString maincss = maincssfl.read();
+        //ZFile maincssfl("parts/main.css");
+        //ZString maincss = maincssfl.read();
+        ZString maincss = readFile("parts/main.css");
         maincss.replace("\n", "");
         maincss.replace("\r", "");
         maincss.replace("    ", " ");
         reply.body.label("maincss", maincss);
 
-        ZFile secondcssfl("parts/secondary.css");
-        ZString secondcss = secondcssfl.read();
+        //ZFile secondcssfl("parts/secondary.css");
+        //ZString secondcss = secondcssfl.read();
+        ZString secondcss = readFile("parts/secondary.css");
         secondcss.replace("\n", "");
         secondcss.replace("\r", "");
         secondcss.replace("    ", " ");
         reply.body.label("secondcss", secondcss);
 
-        ZFile funcjsfl("parts/functions.js");
-        ZFile mainjsfl("parts/main.js");
-        ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
+        //ZFile funcjsfl("parts/functions.js");
+        //ZFile mainjsfl("parts/main.js");
+        //ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
+        ZString alljs = readFile("parts/functions.js") + "\nvar loadonload = \""+request.path[0]+"\";\n"  + readFile("parts/main.js");
         reply.body.label("mainjs", alljs);
 
         reply.body.label(values);
@@ -66,7 +86,8 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         out["shell"] = values["shell"];
         reply.body = ZString().toJSON(out);
     }
-    reply.content += reply.body;
+    //sreply.content = reply.body.QS().toUtf8();
+    reply.content = reply.body;
     //response.write(response.body.QBA(), true);
 }
 

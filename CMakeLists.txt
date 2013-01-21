@@ -39,12 +39,12 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     websession.cpp
     pagescommon.cpp
 # Server
-    server/server.cpp
-    server/request_parser.cpp
-    server/reply.cpp
-    server/mime_types.cpp
     server/connection.cpp
     server/logger.cpp
+    server/mime_types.cpp
+    server/reply.cpp
+    server/request_parser.cpp
+    server/server.cpp
 # Pages
     pages/homepage.cpp
     pages/derppage.cpp
@@ -64,6 +64,8 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 INCLUDE_DIRECTORIES(
     /usr/include
+    /usr/include/boost
+    #lib/include
     ./
     server/
     pages/
@@ -85,7 +87,7 @@ ADD_CUSTOM_TARGET(resources
 )
 
 #ADD_DEFINITIONS(-D ZFILE_USE_QT)
-ADD_DEFINITIONS(-D USE_QT)
+ADD_DEFINITIONS(-D ZSTRING_USE_QT)
 
 ADD_DEFINITIONS(-g)
 #ADD_DEFINITIONS(-O3)

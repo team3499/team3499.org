@@ -46,7 +46,7 @@ std::string &ZString::str(){
     return data;
 }
 
-#ifdef USE_QT
+#ifdef ZSTRING_USE_QT
 ZString::ZString(QString str){
     operator=(str);
 }
@@ -180,7 +180,7 @@ ZString &ZString::operator<<(char str){
     return operator+=(str);
 }
 
-#ifdef USE_QT
+#ifdef ZSTRING_USE_QT
 ZString::ZString(qint64 num){
     const char *str = reinterpret_cast<const char *>(&num);
     //std::stringstream ss; std::string out;

@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 #include <cstring>
-#ifdef USE_QT
+#ifdef ZSTRING_USE_QT
     #include <QString>
     #include <QByteArray>
 #endif
@@ -30,7 +30,7 @@ public:
     ZString &operator<<(std::string);
     std::string &str();
 
-#ifdef USE_QT
+#ifdef ZSTRING_USE_QT
     ZString(QString);
     ZString &operator=(QString);
     inline bool operator==(const QString);
@@ -70,7 +70,7 @@ public:
     ZString &operator+=(char);
     ZString &operator<<(char);
 
-#ifdef USE_QT
+#ifdef ZSTRING_USE_QT
     ZString(qint64);
 #endif
     ZString(int);

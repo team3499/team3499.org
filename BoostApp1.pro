@@ -2,7 +2,7 @@ TARGET = BoostWebApp
 TEMPLATE = app
 CONFIG += CONSOLE
 
-INCLUDEPATH += ./lib/include
+INCLUDEPATH += /usr/include
 INCLUDEPATH += ./zlib
 INCLUDEPATH += ./pages
 INCLUDEPATH += ./server
