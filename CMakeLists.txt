@@ -63,7 +63,6 @@ INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 INCLUDE_DIRECTORIES(
-    /usr/ports/devel/boost-libs/work/boost_1_48_0
     /usr/include
     /usr/include/boost
     #lib/include
@@ -93,7 +92,7 @@ ADD_DEFINITIONS(-D ZSTRING_USE_QT)
 ADD_DEFINITIONS(-g -pthread)
 #ADD_DEFINITIONS(-O3)
 
-LINK_DIRECTORIES(/usr/lib/boost /usr/ports/devel/boost-libs/work/boost_1_48_0/stage/lib)
+LINK_DIRECTORIES(/usr/lib/boost /usr/include/boost/stage/lib)
 ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})
 TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} boost_thread)
 
