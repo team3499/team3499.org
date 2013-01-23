@@ -12,6 +12,7 @@ struct Mapping {
     { "html", "text/html" },
     { "jpg", "image/jpeg" },
     { "png", "image/png" },
+    { "ico", "image/x-icon"},
     { "js", "text/javascript" },
     { "css", "text/css" },
     { "otf", "font/opentype" },

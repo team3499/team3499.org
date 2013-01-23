@@ -11,7 +11,7 @@ void getSession(Request &request, Reply &reply){
     }
     //ZString sessioncookie = request.getCookie(COOKIE_NAME);
 
-    LOG("RequestMapper" << sessioncookie.str())
+    LOG("SessionParser: Cookie: " << sessioncookie.str())
     request.sess.updateSessions(); // Deletes Sessions Past Expiry
     // Get current session, or create a new one
     if(request.sess.exists(sessioncookie)){

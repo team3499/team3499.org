@@ -55,7 +55,7 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
         HomePage().page(req, rep);
     } else if(req.comm[0] == "derp"){
         DerpPage().page(req, rep);
-    } else if(req.comm[0] == "core"){
+    } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
         staticFile(req, rep);
     } else {
         ErrorPage().page(MISSING, req, rep);
@@ -114,25 +114,15 @@ void RequestHandler::staticFile(Request &req, Reply &rep){
     }
 
     // Open the file to send back.
-    std::string full_path = doc_root_ + request_path;
-    std::ifstream in(full_path.c_str(), std::ios::in | std::ios::binary);
-    if (!in){
+    ZFile staticfl;
+    if(!staticfl.open(doc_root_ + request_path)){
         rep = Reply::stock_reply(Reply::not_found);
         return;
     }
 
     // Fill out the reply to be sent to the client.
     rep.status = Reply::ok;
-    //char buf[512];
-    //while(is.read(buf, sizeof(buf)).gcount() > 0)
-    //    rep.content += buf;
-    std::string contents;
-    in.seekg(0, std::ios::end);
-    contents.resize(in.tellg());
-    in.seekg(0, std::ios::beg);
-    in.read(&contents[0], contents.size());
-    in.close();
-    rep.content = contents;
+    rep.content = staticfl.read();
 
     rep.headers["Content-Length"] = boost::lexical_cast<std::string>(rep.content.size());
     rep.headers["Content-Type"] = MimeTypes::extension_to_type(extension);
