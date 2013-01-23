@@ -115,17 +115,25 @@ void RequestHandler::staticFile(Request &req, Reply &rep){
 
     // Open the file to send back.
     std::string full_path = doc_root_ + request_path;
-    std::ifstream is(full_path.c_str(), std::ios::in | std::ios::binary);
-    if (!is){
+    std::ifstream in(full_path.c_str(), std::ios::in | std::ios::binary);
+    if (!in){
         rep = Reply::stock_reply(Reply::not_found);
         return;
     }
 
     // Fill out the reply to be sent to the client.
     rep.status = Reply::ok;
-    char buf[512];
-    while(is.read(buf, sizeof(buf)).gcount() > 0)
-        rep.content += buf;
+    //char buf[512];
+    //while(is.read(buf, sizeof(buf)).gcount() > 0)
+    //    rep.content += buf;
+    std::string contents;
+    in.seekg(0, std::ios::end);
+    contents.resize(in.tellg());
+    in.seekg(0, std::ios::beg);
+    in.read(&contents[0], contents.size());
+    in.close();
+    rep.content = contents;
+
     rep.headers["Content-Length"] = boost::lexical_cast<std::string>(rep.content.size());
     rep.headers["Content-Type"] = MimeTypes::extension_to_type(extension);
 }

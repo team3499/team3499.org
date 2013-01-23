@@ -13,7 +13,7 @@
 #define WRITE 1002
 #define READWRITE 1003
 
-class ZFile{
+class ZFile {
     public:
         ZFile();
         ZFile(ZString);
@@ -24,6 +24,7 @@ class ZFile{
         bool open(ZString);
         void close();
         ZString read();
+        static ZString readFile(ZString name);
         bool write(ZString);
         bool remove();
         bool exists(ZString);
@@ -35,8 +36,8 @@ class ZFile{
 #ifdef ZFILE_USE_QT
         QFile *fl;
 #else
-        std::ifstream *in;
-        std::ofstream *out;
+        //std::ifstream *in;
+        //std::ofstream *out;
         std::fstream file;
 #endif
 };

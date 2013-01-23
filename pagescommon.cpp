@@ -29,7 +29,7 @@ void getSession(Request &request, Reply &reply){
     }
 }
 
-ZString readFile(ZString name){
+/*ZString readFile(ZString name){
     fstream file;
     file.open(name.cc(), std::ios::in);
 
@@ -43,36 +43,41 @@ ZString readFile(ZString name){
 
     ZString buffer = buf;
     return buffer;
-}
+}*/
 
 void finalDoc(Request &request, Reply &reply, AsArZ values){
     if(!request.ajax){
         reply.headers["Content-Type"] = "text/html; charset=utf-8";
 
-        //ZFile fl("parts/home.html");
-        //reply.body = fl.read();
-        reply.body = readFile("parts/home.html");
+        ZFile fl("parts/home.html");
+        reply.body = fl.read();
+        fl.close();
+        //reply.body = ZFile::readFile("parts/home.html");
 
-        //ZFile maincssfl("parts/main.css");
-        //ZString maincss = maincssfl.read();
-        ZString maincss = readFile("parts/main.css");
+        ZFile maincssfl("parts/main.css");
+        ZString maincss = maincssfl.read();
+        maincssfl.close();
+        //ZString maincss = ZFile::readFile("parts/main.css");
         maincss.replace("\n", "");
         maincss.replace("\r", "");
         maincss.replace("    ", " ");
         reply.body.label("maincss", maincss);
 
-        //ZFile secondcssfl("parts/secondary.css");
-        //ZString secondcss = secondcssfl.read();
-        ZString secondcss = readFile("parts/secondary.css");
+        ZFile secondcssfl("parts/secondary.css");
+        ZString secondcss = secondcssfl.read();
+        secondcssfl.close();
+        //ZString secondcss = ZFile::readFile("parts/secondary.css");
         secondcss.replace("\n", "");
         secondcss.replace("\r", "");
         secondcss.replace("    ", " ");
         reply.body.label("secondcss", secondcss);
 
-        //ZFile funcjsfl("parts/functions.js");
-        //ZFile mainjsfl("parts/main.js");
-        //ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
-        ZString alljs = readFile("parts/functions.js") + "\nvar loadonload = \""+request.path[0]+"\";\n"  + readFile("parts/main.js");
+        ZFile funcjsfl("parts/functions.js");
+        ZFile mainjsfl("parts/main.js");
+        ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
+        funcjsfl.close();
+        mainjsfl.close();
+        //ZString alljs = ZFile::readFile("parts/functions.js") + "\nvar loadonload = \""+request.path[0]+"\";\n"  + ZFile::readFile("parts/main.js");
         reply.body.label("mainjs", alljs);
 
         reply.body.label(values);
@@ -86,9 +91,8 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         out["shell"] = values["shell"];
         reply.body = ZString().toJSON(out);
     }
-    //sreply.content = reply.body.QS().toUtf8();
     reply.content = reply.body;
-    //response.write(response.body.QBA(), true);
+    reply.status = Reply::ok;
 }
 
 AsArZ parseCookie(ZString value){

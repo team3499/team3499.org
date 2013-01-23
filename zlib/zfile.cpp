@@ -110,22 +110,24 @@ bool ZFile::exists(ZString name){
 
 bool ZFile::open(ZString name){
     if(readable && !writeable){
-        //file = new std::fstream(name.cc(), std::ios::in);
-        in = new std::ifstream(name.cc(), std::ios::in | std::ios::binary);
-        if(in)
-            return true;
+        file.open(name.cc(), std::ios::in | std::ios::binary);
+        //in = new std::ifstream(name.cc(), std::ios::in | std::ios::binary);
+        //if(in)
+        //    return true;
     } else if(writeable && !readable){
-        //file = new std::fstream(name.cc(), std::ios::out);
-        out = new std::ofstream(name.cc());
-        if(out)
-            return true;
+        file.open(name.cc(), std::ios::out);
+        //out = new std::ofstream(name.cc());
+        //if(file)
+        //    return true;
     } else if(readable && writeable){
-        //file = new std::fstream(name.cc(), std::ios::in | std::ios::out);
-        in = new std::ifstream(name.cc());
-        out = new std::ofstream(name.cc());
-        if(in && out)
-            return true;
+        file.open(name.cc(), std::ios::in | std::ios::binary | std::ios::out);
+        //in = new std::ifstream(name.cc());
+        //out = new std::ofstream(name.cc());
+        //if(in && out)
+        //    return true;
     }
+    if(file)
+        return true;
     return false;
 }
 
@@ -134,6 +136,8 @@ void ZFile::close(){
     //    in->close();
     //if(out)
     //    out->close();
+    if(file)
+        file.close();
 }
 
 ZFile::~ZFile(){
@@ -156,19 +160,35 @@ ZString ZFile::read(){
 
 // v2
 ZString ZFile::read(){
-    ZString buffer;
-    char buf[1024];
-    while(in->read(buf, sizeof(buf)).gcount() > 0)
-        buffer += buf;
-    return buffer;
+    std::string contents;
+    file.seekg(0, std::ios::end);
+    contents.resize(file.tellg());
+    file.seekg(0, std::ios::beg);
+    file.read(&contents[0], contents.size());
+    file.close();
+    return(ZString(contents));
+}
+
+ZString ZFile::readFile(ZString filename){
+    std::ifstream infile(filename.cc(), std::ios::in | std::ios::binary);
+    if(infile){
+        std::string buffer;
+        infile.seekg(0, std::ios::end);
+        buffer.resize(infile.tellg());
+        infile.seekg(0, std::ios::beg);
+        infile.read(&buffer[0], buffer.size());
+        infile.close();
+        return(ZString(buffer));
+    }
+    return ZString();
 }
 
 bool ZFile::write(ZString cont){
     if(writeable){
-        if(out->is_open()){
-            out->seekp(0, std::ios::end);
-            *out << cont.cc();
-            out->flush();
+        if(file.is_open()){
+            file.seekp(0, std::ios::end);
+            file << cont.cc();
+            file.flush();
             return true;
         }
     }

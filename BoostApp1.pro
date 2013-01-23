@@ -57,4 +57,5 @@ OTHER_FILES += \
     parts/main.css \
     parts/jquery.js \
     parts/home.html \
-    parts/functions.js
+    parts/functions.js \
+    parts/test.txt
