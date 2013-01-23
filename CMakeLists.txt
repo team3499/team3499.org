@@ -89,10 +89,14 @@ ADD_CUSTOM_TARGET(resources
 #ADD_DEFINITIONS(-D ZFILE_USE_QT)
 ADD_DEFINITIONS(-D ZSTRING_USE_QT)
 
-ADD_DEFINITIONS(-g)
+ADD_DEFINITIONS(-g -pthread)
 #ADD_DEFINITIONS(-O3)
 
-LINK_DIRECTORIES(/usr/lib/boost)
+LINK_DIRECTORIES(
+    /usr/lib/boost
+    /usr/include/boost/stage/lib
+)
+
 ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})
 TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} boost_thread)
 
