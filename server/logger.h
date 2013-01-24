@@ -1,6 +1,7 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <boost/thread.hpp>
 #include <iostream>
 #include "zstring.h"
 #include "zfile.h"

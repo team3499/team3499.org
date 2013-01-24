@@ -12,9 +12,15 @@ public:
     std::string uri;
     int http_version_major;
     int http_version_minor;
+    std::string raw_request;
+    std::string raw_headers;
+    ZString reqbody;
     AsArZ headers;
+    bool ispost;
+    AsArZ postvars;
     WebSession sess;
     ZString rawpath;
+    ZString rawcommand;
     AsArZ path;
     AsArZ comm;
     bool ajax;

@@ -8,6 +8,7 @@ void RequestParser::reset(){
 }
 
 boost::tribool RequestParser::consume(Request& req, char input){
+    req.raw_headers += input;
     switch(state_){
     case method_start:
         if(!is_char(input) || is_ctl(input) || is_tspecial(input)){

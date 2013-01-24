@@ -3,20 +3,21 @@
 #include <boost/bind.hpp>
 #include "request_handler.hpp"
 
-Connection::Connection(boost::asio::io_service& io_service, RequestHandler& handler) :
-    strand_(io_service), socket_(io_service), request_handler_(handler){}
+Connection::Connection(boost::asio::io_service& io_service, RequestHandler& handler) : strand_(io_service), socket_(io_service), request_handler_(handler){}
 
 boost::asio::ip::tcp::socket& Connection::socket(){
     return socket_;
 }
 
 void Connection::start(){
-    socket_.async_read_some( boost::asio::buffer(buffer_), strand_.wrap( boost::bind(  &Connection::handle_read, shared_from_this(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred)));
+    socket_.async_read_some(boost::asio::buffer(buffer_), strand_.wrap(boost::bind(&Connection::handle_read, shared_from_this(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred)));
 }
 
 void Connection::handle_read(const boost::system::error_code& e, std::size_t bytes_transferred){
     if(!e){
         boost::tribool result;
+        //std::cout << buffer_.data();
+        request_.raw_request = buffer_.data();
         boost::tie(result, boost::tuples::ignore) = request_parser_.parse(request_, buffer_.data(), buffer_.data() + bytes_transferred);
 
         if(result){

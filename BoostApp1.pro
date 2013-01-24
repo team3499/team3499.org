@@ -23,11 +23,13 @@ HEADERS += \
     zlib/asar.h \
     zlib/SQLite/sqlite3ext.h \
     zlib/SQLite/sqlite3.h \
-    global.h \
     websession.h \
     server/logger.h \
     pages/derppage.h \
-    pages/errorpage.h
+    pages/errorpage.h \
+    pages/aboutpage.h \
+    global.h \
+    generated.h
 
 SOURCES += \
     main.cpp \
@@ -48,7 +50,8 @@ SOURCES += \
     server/logger.cpp \
     lib/system/error_code.cpp \
     pages/derppage.cpp \
-    pages/errorpage.cpp
+    pages/errorpage.cpp \
+    pages/aboutpage.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -56,6 +59,8 @@ OTHER_FILES += \
     parts/main.js \
     parts/main.css \
     parts/jquery.js \
-    parts/home.html \
     parts/functions.js \
-    parts/test.txt
+    parts/test.txt \
+    parts/main.html \
+    parts/pages/home.html \
+    parts/pages/about.html

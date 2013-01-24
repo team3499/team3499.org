@@ -10,6 +10,7 @@
 #include "homepage.h"
 #include "derppage.h"
 #include "errorpage.h"
+#include "aboutpage.h"
 #include "logger.h"
 
 using namespace std;
@@ -17,50 +18,82 @@ using namespace std;
 RequestHandler::RequestHandler(const std::string& doc_root) : doc_root_(doc_root){}
 
 void RequestHandler::handle_request(Request &req, Reply &rep){
+    if(req.method == "POST")
+        req.ispost = true;
+    else
+        req.ispost = false;
+
+    req.reqbody = getReqBody(req);
+    //cout << req.reqbody.str() << endl;
+
+    LOG("RequestHandler: Method: " << req.method)
+    LOG("RequestHandler: Path: " << req.uri)
     if(!urlDecode(req.uri, req.rawpath)){
         ErrorPage().page(BAD_REQUEST, req, rep);
         return;
     }
     req.path = ZString(req.rawpath).explode('/').shift();
+
     getSession(req, rep);
+
+    LOG(req.headers["Content-Length"].str())
+    LOG(req.reqbody.str())
+    req.postvars = getPost(req);
 
     //for(unsigned i = 0; i < req.headers.size(); ++i){
     //    cout << req.headers.I(i) << " : " << req.headers[i].str() << endl;
     //}
 
-    /*if(req.getParameter("ps") != "1"){
-        if(req.getParameter("a") != ""){
-            req.ajax = true;
-            req.rawcommand = req.getParameter("a");
-            req.comm = req.rawcommand.explode(' ');
-        } else {
-            req.ajax = false;
-            req.comm = req.path;
-        }
-    }*/
+    if(req.postvars["a"].str() != ""){
+        LOG("RequestHandler: AJAX")
+        req.ajax = true;
+        req.rawcommand = req.postvars["a"];
+        req.comm = req.rawcommand.explode(' ');
+    } else {
+        LOG("RequestHandler: URL")
+        req.ajax = false;
+        req.comm = req.path;
+    }
 
-    req.comm = req.path;
-
-    LOG("RequestHandler: Directing Query")
-    cout << STAMP "RequestHandler: Path=";
+    cout << STAMP "RequestHandler: CleanPath:";
     for(unsigned i = 0; i < req.comm.size(); ++i){
         cout << " -" << req.comm[i].str() << "-";
     }
     cout << endl;
 
-    //Logger log;
-    //log << "Some Text\n";
-
     if(req.comm[0] == "" || req.comm[0] == "home"){
         HomePage().page(req, rep);
     } else if(req.comm[0] == "derp"){
         DerpPage().page(req, rep);
+    } else if(req.comm[0] == "about"){
+        AboutPage().page(req, rep);
     } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
         staticFile(req, rep);
     } else {
         ErrorPage().page(MISSING, req, rep);
     }
     return;
+}
+
+ZString RequestHandler::getReqBody(Request req){
+    ZString body = req.raw_request;
+    body.replace(req.raw_headers, "");
+    return body;
+}
+
+AsArZ RequestHandler::getPost(Request req){
+    AsArZ out;
+    if(req.headers["Content-Length"].str() != ""){
+        int len = atoi(req.headers["Content-Length"].cc());
+        ZString buff = req.reqbody.str().substr(0, len);
+        //LOG(buff.str())
+        AsArZ first = buff.explode('&');
+        for(unsigned i = 0; i < first.size(); ++i){
+            AsArZ second = first[i].explode('=');
+            out[second[0].str()] = second[1];
+        }
+    }
+    return out;
 }
 
 bool RequestHandler::urlDecode(std::string in, ZString& out){

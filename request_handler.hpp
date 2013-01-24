@@ -3,6 +3,7 @@
 
 #include <string>
 #include <boost/noncopyable.hpp>
+#include <boost/thread.hpp>
 #include "homepage.h"
 #include "zstring.h"
 
@@ -21,6 +22,9 @@ public:
 private:
   /// The directory containing the files to be served.
   std::string doc_root_;
+
+  ZString getReqBody(Request);
+  AsArZ getPost(Request);
 
   /// Perform URL-decoding on a string. Returns false if the encoding was
   /// invalid.

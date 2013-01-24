@@ -3,12 +3,12 @@
 
 #include <boost/logic/tribool.hpp>
 #include <boost/tuple/tuple.hpp>
+#include <iostream>
 
 struct Request;
 
 /// Parser for incoming requests.
-class RequestParser
-{
+class RequestParser {
 public:
     /// Construct ready to parse the request method.
     RequestParser();
@@ -23,6 +23,7 @@ public:
     template <typename InputIterator>
     boost::tuple<boost::tribool, InputIterator> parse(Request& req, InputIterator begin, InputIterator end){
         while(begin != end){
+            //std::cout << begin;
             boost::tribool result = consume(req, *begin++);
             if(result || !result)
                 return boost::make_tuple(result, begin);

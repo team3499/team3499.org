@@ -1,6 +1,7 @@
 #ifndef PAGESCOMMON_H
 #define PAGESCOMMON_H
 
+#include <boost/thread.hpp>
 #include "request.hpp"
 #include "reply.hpp"
 #include "asar.h"

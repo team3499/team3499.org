@@ -49,7 +49,7 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
     if(!request.ajax){
         reply.headers["Content-Type"] = "text/html; charset=utf-8";
 
-        ZFile fl("parts/home.html");
+        ZFile fl("parts/main.html");
         reply.body = fl.read();
         fl.close();
         //reply.body = ZFile::readFile("parts/home.html");

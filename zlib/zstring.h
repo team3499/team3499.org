@@ -77,17 +77,19 @@ public:
 
     int size();
     int length();
-
     int count(std::string);
-    ZString &replace(std::string before, std::string after);
-    void label(std::string label, ZString value);
-    void label(AsArZ);
+
+    ZString replace(std::string before, std::string after, bool modify = true);
+    ZString label(std::string label, ZString value, bool modify = true);
+    ZString label(AsArZ, bool modify = true);
+    ZString strip(char target, bool modify = true);
+    ZString substr(int, bool modify = true);
+    ZString substr(int, int, bool modify = true);
+    ZString invert(bool modify = true);
+
     AsArZ explode(char delim);
     AsArZ strict_explode(char delim);
     AsArZ explode();
-    ZString strip(char target);
-    ZString &substr(int);
-    ZString &substr(int, int);
 
     ZString toJSON(AsArZ);
     AsArZ fromJSON();

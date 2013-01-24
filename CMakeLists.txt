@@ -8,6 +8,7 @@ FIND_PACKAGE(Qt4 REQUIRED)
 SET(QT_DONT_USE_QTGUI TRUE)
 
 SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
+    generated.h
     global.h
     pagescommin.h
     request_handler.hpp
@@ -21,9 +22,10 @@ SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
     server/request_parser.hpp
     server/server.hpp
 # Pages
-    pages/homepage.h
+    pages/aboutpage.h
     pages/derppage.h
     pages/errorpage.h
+    pages/homepage.h
 # Zennix Libs
     zlib/asar.h
     #zlib/database.h
@@ -46,9 +48,10 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     server/request_parser.cpp
     server/server.cpp
 # Pages
-    pages/homepage.cpp
+    pages/aboutpage.cpp
     pages/derppage.cpp
     pages/errorpage.cpp
+    pages/homepage.cpp
 # Zennix Libs
     #zlib/asar.tpp
     #zlib/database.cpp
@@ -59,6 +62,10 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     lib/system/error_code.cpp
 )
 
+EXECUTE_PROCESS(COMMAND date OUTPUT_VARIABLE BUILD_TIME)
+STRING(STRIP ${BUILD_TIME} MAKE_BUILD_TIME)
+CONFIGURE_FILE(generated.h gen.h @ONLY)
+
 INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
@@ -66,6 +73,7 @@ INCLUDE_DIRECTORIES(
     /usr/include
     /usr/include/boost
     #lib/include
+    ${CMAKE_BINARY_DIR}
     ./
     server/
     pages/
@@ -85,6 +93,9 @@ ADD_CUSTOM_TARGET(resources
     COMMAND mkdir ${CMAKE_BINARY_DIR}/logs
     COMMAND echo Done.
 )
+
+# Required - Supresses false IDE warning
+ADD_DEFINITIONS(-D BUILDING)
 
 #ADD_DEFINITIONS(-D ZFILE_USE_QT)
 ADD_DEFINITIONS(-D ZSTRING_USE_QT)

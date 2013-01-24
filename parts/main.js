@@ -18,18 +18,27 @@ $(document).ready(function(){
     $('#shellline').focus(function(){
         $('#shellin').css("box-shadow", "0 0 10px "+settings['shell-background-color']);
         $('#shellout').css("visibility", "visible");
+        if($('#shellline').val() == "Awaiting Command..."){
+            $('#shellline').val("");
+        }
         $('#shellblink').html('> '.blink());
     });
     $('#shellline').blur(function(){
         $('#shellin').css("box-shadow", "none");
         $('#shellout').css("visibility", "hidden");
+        //var str = $('#shelline').val();
+        //var num = str.replace(/\s/g, '').length;
+        //alert(num);
+        if(!$('#shellline').val().replace(/\s/g, '').length){
+            $('#shellline').val("Awaiting Command...");
+        }
         $('#shellblink').html('> ');
     });
     /*$(document).on("click", function(){
     });*/
     $('#shellline').keydown(function(event){
         var value = this.value;
-        if(event.which == 13){ /*ENTER*/
+        if(event.which === 13){ /*ENTER*/
             if(/\S/.test(value)){
                 if(settings['hide-shell-on-send']){
                     $('#shellout').css("visibility", "hidden");

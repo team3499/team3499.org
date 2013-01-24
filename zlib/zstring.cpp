@@ -220,9 +220,9 @@ int ZString::count(std::string needle){
     return count;
 }
 
-ZString &ZString::replace(std::string before, std::string after){
+ZString ZString::replace(std::string before, std::string after, bool modify){
     std::string tmpdata = data;
-    data = "";
+    std::string tmp = "";
     for(unsigned i = 0; i < tmpdata.length(); ++i){
         if(tmpdata[i] == before[0]){
             bool match = true;
@@ -237,23 +237,32 @@ ZString &ZString::replace(std::string before, std::string after){
             if(match){
                 std::string pre = tmpdata.substr(0, i);
                 std::string suff = tmpdata.substr(last+1);
-                data = data.append(pre).append(after);
+                tmp = tmp.append(pre).append(after);
                 tmpdata = suff;
                 i = -1;
             }
         }
     }
-    data = data.append(tmpdata);
-    return *this;
+    tmp = tmp.append(tmpdata);
+
+    if(modify){
+        data = tmp;
+        return ZString(data);
+    } else {
+        return ZString(tmp);
+    }
 }
-void ZString::label(std::string labeltxt, ZString value){
-    std::string label = std::string("<?").append(labeltxt).append("?>");
-    replace(label, value.str());
-}
-void ZString::label(AsArZ values){
+
+ZString ZString::label(AsArZ values, bool modify){
     for(int i = 0; i < values.size(); ++i)
-        label(values.getIndex(i), values[i]);
+        label(values.getIndex(i), values[i], modify);
+    return ZString(data);
 }
+ZString ZString::label(std::string labeltxt, ZString value, bool modify){
+    std::string label = std::string("<?").append(labeltxt).append("?>");
+    return replace(label, value.str(), modify);
+}
+
 AsArZ ZString::explode(char delim){
     AsArZ out;
     std::string str = data;
@@ -292,7 +301,7 @@ AsArZ ZString::strict_explode(char delim){
     return out;
 }
 
-ZString ZString::strip(char target){
+ZString ZString::strip(char target, bool modify){
     ZString tmp = data;
     for(unsigned i = 0; i < data.length(); ++i){
         if(data[i] == target){
@@ -310,18 +319,51 @@ ZString ZString::strip(char target){
             break;
         }
     }
-    data = tmp.str();
-    return tmp;
+
+    if(modify){
+        data = tmp.str();
+        return ZString(data);
+    } else {
+        return tmp;
+    }
 }
 
-ZString &ZString::substr(int pos){
-    data.substr(pos);
-    return *this;
+ZString ZString::substr(int pos, bool modify){
+    std::string tmp;
+    tmp.substr(pos);
+
+    if(modify){
+        data = tmp;
+        return ZString(data);
+    } else {
+        return ZString(tmp);
+    }
 }
 
-ZString &ZString::substr(int pos, int npos){
-    data.substr(pos, npos);
-    return *this;
+ZString ZString::substr(int pos, int npos, bool modify){
+    std::string tmp;
+    tmp.substr(pos, npos);
+
+    if(modify){
+        data = tmp;
+        return ZString(data);
+    } else {
+        return ZString(tmp);
+    }
+}
+
+ZString ZString::invert(bool modify){
+    std::string buff;
+    for(unsigned i = data.length(); i > 0; --i){
+        buff += data[i];
+    }
+
+    if(modify){
+        data = buff;
+        return ZString(data);
+    } else {
+        return ZString(buff);
+    }
 }
 
 ZString ZString::toJSON(AsArZ arr){
