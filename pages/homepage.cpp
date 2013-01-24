@@ -9,6 +9,7 @@ void HomePage::page(Request &req, Reply &rep){
     values["script"] = "";
     ZFile homefl("parts/pages/home.html");
     ZString cont = homefl.read();
+    homefl.close();
     cont.replace("\n", "");
     cont.replace("\r", "");
     cont.replace("    ", "");

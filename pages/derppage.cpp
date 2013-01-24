@@ -9,6 +9,7 @@ void DerpPage::page(Request &req, Reply &rep){
     values["script"] = "";
     ZFile derpfl("parts/pages/derp.html");
     ZString cont = derpfl.read();
+    derpfl.close();
     cont.replace("\n", "");
     cont.replace("\r", "");
     cont.replace("    ", "");

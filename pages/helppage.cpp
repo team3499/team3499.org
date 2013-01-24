@@ -7,8 +7,9 @@ void HelpPage::page(Request &req, Reply &rep){
     values["pagetitle"] = "ZS - Help";
     values["style"] = "";
     values["script"] = "";
-    ZFile derpfl("parts/pages/help.html");
-    ZString cont = derpfl.read();
+    ZFile helpfl("parts/pages/help.html");
+    ZString cont = helpfl.read();
+    helpfl.close();
     cont.replace("\n", "");
     cont.replace("\r", "");
     cont.replace("    ", "");
