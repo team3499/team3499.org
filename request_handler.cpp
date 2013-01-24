@@ -36,8 +36,8 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
 
     getSession(req, rep);
 
-    LOG(req.headers["Content-Length"].str())
-    LOG(req.reqbody.str())
+    //LOG(req.headers["Content-Length"].str())
+    //LOG(req.reqbody.str())
     req.postvars = getPost(req);
 
     //for(unsigned i = 0; i < req.headers.size(); ++i){
