@@ -29,7 +29,8 @@ HEADERS += \
     pages/errorpage.h \
     pages/aboutpage.h \
     global.h \
-    generated.h
+    generated.h \
+    pages/helppage.h
 
 SOURCES += \
     main.cpp \
@@ -51,7 +52,8 @@ SOURCES += \
     lib/system/error_code.cpp \
     pages/derppage.cpp \
     pages/errorpage.cpp \
-    pages/aboutpage.cpp
+    pages/aboutpage.cpp \
+    pages/helppage.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -63,4 +65,6 @@ OTHER_FILES += \
     parts/test.txt \
     parts/main.html \
     parts/pages/home.html \
-    parts/pages/about.html
+    parts/pages/about.html \
+    parts/pages/derp.html \
+    parts/pages/help.html

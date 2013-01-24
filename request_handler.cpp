@@ -11,6 +11,7 @@
 #include "derppage.h"
 #include "errorpage.h"
 #include "aboutpage.h"
+#include "helppage.h"
 #include "logger.h"
 
 using namespace std;
@@ -67,6 +68,8 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
         DerpPage().page(req, rep);
     } else if(req.comm[0] == "about"){
         AboutPage().page(req, rep);
+    } else if(req.comm[0] == "help"){
+        HelpPage().page(req, rep);
     } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
         staticFile(req, rep);
     } else {
