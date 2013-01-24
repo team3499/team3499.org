@@ -23,10 +23,12 @@ SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
     server/server.hpp
 # Pages
     pages/aboutpage.h
-    pages/derppage.h
+    pages/devpages.h
     pages/errorpage.h
     pages/helppage.h
     pages/homepage.h
+    pages/pagebase.h
+    pages/pages.h
 # Zennix Libs
     zlib/asar.h
     #zlib/database.h
@@ -50,7 +52,7 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     server/server.cpp
 # Pages
     pages/aboutpage.cpp
-    pages/derppage.cpp
+    pages/devpages.cpp
     pages/errorpage.cpp
     pages/helppage.cpp
     pages/homepage.cpp

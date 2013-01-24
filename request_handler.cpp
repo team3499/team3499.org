@@ -7,11 +7,7 @@
 #include "mime_types.hpp"
 #include "reply.hpp"
 #include "request.hpp"
-#include "homepage.h"
-#include "derppage.h"
-#include "errorpage.h"
-#include "aboutpage.h"
-#include "helppage.h"
+#include "pages.h"
 #include "logger.h"
 
 using namespace std;
@@ -27,10 +23,10 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     req.reqbody = getReqBody(req);
     //cout << req.reqbody.str() << endl;
 
-    LOG("RequestHandler: Method: " << req.method)
+    LOG("-- " << req.method << " Request Handling Started --")
     LOG("RequestHandler: Path: " << req.uri)
     if(!urlDecode(req.uri, req.rawpath)){
-        ErrorPage().page(BAD_REQUEST, req, rep);
+        ErrorPage::page(BAD_REQUEST, req, rep);
         return;
     }
     req.path = ZString(req.rawpath).explode('/').shift();
@@ -63,13 +59,15 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     cout << endl;
 
     if(req.comm[0] == "" || req.comm[0] == "home"){
-        HomePage().page(req, rep);
+        HomePage::page(req, rep);
     } else if(req.comm[0] == "derp"){
-        DerpPage().page(req, rep);
+        DevPages::DerpPage::page(req, rep);
+    } else if(req.comm[0] == "dump"){
+        DevPages::DumpPage::page(req, rep);
     } else if(req.comm[0] == "about"){
-        AboutPage().page(req, rep);
+        AboutPage::page(req, rep);
     } else if(req.comm[0] == "help"){
-        HelpPage().page(req, rep);
+        HelpPage::page(req, rep);
     } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
         staticFile(req, rep);
     } else {

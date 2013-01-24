@@ -29,22 +29,6 @@ void getSession(Request &request, Reply &reply){
     }
 }
 
-/*ZString readFile(ZString name){
-    fstream file;
-    file.open(name.cc(), std::ios::in);
-
-    file.seekg(0, ios::end);
-    int length = file.tellg();
-    file.seekg(0, ios::beg);
-    char buf[length];
-
-    file.read(buf, length);
-    file.close();
-
-    ZString buffer = buf;
-    return buffer;
-}*/
-
 void finalDoc(Request &request, Reply &reply, AsArZ values){
     if(!request.ajax){
         reply.headers["Content-Type"] = "text/html; charset=utf-8";
@@ -52,12 +36,10 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         ZFile fl("parts/main.html");
         reply.body = fl.read();
         fl.close();
-        //reply.body = ZFile::readFile("parts/home.html");
 
         ZFile maincssfl("parts/main.css");
         ZString maincss = maincssfl.read();
         maincssfl.close();
-        //ZString maincss = ZFile::readFile("parts/main.css");
         maincss.replace("\n", "");
         maincss.replace("\r", "");
         maincss.replace("    ", " ");
@@ -66,7 +48,6 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         ZFile secondcssfl("parts/secondary.css");
         ZString secondcss = secondcssfl.read();
         secondcssfl.close();
-        //ZString secondcss = ZFile::readFile("parts/secondary.css");
         secondcss.replace("\n", "");
         secondcss.replace("\r", "");
         secondcss.replace("    ", " ");
@@ -77,13 +58,17 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
         funcjsfl.close();
         mainjsfl.close();
-        //ZString alljs = ZFile::readFile("parts/functions.js") + "\nvar loadonload = \""+request.path[0]+"\";\n"  + ZFile::readFile("parts/main.js");
         reply.body.label("mainjs", alljs);
 
         reply.body.label(values);
     } else {
+        reply.headers["Content-Type"] = "application/json";
         AsArZ out;
-        out["path"] = request.rawpath;
+        if(out["path"] == ""){
+            for(unsigned i = 0; i < request.comm.size(); ++i){
+                out["path"] += request.comm[i];
+            }
+        }
         out["pagetitle"] = values["pagetitle"];
         out["content"] = values["contout"];
         out["script"] = values["script"];

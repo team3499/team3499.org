@@ -4,6 +4,7 @@ HomePage::HomePage(){}
 
 void HomePage::page(Request &req, Reply &rep){
     AsArZ values;
+    values["path"] = "/";
     values["pagetitle"] = "Zennix Studios";
     values["style"] = "";
     values["script"] = "";

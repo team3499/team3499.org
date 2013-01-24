@@ -1,16 +1,14 @@
 #ifndef HOMEPAGE_H
 #define HOMEPAGE_H
 
-#include "request.hpp"
-#include "reply.hpp"
-#include "global.h"
-#include "zstring.h"
-#include "pagescommon.h"
+#include "pagebase.h"
 
 class HomePage {
 public:
     HomePage();
-    void page(Request &request, Reply &reply);
+    static void page(Request &request, Reply &reply);
+    static ZString tooltip();
+    static ZString help();
 };
 
 #endif // HOMEPAGE_H

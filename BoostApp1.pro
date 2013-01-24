@@ -25,12 +25,14 @@ HEADERS += \
     zlib/SQLite/sqlite3.h \
     websession.h \
     server/logger.h \
-    pages/derppage.h \
     pages/errorpage.h \
     pages/aboutpage.h \
     global.h \
     generated.h \
-    pages/helppage.h
+    pages/helppage.h \
+    pages/pages.h \
+    pages/devpages.h \
+    pages/pagebase.h
 
 SOURCES += \
     main.cpp \
@@ -50,10 +52,10 @@ SOURCES += \
     websession.cpp \
     server/logger.cpp \
     lib/system/error_code.cpp \
-    pages/derppage.cpp \
     pages/errorpage.cpp \
     pages/aboutpage.cpp \
-    pages/helppage.cpp
+    pages/helppage.cpp \
+    pages/devpages.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -67,4 +69,5 @@ OTHER_FILES += \
     parts/pages/home.html \
     parts/pages/about.html \
     parts/pages/derp.html \
-    parts/pages/help.html
+    parts/pages/help.html \
+    parts/pages/dump.html
