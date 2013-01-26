@@ -124,7 +124,7 @@ LINK_DIRECTORIES(
 QT4_ADD_RESOURCES(BoostApp_RC_SRCS ${BoostApp_RESOURCES})
 
 ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES} ${BoostApp_RC_SRCS})
-TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} libboost_thread.a)
+TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} boost_thread)
 #TARGET_LINK_LIBRARIES(webapp boost_thread)
 
 ADD_DEPENDENCIES(webapp resources)
