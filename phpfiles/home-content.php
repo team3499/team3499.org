@@ -32,7 +32,7 @@ $(document).ready(function() {
 </script>
 
 
-<!-- a common post -->
+<!-- a common post --> <!--
 <div class="post">
     <div class="postTitle">
         <span class="postTitle"><strong>This is a Wonderful Title</strong></span>
@@ -101,7 +101,7 @@ $(document).ready(function() {
 	  <a href="#" id="commentsShow" title="Click to show/hide comments">1 Comment</a> <?php //changes whith '1 Comment' and 2 Comments ?>
         </div>
     </div>
-</div>
+</div>-->
   <!-- common post end -->
   
   
@@ -243,13 +243,13 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
     </div>
 </div>
   <!-- common post end -->
-
-
-<!-- a common post -->
+  
+  <!-- a common post -->
 <div class="post">
     <div class="postTitle">
-        <!--<span class="postTitle" style="">--><span class="postTitle post-user" style="; background-color:rgba(255,255,255,.1);"><strong>Integrating Git with FRC Workbench</strong> - <span class="span-2" style="font-size:13px;"><a href="">Brian Turnball</a></span></span><!--</span>-->A
-        <div class="postDate" style="float:right; padding-right:4px;"><i>1/18/12</i></div>
+      <span class="post-user"><a href="">Brian Turnball</a> <i class="small">Admin</i></span>
+        <span class="postTitle"><strong>Integrating Git with FRC Workbench</strong></span>
+        <div class="postDate"><i>1/18/12</i></div>
     </div>
     <div class="postPadding">
         <!--<div class="postImg"><a href="#"><img height="100px" width="100px" class="smallBorderShadow" src="/core/img/default.jpg" /></a>
@@ -303,12 +303,12 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
             
             <script>
             $(document).ready(function() {
-          $('div.postCommentsBarMax').hide();
-          $('div.postCommentsBarAddButton').hide();
-          $('textarea.addComment').click(function() {
-        $('div.postCommentsBarMax').fadeIn('10');
-        $('div.postCommentsBarAddButton').fadeIn('10');
-          });
+	      $('div.postCommentsBarMax').hide();
+	      $('div.postCommentsBarAddButton').hide();
+	      $('textarea.addComment').click(function() {
+		$('div.postCommentsBarMax').fadeIn('10');
+		$('div.postCommentsBarAddButton').fadeIn('10');
+	      });
             });
             </script>
             
@@ -318,14 +318,14 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
                 <p id="counter">Characters Left: 500</p>
                 
                 <script>
-        $('textarea.addComment').keyup(function () {
-            var left = 500 - $(this).val().length;
-            if (left < 0) {
-            left = 0;
-            }
-            $('#counter').text('Characters Left: ' + left);
-        });
-        </script>
+		$('textarea.addComment').keyup(function () {
+		    var left = 500 - $(this).val().length;
+		    if (left < 0) {
+			left = 0;
+		    }
+		    $('#counter').text('Characters Left: ' + left);
+		});
+		</script>
                 
               </div>
               <div class="postCommentsBarAddButton">
@@ -357,22 +357,22 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
         <!--
         <script>
         $(document).ready(function() {
-      $('div.postComments').hide();
-      $('a#commentsShow').toggle(function() {
-        $('div.postComments').slideDown('100');
-        return false;
-       },
-        function() {
-          $('div.postComments').slideUp('100');
-          $('div.postCommentsBarMax').slideUp('10');
-          $('div.postCommentsBarAddButton').slideUp('10');
-          return false;
-        });
+	  $('div.postComments').hide();
+	  $('a#commentsShow').toggle(function() {
+	    $('div.postComments').slideDown('100');
+	    return false;
+	   },
+	    function() {
+	      $('div.postComments').slideUp('100');
+	      $('div.postCommentsBarMax').slideUp('10');
+	      $('div.postCommentsBarAddButton').slideUp('10');
+	      return false;
+	    });
         });
         </script>
         -->
         <div class="postCommentButton">
-      <a href="#" id="commentsShow" title="Click to show/hide comments">0 Comments</a> <?php //changes whith '1 Comment' and 2 Comments ?>
+	  <a href="#" id="commentsShow" title="Click to show/hide comments">0 Comments</a> <?php //changes whith '1 Comment' and 2 Comments ?>
         </div>
     </div>
 </div>

@@ -24,8 +24,8 @@ $(document).ready(function() {
     setTimeout(toggleImg, 0);
     setTimeout(hideAddressBar, 0);
     
-	$('input[type="search"]').addClass("headSearch");
-	$('input[type="search"]').focus(function() {
+	$('input[type="textarea"]').addClass("headSearch");
+	$('input[type="textarea"]').focus(function() {
         if(this.value == this.defaultValue){
           this.value = '';  
         }
@@ -34,7 +34,7 @@ $(document).ready(function() {
         }
         this.style.width = 200;
 	});
-	$('input[type="search"]').blur(function(){
+	$('input[type="textarea"]').blur(function(){
 		if($.trim(this.value == '')){
 			this.value = (this.defaultValue ? this.defaultValue : '');
 		}

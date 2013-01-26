@@ -13,7 +13,7 @@
 		$initcall = true;
 	}
 	
-	require_once("browser_check.php");
+	//require_once("browser_check.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +43,7 @@
 <div class="header">
   <div class="float-right" width="30%">
     <div class="headSearch">
-          <input class="searchBar" maxlength="200" type="search" name="search" value="Search..."/>
+          <input class="searchBar" maxlength="200" type="textarea" name="search" value="Search..."/>
     </div>
     <div class="headIcons">
     <img width="25px" src="/core/img/facebook.png" class="head-icons link-image" href="http://www.facebook.com/groups/137871619595813/"/>
@@ -51,7 +51,7 @@
     </div>
   </div>
   <div class="float-left" style="width:600px">
-    <a href="/"><img class="sitelogo" height="25px" src="/core/img/logo.png"/></a>
+    <a href="/"><img class="sitelogo" height="25px" src="/core/img/logoSmall.png"/></a>
     <p>River's Edge Robotics Team 3499 <i class="small">Our robot goes [--this--] fast.</i></p>
   </div>
 <!-- </div>
@@ -132,8 +132,8 @@
             <span class="link tab-links" command="home">Home</span>
             <span class="link tab-links" command="about">About</span>
             <span class="link tab-links" command="gallery">Gallery</span>
-            <span class="tab-links">Task Schedual</span> <!-- calender! -->
-            <span class="tab-links">FIRST</span>
+            <span class="link tab-links" command="task-schedule">Task Schedule</span> <!-- calender! -->
+            <span class="link tab-links">FIRST</span>
             <span class="tab-links linkDonate">Donate</span>
             <div class="head">
                 <div class="headTitle"><p><strong>River's Edge Robotics </strong><p></div>
