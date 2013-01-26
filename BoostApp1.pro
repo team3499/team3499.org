@@ -32,7 +32,8 @@ HEADERS += \
     pages/helppage.h \
     pages/pages.h \
     pages/devpages.h \
-    pages/pagebase.h
+    pages/pagebase.h \
+    pages/raytracepage.h
 
 SOURCES += \
     main.cpp \
@@ -55,7 +56,8 @@ SOURCES += \
     pages/errorpage.cpp \
     pages/aboutpage.cpp \
     pages/helppage.cpp \
-    pages/devpages.cpp
+    pages/devpages.cpp \
+    pages/raytracepage.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -70,4 +72,11 @@ OTHER_FILES += \
     parts/pages/about.html \
     parts/pages/derp.html \
     parts/pages/help.html \
-    parts/pages/dump.html
+    parts/pages/dump.html \
+    parts/pages/raytrace.html \
+    parts/pages/helpcom.html \
+    parts/pages/errors/missing.html \
+    parts/pages/errors/bad_request.html
+
+RESOURCES += \
+    resource.qrc

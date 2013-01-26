@@ -1,8 +1,19 @@
-<div id="titlebox"><div id="titlecontent">
+<div id="menubox"><table id="menubar">
+    <tr><td id="menu-left" onclick="sendCommand('home');">Zennix Studios</td><td id="menu-center" onclick="sendCommand('projects');">Studio</td><td id="menu-right" onclick="sendCommand('gaming');">Gaming Clan</td></tr>
+</table></div>
+
+<div id="titlebox">
     <p class="home-title">Help</p>
-</div></div>
+</div>
 
 <div id="contentbox"><div id="content"><div class="default-wrapper">
-    <p class="content-body">This page is coming soon! To avoid breaking things, don't touch anything!</p>
+    <p class="content-body"><span style="color:#33ccff;">Commands:</span></p>
+    <p class="content-body" style="text-align:left;"><span class="ajax-link" onclick="sendCommand('help home');">home</span> - <?home_args?> - <?home_tooltip?></p>
+    <p class="content-body" style="text-align:left;"><span class="ajax-link" onclick="sendCommand('help help');">help</span> - <?help_args?> - <?help_tooltip?></p>
+    <p class="content-body" style="text-align:left;"><span class="ajax-link" onclick="sendCommand('help derp');">derp</span> - <?derp_args?> - <?derp_tooltip?></p>
+    <p class="content-body" style="text-align:left;"><span class="ajax-link" onclick="sendCommand('help dump');">dump</span> - <?dump_args?> - <?dump_tooltip?></p>
+    <p class="content-body" style="text-align:left;"><span class="ajax-link" onclick="sendCommand('help about');">about</span> - <?about_args?> - <?about_tooltip?></p>
+    <p class="content-body" style="text-align:left;"><span class="ajax-link" onclick="sendCommand('help raytrace');">raytrace</span> - <?raytrace_args?> - <?raytrace_tooltip?></p>
+
     <span class="ajax-link" onclick="sendCommand('home');">Home</span>
 </div></div></div>

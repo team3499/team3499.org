@@ -7,6 +7,7 @@ class HomePage {
 public:
     HomePage();
     static void page(Request &request, Reply &reply);
+    static ZString args();
     static ZString tooltip();
     static ZString help();
 };

@@ -16,8 +16,42 @@ div#contscript, div#contstyle{
     display:none;
 }
 
+div#menubox{
+    margin:10px;
+}
+table#menubar{
+    width:100%;
+    font-family:coolvetica;
+    font-size:20px;
+}
+table#menubar tr td{
+    border:2px solid #33ccff;
+    box-shadow:0 0 10px #33ccff, inset 0 0 10px #33ccff;
+    padding:0 10px 0 10px;
+    text-shadow:0 0 0.1em #ccc;
+    cursor:pointer;
+}
+table#menubar tr td:hover{
+    background-color:rgba(51, 204, 255, 0.2);
+}
+table#menubar tr td#menu-left{
+    font-family:ethnocentric;
+    border-radius:15px 0 0 15px;
+}
+table#menubar tr td#menu-center{
+    text-align:center;
+}
+table#menubar tr td#menu-right{
+    text-align:center;
+    border-radius:0 15px 15px 0;
+}
 div#pagecontent{
-    margin-bottom:50px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:40px;
+    overflow-y:scroll;
 }
 div#titlebox{
     margin:10px;

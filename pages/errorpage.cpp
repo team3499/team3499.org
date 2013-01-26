@@ -8,6 +8,7 @@ void ErrorPage::page(int mode, Request &req, Reply &rep){
         missing(req, rep);
         break;
     case BAD_REQUEST:
+        bad_request(req, rep);
         break;
     default:
         missing(req, rep);
@@ -19,15 +20,31 @@ void ErrorPage::missing(Request &req, Reply &rep){
     values["pagetitle"] = "ZS - Missing";
     values["style"] = "";
     values["script"] = "";
-    ZString cont = ZString(HOME_TITLE("Missing")) + "<div id='contentbox'><div id='content'>";
-    cont += "<div class=\"default-wrapper\"><p class=\"content-body\">Missing Content:";
-    cont += "Page / Command / File not found</div>""</div></div>";
-    //cont.replace("&", "&amp;");
-    //cont.replace("<", "&lt;");
-    //cont.replace(">", "&gt;");
+    ZFile errorfl("parts/pages/errors/missing.html");
+    ZString cont = errorfl.read();
+    cont.replace("\n", "");
+    cont.replace("\r", "");
+    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Not Here";
     values["prompttxt"] = "Awaiting Command...";
+    //rep.status = Reply::not_found;
+    finalDoc(req, rep, values);
+}
+void ErrorPage::bad_request(Request &req, Reply &rep){
+    AsArZ values;
+    values["pagetitle"] = "ZS - Missing";
+    values["style"] = "";
+    values["script"] = "";
+    ZFile errorfl("parts/pages/errors/bad_request.html");
+    ZString cont = errorfl.read();
+    cont.replace("\n", "");
+    cont.replace("\r", "");
+    cont.replace("    ", "");
+    values["contout"] = cont;
+    values["shellout"]= "Not Here";
+    values["prompttxt"] = "Awaiting Command...";
+    //rep.status = Reply::bad_request;
     finalDoc(req, rep, values);
 }
 

@@ -4,11 +4,11 @@
 #include "logger.h"
 
 // Generated Constants
-#ifndef BUILDING
-    #include "generated.h"
-#else
-    #include "gen.h"
-#endif
+//#ifndef BUILDING
+//    #include "generated.h"
+//#else
+//    #include "gen.h"
+//#endif
 
 // Hard Constants
 #define COOKIE_NAME "zsession"

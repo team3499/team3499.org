@@ -77,7 +77,8 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         reply.body = ZString().toJSON(out);
     }
     reply.content = reply.body;
-    reply.status = Reply::ok;
+    if(reply.status == 0)
+        reply.status = Reply::ok;
 }
 
 AsArZ parseCookie(ZString value){

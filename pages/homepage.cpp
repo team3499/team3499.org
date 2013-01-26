@@ -19,3 +19,12 @@ void HomePage::page(Request &req, Reply &rep){
     values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
+ZString HomePage::args(){
+    return "none";
+}
+ZString HomePage::tooltip(){
+    return "Site Home Page";
+}
+ZString HomePage::help(){
+    return "This page is the home page for the Zennix Studios webpage.";
+}

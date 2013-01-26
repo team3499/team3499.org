@@ -60,6 +60,15 @@ void DumpPage::page(Request &req, Reply &rep){
     values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
+ZString DumpPage::args(){
+    return "none";
+}
+ZString DumpPage::tooltip(){
+    return "Dumps request and command parsing data";
+}
+ZString DumpPage::help(){
+    return "This page is for debugging the request parsing methods on the server.";
+}
 
 DerpPage::DerpPage(){}
 
@@ -79,6 +88,15 @@ void DerpPage::page(Request &req, Reply &rep){
     values["shellout"]= "Derp Here";
     values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
+}
+ZString DerpPage::args(){
+    return "none";
+}
+ZString DerpPage::tooltip(){
+    return "Derp";
+}
+ZString DerpPage::help(){
+    return "This page is for simple testing.";
 }
 
 }

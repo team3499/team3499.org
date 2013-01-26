@@ -11,6 +11,7 @@ public:
     ErrorPage();
     static void page(int error, Request &request, Reply &reply);
     static void missing(Request &request, Reply &reply);
+    static void bad_request(Request &request, Reply &reply);
 };
 
 #endif // ERRORPAGE_H

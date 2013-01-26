@@ -56,6 +56,7 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     pages/errorpage.cpp
     pages/helppage.cpp
     pages/homepage.cpp
+    pages/raytracepage.cpp
 # Zennix Libs
     #zlib/asar.tpp
     #zlib/database.cpp
@@ -66,16 +67,18 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     lib/system/error_code.cpp
 )
 
-EXECUTE_PROCESS(COMMAND date OUTPUT_VARIABLE BUILD_TIME)
-STRING(STRIP ${BUILD_TIME} MAKE_BUILD_TIME)
+SET(BoostWebApp_RESOURCES resource.qrc)
+
+### =================== CONFIG =================== ###
+
+EXECUTE_PROCESS(COMMAND date OUTPUT_VARIABLE MAKE_BUILD_TIME)
+STRING(STRIP ${MAKE_BUILD_TIME} MAKE_BUILD_TIME)
 CONFIGURE_FILE(generated.h gen.h @ONLY)
 
 INCLUDE(${QT_USE_FILE})
-ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 INCLUDE_DIRECTORIES(
     /usr/include
-    /usr/include/boost
     #lib/include
     ${CMAKE_BINARY_DIR}
     ./
@@ -98,10 +101,16 @@ ADD_CUSTOM_TARGET(resources
     COMMAND echo Done.
 )
 
+### =================== BUILD =================== ###
+
+ADD_DEFINITIONS(${QT_DEFINITIONS})
+
 # Required - Supresses false IDE warning
 ADD_DEFINITIONS(-D BUILDING)
 
 #ADD_DEFINITIONS(-D ZFILE_USE_QT)
+
+# Used for QDateTime
 ADD_DEFINITIONS(-D ZSTRING_USE_QT)
 
 ADD_DEFINITIONS(-g -pthread)
@@ -112,7 +121,10 @@ LINK_DIRECTORIES(
     /usr/include/boost/stage/lib
 )
 
-ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})
-TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} boost_thread)
+QT4_ADD_RESOURCES(BoostApp_RC_SRCS ${BoostApp_RESOURCES})
+
+ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES} ${BoostApp_RC_SRCS})
+TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} libboost_thread.a)
+#TARGET_LINK_LIBRARIES(webapp boost_thread)
 
 ADD_DEPENDENCIES(webapp resources)

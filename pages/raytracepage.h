@@ -1,15 +1,15 @@
-#ifndef ABOUTPAGE_H
-#define ABOUTPAGE_H
+#ifndef RAYTRACEPAGE_H
+#define RAYTRACEPAGE_H
 
 #include "pagebase.h"
 
-class AboutPage {
+class RayTracePage {
 public:
-    AboutPage();
+    RayTracePage();
     static void page(Request &request, Reply &reply);
     static ZString args();
     static ZString tooltip();
     static ZString help();
 };
 
-#endif // ABOUTPAGE_H
+#endif // RAYTRACEPAGE_H

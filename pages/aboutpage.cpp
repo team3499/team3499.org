@@ -1,5 +1,11 @@
 #include "aboutpage.h"
 
+#ifndef BUILDING
+    #include "generated.h"
+#else
+    #include "gen.h"
+#endif
+
 AboutPage::AboutPage(){}
 
 void AboutPage::page(Request &req, Reply &rep){
@@ -18,4 +24,13 @@ void AboutPage::page(Request &req, Reply &rep){
     values["shellout"]= "About this Site";
     values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
+}
+ZString AboutPage::args(){
+    return "none";
+}
+ZString AboutPage::tooltip(){
+    return "Information about this website";
+}
+ZString AboutPage::help(){
+    return "This page contains information about the website and its content, including the date of the last site rebuild.";
 }

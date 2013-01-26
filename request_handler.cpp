@@ -15,39 +15,29 @@ using namespace std;
 RequestHandler::RequestHandler(const std::string& doc_root) : doc_root_(doc_root){}
 
 void RequestHandler::handle_request(Request &req, Reply &rep){
-    if(req.method == "POST")
-        req.ispost = true;
-    else
-        req.ispost = false;
-
-    req.reqbody = getReqBody(req);
-    //cout << req.reqbody.str() << endl;
-
     LOG("-- " << req.method << " Request Handling Started --")
     LOG("RequestHandler: Path: " << req.uri)
+    if(req.method == "POST"){
+        req.ispost = true;
+    } else {
+        req.ispost = false;
+    }
     if(!urlDecode(req.uri, req.rawpath)){
         ErrorPage::page(BAD_REQUEST, req, rep);
         return;
     }
     req.path = ZString(req.rawpath).explode('/').shift();
-
+    req.reqbody = getReqBody(req);
+    req.postvars = getPost(req);
     getSession(req, rep);
 
-    //LOG(req.headers["Content-Length"].str())
-    //LOG(req.reqbody.str())
-    req.postvars = getPost(req);
-
-    //for(unsigned i = 0; i < req.headers.size(); ++i){
-    //    cout << req.headers.I(i) << " : " << req.headers[i].str() << endl;
-    //}
-
     if(req.postvars["a"].str() != ""){
-        LOG("RequestHandler: AJAX")
+        LOG("RequestHandler: Using AJAX")
         req.ajax = true;
         req.rawcommand = req.postvars["a"];
         req.comm = req.rawcommand.explode(' ');
     } else {
-        LOG("RequestHandler: URL")
+        LOG("RequestHandler: Using URL")
         req.ajax = false;
         req.comm = req.path;
     }
@@ -58,21 +48,24 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     }
     cout << endl;
 
-    if(req.comm[0] == "" || req.comm[0] == "home"){
+    if(req.comm[0] == "" || req.comm[0] == HOME){
         HomePage::page(req, rep);
-    } else if(req.comm[0] == "derp"){
+    } else if(req.comm[0] == DERP){
         DevPages::DerpPage::page(req, rep);
-    } else if(req.comm[0] == "dump"){
+    } else if(req.comm[0] == DUMP){
         DevPages::DumpPage::page(req, rep);
-    } else if(req.comm[0] == "about"){
+    } else if(req.comm[0] == ABOUT){
         AboutPage::page(req, rep);
-    } else if(req.comm[0] == "help"){
+    } else if(req.comm[0] == HELP){
         HelpPage::page(req, rep);
+    } else if(req.comm[0] == RAYTRACE){
+        RayTracePage::page(req, rep);
     } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
         staticFile(req, rep);
     } else {
         ErrorPage().page(MISSING, req, rep);
     }
+    LOG("== Request Handling Finished ==")
     return;
 }
 

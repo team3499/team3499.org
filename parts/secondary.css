@@ -122,3 +122,20 @@ div.default-wrapper{
     text-align:center;
     padding:5px;
 }
+table.default-table{
+    margin-left:auto;
+    margin-right:auto;
+}
+table.default-table tr td{
+    padding:0 10px 0 10px;
+    text-align:center;
+    font-family:coolvetica;
+    font-size:24px;
+    text-align:center;
+    margin:5px;
+}
+table.default-table, table.default-table tr td{
+    border:2px solid #cccccc;
+    border-radius:3px 3px 3px 3px;
+    box-shadow:0 0 3px #cccccc, inset 0 0 3px #cccccc;
+}
