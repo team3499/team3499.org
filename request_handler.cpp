@@ -16,12 +16,11 @@ RequestHandler::RequestHandler(const std::string& doc_root) : doc_root_(doc_root
 
 void RequestHandler::handle_request(Request &req, Reply &rep){
     LOG("-- " << req.method << " Request Handling Started --")
-    LOG("RequestHandler: Path: " << req.uri)
-    if(req.method == "POST"){
+    //LOG("RequestHandler: Path: " << req.uri)
+    if(req.method == "POST")
         req.ispost = true;
-    } else {
+    else
         req.ispost = false;
-    }
     if(!urlDecode(req.uri, req.rawpath)){
         ErrorPage::page(BAD_REQUEST, req, rep);
         return;
@@ -32,27 +31,26 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     getSession(req, rep);
 
     if(req.postvars["a"].str() != ""){
-        LOG("RequestHandler: Using AJAX")
         req.ajax = true;
         req.rawcommand = req.postvars["a"];
         req.comm = req.rawcommand.explode(' ');
     } else {
-        LOG("RequestHandler: Using URL")
         req.ajax = false;
         req.comm = req.path;
     }
+    IF_LOG(req.ajax, "RequestHandler", "Using AJAX", "Using URL")
 
-    cout << STAMP "RequestHandler: CleanPath:";
+    ZString tmplog;
     for(unsigned i = 0; i < req.comm.size(); ++i){
-        cout << " -" << req.comm[i].str() << "-";
+        tmplog << " -" << req.comm[i].str() << "-";
     }
-    cout << endl;
+    LOG("RequestHandler: CleanPath:" << tmplog)
 
     if(req.comm[0] == "" || req.comm[0] == HOME){
         HomePage::page(req, rep);
     } else if(req.comm[0] == DERP){
         DevPages::DerpPage::page(req, rep);
-    } else if(req.comm[0] == DUMP){
+    } else if(req.comm[0] == DUMP && req.sess.userdat.perms > 2){
         DevPages::DumpPage::page(req, rep);
     } else if(req.comm[0] == ABOUT){
         AboutPage::page(req, rep);
@@ -60,11 +58,18 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
         HelpPage::page(req, rep);
     } else if(req.comm[0] == RAYTRACE){
         RayTracePage::page(req, rep);
+    } else if(req.comm[0] == LOGIN){
+        UserLogin::page(req, rep);
+    } else if(req.comm[0] == LOGOUT){
+        UserLogout::page(req, rep);
+    } else if(req.comm[0] == ME){
+        MePage::page(req, rep);
     } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
         staticFile(req, rep);
     } else {
         ErrorPage().page(MISSING, req, rep);
     }
+    req.sess.update();
     LOG("== Request Handling Finished ==")
     return;
 }
@@ -80,7 +85,6 @@ AsArZ RequestHandler::getPost(Request req){
     if(req.headers["Content-Length"].str() != ""){
         int len = atoi(req.headers["Content-Length"].cc());
         ZString buff = req.reqbody.str().substr(0, len);
-        //LOG(buff.str())
         AsArZ first = buff.explode('&');
         for(unsigned i = 0; i < first.size(); ++i){
             AsArZ second = first[i].explode('=');

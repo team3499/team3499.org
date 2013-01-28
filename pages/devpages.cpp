@@ -27,7 +27,7 @@ void DumpPage::page(Request &req, Reply &rep){
         pvars << req.postvars.I(i) << " = " << req.postvars[i].str() << ", ";
     }
     cont.label("postvars", pvars);
-    cont.label("sess", req.sess.getId());
+    cont.label("sess", req.sess.sessid);
     cont.label("rawpath", req.rawpath);
     cont.label("rawcommand", req.rawcommand);
     ZString pavars;

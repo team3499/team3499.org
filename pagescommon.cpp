@@ -9,24 +9,26 @@ void getSession(Request &request, Reply &reply){
             sessioncookie = tmp[COOKIE_NAME];
         }
     }
-    //ZString sessioncookie = request.getCookie(COOKIE_NAME);
-
-    LOG("SessionParser: Cookie: " << sessioncookie.str())
+    IF_LOG(sessioncookie == "", "SessionParser", "No Cookie Found", "Found Cookie:" << sessioncookie.str())
     request.sess.updateSessions(); // Deletes Sessions Past Expiry
     // Get current session, or create a new one
-    if(request.sess.exists(sessioncookie)){
-        //qDebug() << "Updating Session";
-        request.sess.setId(sessioncookie);
-        //reply.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + sessioncookie;
-        request.sess.update();
+    if(!(sessioncookie == "") && request.sess.exists(sessioncookie)){
+        LOG("SessionParser: Session Exists, Updating")
+        request.sess.sessid = sessioncookie;
+        //reply.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + request.sess.sessid;
         request.sess.readData();
+        if(request.sess.userdat.uid > 0)
+            request.sess.loggedin = true;
+        else
+            request.sess.loggedin = false;
     } else {
-        //qDebug() << "Creating New Session";
-        request.sess.generateId();
-        reply.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + sessioncookie;
-        request.sess.create();
-        request.sess.readData();
+        LOG("SessionParser: Session Doesn't Exist, Creating")
+        request.sess.sessid = request.sess.generateId();
+        reply.headers["Set-Cookie"] = ZString(COOKIE_NAME"=") + request.sess.sessid;
+        request.sess.reset();
+        request.sess.loggedin = false;
     }
+    LOG("SessionParser: Session: " << request.sess.sessid.str())
 }
 
 void finalDoc(Request &request, Reply &reply, AsArZ values){

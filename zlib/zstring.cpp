@@ -8,6 +8,16 @@ ZString &ZString::operator=(ZString str){
     data = str.str();
     return *this;
 }
+bool ZString::operator==(ZString str){
+    if(data == str.str())
+        return true;
+    return false;
+}
+bool ZString::operator!=(ZString str){
+    if(data != str.str())
+        return true;
+    return false;
+}
 ZString ZString::operator+(ZString str){
     return ZString(data.append(str.str()));
 }
@@ -26,10 +36,14 @@ ZString &ZString::operator=(std::string str){
     data = str;
     return *this;
 }
-inline bool ZString::operator==(const std::string rhs){
-    if(data == rhs){
+bool ZString::operator==(const std::string rhs){
+    if(data == rhs)
         return true;
-    }
+    return false;
+}
+bool ZString::operator!=(const std::string rhs){
+    if(data != rhs)
+        return true;
     return false;
 }
 ZString ZString::operator+(std::string str){
@@ -111,11 +125,16 @@ ZString &ZString::operator=(char *str){
     data = str;
     return *this;
 }
-inline bool ZString::operator==(char *rhs){
+bool ZString::operator==(char *rhs){
     ZString comp = rhs;
-    if(data == comp.str()){
+    if(data == comp.str())
         return true;
-    }
+    return false;
+}
+bool ZString::operator!=(char *rhs){
+    ZString comp = rhs;
+    if(data != comp.str())
+        return true;
     return false;
 }
 ZString ZString::operator+(char *str){
@@ -142,9 +161,14 @@ ZString &ZString::operator=(const char *str){
 }
 bool ZString::operator==(const char *rhs){
     ZString comp = rhs;
-    if(data == comp.str()){
+    if(data == comp.str())
         return true;
-    }
+    return false;
+}
+bool ZString::operator!=(const char *rhs){
+    ZString comp = rhs;
+    if(data != comp.str())
+        return true;
     return false;
 }
 ZString ZString::operator+(const char *str){
@@ -192,6 +216,10 @@ ZString::ZString(int num){
     std::stringstream ss; std::string out;
     ss << num; ss >> out;
     data = out;
+}
+int ZString::tint(){
+    const char *str = data.c_str();
+    return atoi(str);
 }
 
 int ZString::size(){
@@ -329,7 +357,7 @@ ZString ZString::strip(char target, bool modify){
 }
 
 ZString ZString::substr(int pos, bool modify){
-    std::string tmp;
+    std::string tmp = data;
     tmp.substr(pos);
 
     if(modify){
@@ -341,7 +369,7 @@ ZString ZString::substr(int pos, bool modify){
 }
 
 ZString ZString::substr(int pos, int npos, bool modify){
-    std::string tmp;
+    std::string tmp = data;
     tmp.substr(pos, npos);
 
     if(modify){

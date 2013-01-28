@@ -83,17 +83,6 @@ bool Database::sql_stmt(string stmt){
     }
 }
 
-void Database::print(){
-    cout << "Size: " << records.size() << endl;
-    for(int i = 0; i < records.size(); ++i){
-        cout << i << " " << records.getIndex(i) << " - ";
-        for(int j = 0; j < records[i].size(); ++j){
-            cout << j << "-" << records[i].getIndex(j) << "=" << records[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
 #ifdef USE_QT
 QString Database::print_html(){
     QString table = "<style>\n\ttable,td,th,tr{border:1px solid black;}\n</style>\n<table>\n\t<tr>\n";

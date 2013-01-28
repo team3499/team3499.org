@@ -6,35 +6,34 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <sstream>
-#include "database.h"
 #include "zfile.h"
 #include "zstring.h"
 #include "asar.h"
 #include <fcntl.h>
 #include "global.h"
+#include "userdata.h"
 
 class WebSession {
     public:
         WebSession();
-        void setId(ZString sessionid);
-        ZString getId();
-        void generateId();
-        void create();
+        ZString generateId();
+        void reset();
         void update();
         bool exists(ZString sessionid);
         void updateSessions();
-        string randomId(int length);
+
         void readData();
         AsArZ data();
-    private:
         //Database sessdb;
+        bool loggedin;
         ZString sessid;
-        ZString userid;
-        ZString username;
+        UserData userdat;
         AsArZ sessdat;
+private:
         unsigned long state[16];
         unsigned int index;
         unsigned long WELLRNG512();
+        string randomId(int length);
 };
 
 #endif // WEBSESSION_H

@@ -92,7 +92,7 @@ function loadContent(value){
     /*historyid++;
     history[historyid] = value;*/
     xmlhttp.onreadystatechange = function(){
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+        if(xmlhttp.readyState == 4 /*&& xmlhttp.status == 200*/){
             cleanload = 0;
             /*DEBUG*/console.log("  ::PLAIN::  " + xmlhttp.responseText);
             response = JSON.parse(xmlhttp.responseText);

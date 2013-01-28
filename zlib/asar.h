@@ -30,8 +30,6 @@ template <class T> class AssocArray {
         AssocArray<T> shift();
         T &last();
         bool empty();
-        void print();
-        //ZString toString();
     private:
         struct Data {
             //Data();

@@ -25,10 +25,12 @@ class ZFile {
         void close();
         ZString read();
         static ZString readFile(ZString name);
+        bool append(ZString);
         bool write(ZString);
         bool remove();
         bool exists(ZString);
     private:
+        void setMode(int);
         bool opened;
         bool readable;
         bool writeable;

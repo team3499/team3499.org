@@ -22,6 +22,16 @@ void ErrorPage::missing(Request &req, Reply &rep){
     values["script"] = "";
     ZFile errorfl("parts/pages/errors/missing.html");
     ZString cont = errorfl.read();
+    ZString path;
+    for(unsigned i = 0; i < req.comm.size(); ++i){
+        path += req.comm[i];
+        if(req.ajax)
+            path += " ";
+        else
+            path += "/";
+    }
+    //cont.substr(0, cont.size() - 1, true);
+    cont.label("path", path);
     cont.replace("\n", "");
     cont.replace("\r", "");
     cont.replace("    ", "");

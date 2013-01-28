@@ -32,7 +32,7 @@ void RayTracePage::page(Request &req, Reply &rep){
     finalDoc(req, rep, values);
 }
 ZString RayTracePage::args(){
-    return "[render <scene data>]";
+    return "[render &lt;scene data&gt;]";
 }
 ZString RayTracePage::tooltip(){
     return "Raytracer - Does not work";

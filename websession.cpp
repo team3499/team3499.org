@@ -3,27 +3,7 @@
 WebSession::WebSession(){
     //sessdb.open(SESSIONDB);
     index = 0;
-}
-
-void WebSession::setId(ZString origid){
-    sessid = origid;
-}
-ZString WebSession::getId(){
-    return sessid;
-}
-void WebSession::generateId(){
-    string tmpid = randomId(20);
-    QDir dir(SESSION_PATH);
-    QList<QFileInfo> flist = dir.entryInfoList();
-    for(int i = 0; i < flist.size(); ++i){
-        if(flist[i].isFile()){
-            if(flist[i].fileName() == ZString(tmpid).QS()){
-                tmpid = randomId(20);
-                i = -1;
-            }
-        }
-    }
-    sessid = ZString(tmpid);
+    loggedin = false;
 }
 
 unsigned long WebSession::WELLRNG512(){
@@ -41,6 +21,7 @@ unsigned long WebSession::WELLRNG512(){
     return state[index];
 }
 string WebSession::randomId(int len){
+    srand((unsigned)time(0));
     string s;
     const char alphanum[] =
         "0123456789"
@@ -48,41 +29,50 @@ string WebSession::randomId(int len){
         "abcdefghijklmnopqrstuvwxyz"
         "!?@#$%&*+-";
     for(int i = 0; i < len; ++i){
-        s[i] = alphanum[WELLRNG512() % (sizeof(alphanum) - 1)];
+        s += alphanum[rand() % (sizeof(alphanum) -1)];
+        //s[i] = alphanum[WELLRNG512() % (sizeof(alphanum) - 1)];
     }
-    return s.substr(0, len);
+    return s;
+}
+ZString WebSession::generateId(){
+    string tmpid = randomId(20);
+    QDir dir(SESSION_PATH);
+    QList<QFileInfo> flist = dir.entryInfoList();
+    for(int i = 0; i < flist.size(); ++i){
+        if(flist[i].isFile()){
+            if(flist[i].fileName() == ZString(tmpid).QS()){
+                tmpid = randomId(20);
+                i = -1;
+            }
+        }
+    }
+    return ZString(tmpid);
 }
 
-void WebSession::create(){
+void WebSession::reset(){
+    userdat.uid = 0;
+    userdat.name = "Guest";
+    userdat.perms = 0;
+}
+
+void WebSession::update(){
     AsArZ sessdata;
     sessdata["id"] = sessid;
-    sessdata["userid"] = "0";
-    sessdata["username"] = "Guest";
-    sessdata["perms"] = "0";
-    sessdata["expires"] = QDateTime::currentDateTime().currentMSecsSinceEpoch();
-    sessdata["data"] = "";
+    sessdata["userid"] = ZString(userdat.uid);
+    sessdata["username"] = userdat.name;
+    sessdata["perms"] = ZString(userdat.perms);
+    //sessdata["expires"] = QDateTime::currentDateTime().currentMSecsSinceEpoch();
+    ZString datstr;
+    datstr.toJSON(sessdat);
+    sessdata["data"] = datstr;
     ZString sessdatstr;
     sessdatstr.toJSON(sessdata);
     ZString sessflnm = SESSION_PATH;
     sessflnm += sessid;
 
-    ZFile sessfl(WRITE);
-    sessfl.open(sessflnm);
+    ZFile sessfl(WRITE, sessflnm);
     sessfl.write(sessdatstr);
-    //if(sessfl.write(sessdatstr))
-    //    qDebug() << "Session Write Good";
-    //else
-    //    qDebug() << "Session Write Bad";
-}
-
-void WebSession::update(){
-    ZString sessflnm = ZString(SESSION_PATH) + getId();
-    ZString sessflstr;
-    ZFile sessfl(sessflnm);
-    sessflstr = sessfl.read();
-    sessfl.remove();
-    ZFile newfl(WRITE, sessflnm);
-    newfl.write(sessflstr);
+    sessfl.close();
 }
 
 bool WebSession::exists(ZString sessioncookie){
@@ -108,11 +98,6 @@ void WebSession::updateSessions(){
             if(ctime - LIFE_MSECS > ftime){
                 QFile bfile(flist[i].absoluteFilePath());
                 bfile.remove();
-                //if(bfile.remove()){
-                //    qDebug() << "Session Delete Good";
-                //}else{
-                //    qDebug() << "Session Delete Bad";
-                //}
             }
         }
     }
@@ -120,7 +105,11 @@ void WebSession::updateSessions(){
 
 void WebSession::readData(){
     ZFile sessfl(READ, ZString(SESSION_PATH) + sessid);
-    sessdat = sessfl.read().fromJSON();
+    AsArZ tmp = sessfl.read().fromJSON();
+    userdat.uid = tmp["userid"].tint();
+    userdat.name = tmp["username"];
+    userdat.perms = tmp["perms"].tint();
+    sessdat = tmp["data"].fromJSON();
 }
 
 AsArZ WebSession::data(){

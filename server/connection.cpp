@@ -16,7 +16,6 @@ void Connection::start(){
 void Connection::handle_read(const boost::system::error_code& e, std::size_t bytes_transferred){
     if(!e){
         boost::tribool result;
-        //std::cout << buffer_.data();
         request_.raw_request = buffer_.data();
         boost::tie(result, boost::tuples::ignore) = request_parser_.parse(request_, buffer_.data(), buffer_.data() + bytes_transferred);
 

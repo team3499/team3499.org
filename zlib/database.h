@@ -28,7 +28,6 @@ public:
     int sel_callback(int num_fields, char **p_fields, char **p_col_names);
     SqlRows result();
     string lastError();
-    void print();
 #ifdef USE_QT
     QString print_html();
 #endif

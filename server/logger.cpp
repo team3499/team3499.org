@@ -2,16 +2,43 @@
 #include "global.h"
 #include <QDateTime>
 
-Logger::Logger(){
-    logfile.open(WRITE, "logs/main.log");
+Logger::Logger(){}
+
+Logger::~Logger(){
+    flush();
+    logfile.close();
+}
+
+void Logger::flush(){
+    std::cout << buffer.str() << std::flush;
+    logfile.open("logs/main.log", ios::out | ios::app);
+    logfile << buffer.str();
+    logfile.flush();
 }
 
 Logger &Logger::operator<<(ZString text){
-    std::cout << text.str();
-    IF_LOG(logfile.write(text), "Logger", "Good Write", "Bad Write")
+    buffer << text;
     return *this;
 }
-
-Logger::~Logger(){
-    logfile.close();
+Logger &Logger::operator<<(QString text){
+    return operator<<(ZString(text));
+}
+Logger &Logger::operator<<(std::string text){
+    return operator<<(ZString(text));
+}
+Logger &Logger::operator<<(int text){
+    return operator<<(ZString(text));
+}
+Logger &Logger::operator<<(const char *text){
+    return operator<<(ZString(text));
+}
+Logger &Logger::operator<<(char *text){
+    return operator<<(ZString(text));
+}
+Logger &Logger::operator<<(boost::thread::id tid){
+    string text;
+    stringstream stream;
+    stream << tid;
+    stream >> text;
+    return operator<<(ZString(text));
 }

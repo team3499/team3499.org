@@ -12,19 +12,7 @@ ZFile::ZFile(ZString file){
 }
 ZFile::ZFile(int mode){
     opened = false;
-    if(mode == READ){
-        readable = true;
-        writeable = false;
-    } else if(mode == WRITE){
-        readable = false;
-        writeable = true;
-    } else if(mode == READWRITE){
-        readable = true;
-        writeable = true;
-    } else {
-        readable = false;
-        writeable = false;
-    }
+    setMode(mode);
 }
 ZFile::ZFile(int mode, ZString name){
     open(mode, name);
@@ -32,6 +20,11 @@ ZFile::ZFile(int mode, ZString name){
 
 bool ZFile::open(int mode, ZString name){
     opened = false;
+    setMode(mode);
+    return open(name);
+}
+
+void ZFile::setMode(int mode){
     if(mode == READ){
         readable = true;
         writeable = false;
@@ -45,7 +38,6 @@ bool ZFile::open(int mode, ZString name){
         readable = false;
         writeable = false;
     }
-    return open(name);
 }
 
 #ifdef ZFILE_USE_QT
@@ -111,20 +103,10 @@ bool ZFile::exists(ZString name){
 bool ZFile::open(ZString name){
     if(readable && !writeable){
         file.open(name.cc(), std::ios::in | std::ios::binary);
-        //in = new std::ifstream(name.cc(), std::ios::in | std::ios::binary);
-        //if(in)
-        //    return true;
     } else if(writeable && !readable){
         file.open(name.cc(), std::ios::out);
-        //out = new std::ofstream(name.cc());
-        //if(file)
-        //    return true;
     } else if(readable && writeable){
         file.open(name.cc(), std::ios::in | std::ios::binary | std::ios::out);
-        //in = new std::ifstream(name.cc());
-        //out = new std::ofstream(name.cc());
-        //if(in && out)
-        //    return true;
     }
     if(file)
         return true;
@@ -143,20 +125,6 @@ void ZFile::close(){
 ZFile::~ZFile(){
     close();
 }
-
-/* v1
-ZString ZFile::read(){
-    ZString cont;
-    if(readable){
-        if(in->is_open()){
-            std::string s;
-            while(getline(*in, s))
-                cont << s << "\n";
-        }
-    }
-    cont = cont.str().substr(0, cont.length() - 1);
-    return cont;
-}*/
 
 // v2
 ZString ZFile::read(){
@@ -183,10 +151,21 @@ ZString ZFile::readFile(ZString filename){
     return ZString();
 }
 
-bool ZFile::write(ZString cont){
+bool ZFile::append(ZString cont){
     if(writeable){
         if(file.is_open()){
             file.seekp(0, std::ios::end);
+            file << cont.cc();
+            file.flush();
+            return true;
+        }
+    }
+    return false;
+}
+
+bool ZFile::write(ZString cont){
+    if(writeable){
+        if(file.is_open()){
             file << cont.cc();
             file.flush();
             return true;

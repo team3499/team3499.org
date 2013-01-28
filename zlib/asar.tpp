@@ -88,30 +88,11 @@ CT bool AssocArray<T>::empty(){
     return false;
 }
 
-CT void AssocArray<T>::print(){
-    cout << "Size: " << size() << endl;
-    for(int i = 0; i < size(); ++i){
-        cout << i << " " << getIndex(i) << " = -" << at(i).str() << "-" << endl;
-    }
-}
-
 CT AssocArray<T>::Data::Data(string inx, int ninx, T val){
     index = inx;
     numindex = ninx;
     value = val;
 }
-
-/*template <class T> ZString AssocArray<T>::toString(){
-    ZString tmp("{");
-    for(int i = 0; i < size(); ++i){
-        ZString temp = operator[](i);
-        temp.replace("\"", "\\\"");
-        tmp << "\"" << getIndex(i) << "\":\"" << temp << "\", ";
-    }
-    tmp = tmp.str().substr(0, tmp.length() - 2);
-    tmp << "}";
-    return tmp;
-}*/
 
 //template class AssocArray<string>;
 //template class AssocArray<ZString>;

@@ -13,6 +13,9 @@
 // Hard Constants
 #define COOKIE_NAME "zsession"
 
+#define USERDB "db/users.db"
+#define SITEDATADB "db/site.db"
+
 #define SESSIONDB "db/session.db"
 #define SESSIONTABLE "Sessions"
 
@@ -22,8 +25,9 @@
 
 // Code Constants
 #define STAMP ZString(QDateTime::currentDateTime().toString("dd-MM-yy hh:mm:ss")).str() << " -" << boost::this_thread::get_id() << "- " <<
-#define IF_LOG(A, B, C, D) if(A){ cout << STAMP B ": " C << endl; } else { cout << STAMP B ": " D << endl; }
-#define LOG(A) cout << STAMP A << endl;
+//#define LOG(A) cout << STAMP A << endl;
+#define LOG(A) Logger() << STAMP A << "\n";
+#define IF_LOG(A, B, C, D) if(A){ LOG( B ": " C ) } else { LOG( B ": " D ) }
 
 // Contenet Macros
 #define HOME_TITLE(A) "<div id='titlebox'><div id='titlecontent'><p class='home-title'>" A "</p></div></div>"

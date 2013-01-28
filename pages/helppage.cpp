@@ -27,6 +27,15 @@ void HelpPage::page(Request &req, Reply &rep){
         } else if(req.comm[1] == HELP){
             cont.label("command_name", "Help");
             cont.label("command_help", HelpPage::help());
+        } else if(req.comm[1] == ME){
+            cont.label("command_name", "Me");
+            cont.label("command_help", MePage::help());
+        } else if(req.comm[1] == LOGIN){
+            cont.label("command_name", "Login");
+            cont.label("command_help", UserLogin::help());
+        } else if(req.comm[1] == LOGOUT){
+            cont.label("command_name", "Logout");
+            cont.label("command_help", UserLogout::help());
         } else if(req.comm[1] == RAYTRACE){
             cont.label("command_name", "RayTrace");
             cont.label("command_help", RayTracePage::help());
@@ -51,6 +60,12 @@ void HelpPage::page(Request &req, Reply &rep){
         cont.label("about_tooltip", AboutPage::tooltip());
         cont.label("raytrace_args", RayTracePage::args());
         cont.label("raytrace_tooltip", RayTracePage::tooltip());
+        cont.label("me_args", MePage::args());
+        cont.label("me_tooltip", MePage::tooltip());
+        cont.label("login_args", UserLogin::args());
+        cont.label("login_tooltip", UserLogin::tooltip());
+        cont.label("logout_args", UserLogout::args());
+        cont.label("logout_tooltip", UserLogout::tooltip());
     }
 
     cont.replace("\n", "");

@@ -33,7 +33,10 @@ HEADERS += \
     pages/pages.h \
     pages/devpages.h \
     pages/pagebase.h \
-    pages/raytracepage.h
+    pages/raytracepage.h \
+    zlib/sqlite3.h \
+    commands/user.h \
+    commands/userdata.h
 
 SOURCES += \
     main.cpp \
@@ -57,7 +60,9 @@ SOURCES += \
     pages/aboutpage.cpp \
     pages/helppage.cpp \
     pages/devpages.cpp \
-    pages/raytracepage.cpp
+    pages/raytracepage.cpp \
+    zlib/sqlite3.c \
+    commands/user.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -76,7 +81,12 @@ OTHER_FILES += \
     parts/pages/raytrace.html \
     parts/pages/helpcom.html \
     parts/pages/errors/missing.html \
-    parts/pages/errors/bad_request.html
+    parts/pages/errors/bad_request.html \
+    parts/commands/login-0.html \
+    parts/pages/me.html \
+    parts/commands/login-2.html \
+    parts/commands/login-1.html \
+    parts/commands/logout.html
 
 RESOURCES += \
     resource.qrc

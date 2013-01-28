@@ -9,6 +9,7 @@
     #include <QByteArray>
 #endif
 #include "asar.h"
+#include <cstdlib>
 
 class ZString;
 typedef AssocArray<ZString> AsArZ;
@@ -18,13 +19,16 @@ public:
     ZString();
 
     ZString &operator=(ZString);
+    bool operator==(ZString);
+    bool operator!=(ZString);
     ZString operator+(ZString);
     ZString &operator+=(ZString);
     ZString &operator<<(ZString);
 
     ZString(std::string);
     ZString &operator=(std::string);
-    inline bool operator==(const std::string);
+    bool operator==(const std::string);
+    bool operator!=(const std::string);
     ZString operator+(std::string);
     ZString &operator+=(std::string);
     ZString &operator<<(std::string);
@@ -50,7 +54,8 @@ public:
 
     ZString(char*);
     ZString &operator=(char*);
-    inline bool operator==(char*);
+    bool operator==(char*);
+    bool operator!=(char*);
     ZString operator+(char*);
     ZString &operator+=(char*);
     ZString &operator<<(char*);
@@ -59,6 +64,7 @@ public:
     ZString(const char*);
     ZString &operator=(const char*);
     bool operator==(const char*);
+    bool operator!=(const char*);
     ZString operator+(const char*);
     ZString &operator+=(const char*);
     ZString &operator<<(const char*);
@@ -74,6 +80,7 @@ public:
     ZString(qint64);
 #endif
     ZString(int);
+    int tint();
 
     int size();
     int length();
