@@ -79,6 +79,8 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         reply.body = ZString().toJSON(out);
     }
     reply.content = reply.body;
+    reply.headers["Content-Length"] = reply.content.length();
+    reply.headers["Cache-Control"] = "no-cache, no-store";
     if(reply.status == 0)
         reply.status = Reply::ok;
 }

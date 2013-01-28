@@ -144,17 +144,14 @@ void RequestHandler::staticFile(Request &req, Reply &rep){
         extension = request_path.substr(last_dot_pos + 1);
     }
 
-    // Open the file to send back.
     ZFile staticfl;
     if(!staticfl.open(doc_root_ + request_path)){
         rep = Reply::stock_reply(Reply::not_found);
         return;
     }
-
-    // Fill out the reply to be sent to the client.
     rep.status = Reply::ok;
     rep.content = staticfl.read();
-
-    rep.headers["Content-Length"] = boost::lexical_cast<std::string>(rep.content.size());
+    rep.headers["Content-Length"] = rep.content.length();
     rep.headers["Content-Type"] = MimeTypes::extension_to_type(extension);
+    rep.headers["Cache-Control"] = "max-age=3600, must-revalidate";
 }

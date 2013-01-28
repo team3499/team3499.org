@@ -32,7 +32,6 @@ class WebSession {
 private:
         unsigned long state[16];
         unsigned int index;
-        unsigned long WELLRNG512();
         string randomId(int length);
 };
 

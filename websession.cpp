@@ -6,20 +6,6 @@ WebSession::WebSession(){
     loggedin = false;
 }
 
-unsigned long WebSession::WELLRNG512(){
-    unsigned long a, b, c, d;
-    a = state[index];
-    c = state[(index+13)&15];
-    b = a^c^(a<<16)^(c<<15);
-    c = state[(index+9)&15];
-    c ^= (c>>11);
-    a = state[index] = b^c;
-    d = a^((a<<5)&0xDA442D20UL);
-    index = (index + 15)&15;
-    a = state[index];
-    state[index] = a^b^d^(a<<2)^(b<<18)^(c<<28);
-    return state[index];
-}
 string WebSession::randomId(int len){
     srand((unsigned)time(0));
     string s;
@@ -30,7 +16,6 @@ string WebSession::randomId(int len){
         "!?@#$%&*+-";
     for(int i = 0; i < len; ++i){
         s += alphanum[rand() % (sizeof(alphanum) -1)];
-        //s[i] = alphanum[WELLRNG512() % (sizeof(alphanum) - 1)];
     }
     return s;
 }
