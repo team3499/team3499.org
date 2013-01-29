@@ -5,11 +5,8 @@ namespace DevPages {
 DumpPage::DumpPage(){}
 
 void DumpPage::page(Request &req, Reply &rep){
-    AsArZ values;
     values["pagetitle"] = "ZS - Derp";
     values["path"] = "derp";
-    values["style"] = "";
-    values["script"] = "";
     ZFile derpfl("parts/pages/dump.html");
     ZString cont = derpfl.read();
     derpfl.close();
@@ -52,12 +49,8 @@ void DumpPage::page(Request &req, Reply &rep){
     cont.label("content", rep.content);
 
     cont.replace("\\", "\\\\");
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Dump Here";
-    values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
 ZString DumpPage::args(){
@@ -73,20 +66,13 @@ ZString DumpPage::help(){
 DerpPage::DerpPage(){}
 
 void DerpPage::page(Request &req, Reply &rep){
-    AsArZ values;
     values["pagetitle"] = "ZS - Derp";
     values["path"] = "derp";
-    values["style"] = "";
-    values["script"] = "";
     ZFile derpfl("parts/pages/derp.html");
     ZString cont = derpfl.read();
     derpfl.close();
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Derp Here";
-    values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
 ZString DerpPage::args(){

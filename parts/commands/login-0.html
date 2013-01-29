@@ -1,13 +1,11 @@
-<div id="menubox"><table id="menubar">
-    <tr><td id="menu-left" onclick="sendCommand('home');">Zennix Studios</td><td id="menu-center" onclick="sendCommand('projects');">Studio</td><td id="menu-right" onclick="sendCommand('gaming');">Gaming Clan</td></tr>
-</table></div>
+<?MAIN_HEADER?>
 
 <div id="titlebox">
     <p class="home-title">Login</p>
 </div>
 
-<div id="contentbox"><div id="content"><div class="default-wrapper">
-    <p class="content-body">Username: <input type="text" id="username"/></p>
-    <p class="content-body">Password: <input type="text" id="password"/></p>
+<div id="contentbox"><div id="content"><div class="default-wrapper"><table>
+    <tr><td><p class="content-body">Username:</p></td><td><input type="text" id="username"/></td></tr>
+    <tr><td><p class="content-body">Password:</p></td><td><input type="password" id="password"/></td></tr>
     <button type="button" onclick="sendCommand('login ' + $('#username').val() + ' ' + $('#password').val());">Login</button>
 </div></div></div>

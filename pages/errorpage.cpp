@@ -16,10 +16,7 @@ void ErrorPage::page(int mode, Request &req, Reply &rep){
     }
 }
 void ErrorPage::missing(Request &req, Reply &rep){
-    AsArZ values;
     values["pagetitle"] = "ZS - Missing";
-    values["style"] = "";
-    values["script"] = "";
     ZFile errorfl("parts/pages/errors/missing.html");
     ZString cont = errorfl.read();
     ZString path;
@@ -32,29 +29,18 @@ void ErrorPage::missing(Request &req, Reply &rep){
     }
     //cont.substr(0, cont.size() - 1, true);
     cont.label("path", path);
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Not Here";
-    values["prompttxt"] = "Awaiting Command...";
-    //rep.status = Reply::not_found;
+    rep.status = Reply::not_found;
     finalDoc(req, rep, values);
 }
 void ErrorPage::bad_request(Request &req, Reply &rep){
-    AsArZ values;
     values["pagetitle"] = "ZS - Missing";
-    values["style"] = "";
-    values["script"] = "";
     ZFile errorfl("parts/pages/errors/bad_request.html");
     ZString cont = errorfl.read();
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Not Here";
-    values["prompttxt"] = "Awaiting Command...";
-    //rep.status = Reply::bad_request;
+    rep.status = Reply::bad_request;
     finalDoc(req, rep, values);
 }
 

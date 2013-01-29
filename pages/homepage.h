@@ -3,13 +3,13 @@
 
 #include "pagebase.h"
 
-class HomePage {
+class HomePage : public PageBase {
 public:
     HomePage();
-    static void page(Request &request, Reply &reply);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
+    void page(Request &request, Reply &reply);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
 
 #endif // HOMEPAGE_H

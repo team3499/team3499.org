@@ -94,7 +94,7 @@ function loadContent(value){
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState == 4 /*&& xmlhttp.status == 200*/){
             cleanload = 0;
-            /*DEBUG*/console.log("  ::PLAIN::  " + xmlhttp.responseText);
+            //*DEBUG*/console.log("  ::PLAIN::  " + xmlhttp.responseText);
             response = JSON.parse(xmlhttp.responseText);
             /*if(history.pushState && history.replaceState) {
                 push current id, title and url

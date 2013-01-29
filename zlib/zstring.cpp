@@ -394,6 +394,22 @@ ZString ZString::invert(bool modify){
     }
 }
 
+ZString ZString::toLower(bool modify){
+    std::string tmp = data;
+    for(unsigned i = 0; i < data.size(); ++i){
+        // Custom tolower()
+        //if((int)tmp[i] >= 65 && (int)tmp[i] <= 90)
+        //    tmp[i] = (char)((int)tmp[i] + 32);
+        tmp[i] = tolower(tmp[i]);
+    }
+    if(modify){
+        data = tmp;
+        return ZString(data);
+    } else {
+        return ZString(tmp);
+    }
+}
+
 ZString ZString::toJSON(AsArZ arr){
     ZString tmp("{");
     for(int i = 0; i < arr.size(); ++i){

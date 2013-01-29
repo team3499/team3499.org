@@ -22,7 +22,7 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     else
         req.ispost = false;
     if(!urlDecode(req.uri, req.rawpath)){
-        ErrorPage::page(BAD_REQUEST, req, rep);
+        ErrorPage().page(BAD_REQUEST, req, rep);
         return;
     }
     req.path = ZString(req.rawpath).explode('/').shift();
@@ -46,32 +46,74 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     }
     LOG("RequestHandler: CleanPath:" << tmplog)
 
-    if(req.comm[0] == "" || req.comm[0] == HOME){
-        HomePage::page(req, rep);
-    } else if(req.comm[0] == DERP){
-        DevPages::DerpPage::page(req, rep);
-    } else if(req.comm[0] == DUMP && req.sess.userdat.perms > 2){
-        DevPages::DumpPage::page(req, rep);
-    } else if(req.comm[0] == ABOUT){
-        AboutPage::page(req, rep);
-    } else if(req.comm[0] == HELP){
-        HelpPage::page(req, rep);
-    } else if(req.comm[0] == RAYTRACE){
-        RayTracePage::page(req, rep);
-    } else if(req.comm[0] == LOGIN){
-        UserLogin::page(req, rep);
-    } else if(req.comm[0] == LOGOUT){
-        UserLogout::page(req, rep);
-    } else if(req.comm[0] == ME){
-        MePage::page(req, rep);
-    } else if(req.comm[0] == "core" || req.comm[0] == "favicon.ico"){
-        staticFile(req, rep);
-    } else {
-        ErrorPage().page(MISSING, req, rep);
-    }
+    commandSwitch(req, rep);
+
     req.sess.update();
     LOG("== Request Handling Finished ==")
     return;
+}
+
+void RequestHandler::commandSwitch(Request &req, Reply &rep){
+    ZString com = req.comm[0].toLower(false);
+    int perms = req.sess.userdat.perms;
+    bool matched = true;
+
+    switch(com.length()){
+    case 0:
+        HomePage().page(req, rep);
+        break;
+    case 2:
+        if(com == ME)
+            MePage().page(req, rep);
+        else
+            matched = false;
+        break;
+    case 4:
+        if(com == HOME)
+            HomePage().page(req, rep);
+        else if(com == DERP)
+            DevPages::DerpPage().page(req, rep);
+        else if(com == HELP)
+            HelpPage().page(req, rep);
+        else if(com == DUMP && perms >= 2)
+            DevPages::DumpPage().page(req, rep);
+        else if(com == "core")
+            staticFile(req, rep);
+        else
+            matched = false;
+        break;
+    case 5:
+        if(com == ABOUT)
+            AboutPage().page(req, rep);
+        else if(com == LOGIN)
+            User::Login().page(req, rep);
+        else
+            matched = false;
+        break;
+    case 6:
+        if(com == LOGOUT)
+            User::Logout().page(req, rep);
+        else
+            matched = false;
+        break;
+    case 8:
+        if(com == RAYTRACE && perms >= 2)
+            RayTracePage().page(req, rep);
+        else
+            matched = false;
+        break;
+    case 11:
+        if(com == "favicon.ico")
+            staticFile(req, rep);
+        else
+            matched = false;
+        break;
+    default:
+        matched = false;
+        break;
+    }
+    if(!matched)
+        ErrorPage().page(MISSING, req, rep);
 }
 
 ZString RequestHandler::getReqBody(Request req){

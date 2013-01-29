@@ -4,13 +4,13 @@
 #include "pagebase.h"
 #include "pages.h"
 
-class HelpPage {
+class HelpPage : public PageBase {
 public:
     HelpPage();
-    static void page(Request &request, Reply &reply);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
+    void page(Request &request, Reply &reply);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
 
 #endif // HELPPAGE_H

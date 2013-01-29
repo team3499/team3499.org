@@ -62,7 +62,8 @@ SOURCES += \
     pages/devpages.cpp \
     pages/raytracepage.cpp \
     zlib/sqlite3.c \
-    commands/user.cpp
+    commands/user.cpp \
+    pages/pagebase.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -71,7 +72,6 @@ OTHER_FILES += \
     parts/main.css \
     parts/jquery.js \
     parts/functions.js \
-    parts/test.txt \
     parts/main.html \
     parts/pages/home.html \
     parts/pages/about.html \
@@ -86,7 +86,8 @@ OTHER_FILES += \
     parts/pages/me.html \
     parts/commands/login-2.html \
     parts/commands/login-1.html \
-    parts/commands/logout.html
+    parts/commands/logout.html \
+    parts/common/header.html
 
 RESOURCES += \
     resource.qrc

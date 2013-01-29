@@ -23,6 +23,8 @@ private:
   /// The directory containing the files to be served.
   std::string doc_root_;
 
+  void commandSwitch(Request &req, Reply &rep);
+
   ZString getReqBody(Request);
   AsArZ getPost(Request);
 

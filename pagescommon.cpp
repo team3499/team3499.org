@@ -1,6 +1,24 @@
 #include "pagescommon.h"
 #include "request.hpp"
 
+AsArZ parseCookie(ZString value){
+    /*string val = value.str();
+    for(unsigned i = 0; i < val.size(); ++i){
+        switch(val[i]){
+            case '=':
+                val = val.susbtr(i);
+            break;
+        }
+    }*/
+    AsArZ tmp = value.explode(';');
+    AsArZ cookies;
+    for(unsigned i = 0; i < tmp.size(); ++i){
+        AsArZ subtmp = tmp[i].explode('=');
+        cookies[subtmp[0].strip(' ').str()] = subtmp[1].strip(' ');
+    }
+    return cookies;
+}
+
 void getSession(Request &request, Reply &reply){
     ZString sessioncookie;
     for(unsigned i = 0; i < request.headers.size(); ++i){
@@ -29,6 +47,23 @@ void getSession(Request &request, Reply &reply){
         request.sess.loggedin = false;
     }
     LOG("SessionParser: Session: " << request.sess.sessid.str())
+}
+
+ZString parseMacros(ZString cont, Request req, Reply rep){
+    cont.label("MAIN_HEADER", ZFile("parts/common/header.html").read());
+    cont.label("USERNAME", req.sess.userdat.name);
+    if(req.sess.userdat.uid > 0){
+        cont.label("UCOMM", "logout");
+    cont.label("UCOMM_TOOLTIP", "Log Out");
+    } else {
+        cont.label("UCOMM", "login");
+        cont.label("UCOMM_TOOLTIP", "Log In");
+    }
+    cont.replace("    ", "");
+    cont.replace("\n", "");
+    cont.replace("\r", "");
+    return cont;
+
 }
 
 void finalDoc(Request &request, Reply &reply, AsArZ values){
@@ -62,6 +97,7 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         mainjsfl.close();
         reply.body.label("mainjs", alljs);
 
+        values["contout"] = parseMacros(values["contout"], request, reply);
         reply.body.label(values);
     } else {
         reply.headers["Content-Type"] = "application/json";
@@ -72,7 +108,7 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
             }
         }
         out["pagetitle"] = values["pagetitle"];
-        out["content"] = values["contout"];
+        out["content"] = parseMacros(values["contout"], request, reply);
         out["script"] = values["script"];
         out["style"] = values["style"];
         out["shell"] = values["shell"];
@@ -83,22 +119,4 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
     reply.headers["Cache-Control"] = "no-cache, no-store";
     if(reply.status == 0)
         reply.status = Reply::ok;
-}
-
-AsArZ parseCookie(ZString value){
-    /*string val = value.str();
-    for(unsigned i = 0; i < val.size(); ++i){
-        switch(val[i]){
-            case '=':
-                val = val.susbtr(i);
-            break;
-        }
-    }*/
-    AsArZ tmp = value.explode(';');
-    AsArZ cookies;
-    for(unsigned i = 0; i < tmp.size(); ++i){
-        AsArZ subtmp = tmp[i].explode('=');
-        cookies[subtmp[0].strip(' ').str()] = subtmp[1].strip(' ');
-    }
-    return cookies;
 }

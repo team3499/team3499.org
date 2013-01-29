@@ -3,10 +3,7 @@
 RayTracePage::RayTracePage(){}
 
 void RayTracePage::page(Request &req, Reply &rep){
-    AsArZ values;
     values["pagetitle"] = "ZS - Ray Tracer";
-    values["style"] = "";
-    values["script"] = "";
     ZString cont;
     if(req.comm[1] == "render"){
         //ZString time = QDateTime::currentDateTime().currentMSecsSinceEpoch();
@@ -23,12 +20,8 @@ void RayTracePage::page(Request &req, Reply &rep){
         cont = fl.read();
         fl.close();
     }
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Shell Here";
-    values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
 ZString RayTracePage::args(){

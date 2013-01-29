@@ -1,13 +1,12 @@
 #include "user.h"
 #include "database.h"
 
-User::User(){}
+namespace User {
 
-void UserLogin::page(Request &req, Reply &rep){
-    AsArZ values;
+Login::Login(){}
+
+void Login::page(Request &req, Reply &rep){
     values["pagetitle"] = "ZS - Login";
-    values["style"] = "";
-    values["script"] = "";
     ZString cont;
     if(req.comm[1] != ""){
         if(req.comm[2] != ""){
@@ -40,29 +39,24 @@ void UserLogin::page(Request &req, Reply &rep){
         cont = fl.read();
         fl.close();
     }
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Login";
-    values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
-ZString UserLogin::args(){
+ZString Login::args(){
     return "none";
 }
-ZString UserLogin::tooltip(){
+ZString Login::tooltip(){
     return "Logs a user in";
 }
-ZString UserLogin::help(){
+ZString Login::help(){
     return "This command links the current session to a user, and loads user-specific settings to the session, if applicable.";
 }
 
-void UserLogout::page(Request &req, Reply &rep){
-    AsArZ values;
+Logout::Logout(){}
+
+void Logout::page(Request &req, Reply &rep){
     values["pagetitle"] = "ZS - Logout";
-    values["style"] = "";
-    values["script"] = "";
     req.sess.reset();
     ZString cont;
     ZFile fl("parts/commands/logout.html");
@@ -72,29 +66,26 @@ void UserLogout::page(Request &req, Reply &rep){
         cont.label("response", "Logged Out");
     else
         cont.label("response", "You weren't Logged In to begin with, but Okay.");
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Login";
-    values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
-ZString UserLogout::args(){
+ZString Logout::args(){
     return "none";
 }
-ZString UserLogout::tooltip(){
+ZString Logout::tooltip(){
     return "Logs the current user out";
 }
-ZString UserLogout::help(){
+ZString Logout::help(){
     return "This command removes all references to the current user from the current session, and wipes the session.";
 }
 
+} // namespace User
+
+MePage::MePage(){}
+
 void MePage::page(Request &req, Reply &rep){
-    AsArZ values;
     values["pagetitle"] = "ZS - Me";
-    values["style"] = "";
-    values["script"] = "";
     ZString cont;
     ZFile fl("parts/pages/me.html");
     cont = fl.read();
@@ -102,12 +93,8 @@ void MePage::page(Request &req, Reply &rep){
     cont.label("uid", req.sess.userdat.uid);
     cont.label("uname", req.sess.userdat.name);
     cont.label("perms", req.sess.userdat.perms);
-    cont.replace("\n", "");
-    cont.replace("\r", "");
-    cont.replace("    ", "");
     values["contout"] = cont;
     values["shellout"]= "Login";
-    values["prompttxt"] = "Awaiting Command...";
     finalDoc(req, rep, values);
 }
 ZString MePage::args(){

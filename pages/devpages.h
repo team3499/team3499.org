@@ -5,22 +5,22 @@
 
 namespace DevPages {
 
-class DumpPage {
+class DumpPage : public PageBase {
 public:
     DumpPage();
-    static void page(Request &request, Reply &reply);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
+    void page(Request &request, Reply &reply);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
 
-class DerpPage {
+class DerpPage : public PageBase {
 public:
     DerpPage();
-    static void page(Request &request, Reply &reply);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
+    void page(Request &request, Reply &reply);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
 
 }

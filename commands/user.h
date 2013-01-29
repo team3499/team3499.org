@@ -4,35 +4,34 @@
 #include "pagebase.h"
 #include "database.h"
 
-class User {
+namespace User {
+
+class Login : public PageBase {
 public:
-    User();
+    Login();
+    void page(Request &req, Reply &rep);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
 
-class UserLogin {
+class Logout : public PageBase {
 public:
-    UserLogin();
-    static void page(Request &req, Reply &rep);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
+    Logout();
+    void page(Request &req, Reply &rep);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
-class UserLogout {
-public:
-    UserLogout();
-    static void page(Request &req, Reply &rep);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
-};
+}
 
-class MePage {
+class MePage : public PageBase {
 public:
     MePage();
-    static void page(Request &req, Reply &rep);
-    static ZString args();
-    static ZString tooltip();
-    static ZString help();
+    void page(Request &req, Reply &rep);
+    ZString args();
+    ZString tooltip();
+    ZString help();
 };
 
 #endif // USER_H

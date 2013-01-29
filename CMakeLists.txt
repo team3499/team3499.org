@@ -77,6 +77,7 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     pages/errorpage.cpp
     pages/helppage.cpp
     pages/homepage.cpp
+    pages/pagebase.cpp
     pages/raytracepage.cpp
 # Zennix Libs
     #zlib/asar.tpp

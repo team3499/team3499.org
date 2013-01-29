@@ -93,6 +93,7 @@ public:
     ZString substr(int, bool modify = true);
     ZString substr(int, int, bool modify = true);
     ZString invert(bool modify = true);
+    ZString toLower(bool modify = true);
 
     AsArZ explode(char delim);
     AsArZ strict_explode(char delim);
