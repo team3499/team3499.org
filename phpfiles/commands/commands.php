@@ -258,5 +258,11 @@
             $out['style'] = nows_file("gallery/gyearstyle.css");
             return $out;
         }
+        protected function task() {
+            $out['content'] = parse_phpHtml_file("task/task.php");
+            //$out['script'] = nows_file("task/task.js");
+            $out['style'] = nows_file("task/task.css");
+            return $out;
+        }
     }
 ?>

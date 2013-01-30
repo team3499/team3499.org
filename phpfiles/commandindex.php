@@ -51,6 +51,11 @@
                 "User-properties!", 
                 "Opens a page for user properties", 
                 0],
+            "task" => [["task"], "task", "commands.php",
+                "",
+                "Callender and Schedule",
+                "",
+                0],
         ],
         5 => [
             "login" => [["login"], "login", "user-commands.php", 

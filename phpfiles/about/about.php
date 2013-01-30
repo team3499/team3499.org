@@ -51,7 +51,7 @@
             
             <p class="indent">
             <strong>Ethan S.</strong> <i>Junior</i><br/>
-            I do stuff.
+            I do coding.
             </p><br/>
             
             <p class="indent">

@@ -218,7 +218,7 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
         </div>
         
         <div class="postCata">
-            <a href="#">Programming</a>
+            <a href="">Programming</a>
         </div>
         <!--
         <script>
@@ -237,9 +237,9 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
         });
         </script>
         -->
-        <div class="postCommentButton">
+       <!-- <div class="postCommentButton">
 	  <a href="#" id="commentsShow" title="Click to show/hide comments">0 Comments</a> <?php //changes whith '1 Comment' and 2 Comments ?>
-        </div>
+        </div>-->
     </div>
 </div>
   <!-- common post end -->
@@ -352,7 +352,7 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
         </div>
         
         <div class="postCata">
-            <a href="#">Programming</a>
+            <a href="">Programming</a>
         </div>
         <!--
         <script>
@@ -371,9 +371,9 @@ You are now ready to set up individual projects in WorkBench — we’ll do this
         });
         </script>
         -->
-        <div class="postCommentButton">
+       <!-- <div class="postCommentButton">
 	  <a href="#" id="commentsShow" title="Click to show/hide comments">0 Comments</a> <?php //changes whith '1 Comment' and 2 Comments ?>
-        </div>
+        </div>-->
     </div>
 </div>
   <!-- common post end -->

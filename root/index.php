@@ -132,8 +132,8 @@
             <span class="link tab-links" command="home">Home</span>
             <span class="link tab-links" command="about">About</span>
             <span class="link tab-links" command="gallery">Gallery</span>
-            <span class="link tab-links" command="task-schedule">Task Schedule</span> <!-- calender! -->
-            <span class="link tab-links">FIRST</span>
+            <span class="link tab-links" command="task">Task Schedule</span> <!-- calender! -->
+            <a href="http://www.usfirst.org/roboticsprograms/frc" target="_blank"><span class="tab-links">FIRST</span></a>
             <span class="tab-links linkDonate">Donate</span>
             <div class="head">
                 <div class="headTitle"><p><strong>River's Edge Robotics </strong><p></div>
@@ -153,7 +153,7 @@
 <!-- end stuff here -->
 </div>
 <div class="footer">
-Copyright &copy; 2012,<a href="/">Team3499.org</a>
+Copyright &copy; 2013,<a href="/">Team3499.org</a>
 </div>
 </body>
 </html>

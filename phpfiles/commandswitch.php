@@ -50,7 +50,7 @@
     
     const VERSION = "v0.1";
     const SITE = "Team 3499";
-    const AUTHOR = "Chaos";
+    const AUTHOR = "Chaos, Theyy, DerpyDragon";
     const UPDATE = "Never";
     include("commandindex.php");
     

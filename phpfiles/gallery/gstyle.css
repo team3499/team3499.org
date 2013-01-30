@@ -25,7 +25,7 @@ div.galleryFeature:hover, div.galleryLink:hover {
 	border: 1px solid rgba(81, 203, 238, 1);
 }
 div.galleryLink {
-  width:29.5%;
+  width:29.7%; /* the wider your screen, the more screwed up it gets, ex: 29.2% for below smallest (smallest is 29.3%, 1080p is 29.7%)*/
   float:left;
   margin:0 10px 10px 0; /* t r b l */
 }
