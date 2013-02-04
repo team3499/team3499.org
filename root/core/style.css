@@ -6,8 +6,13 @@
 //top right bottom left
 ?>
 
+@font-face{
+  font-family:Ethnocen;
+  src:url('/core/Ethnocen.ttf');
+}
+
 * {
-	margin: 0;
+	margin: 0;**
 }
 html {
   overflow-y:scroll;
@@ -119,28 +124,40 @@ div.linksbox{
 /* 	margin:0px; */
 }
 span.tab-links {
-	box-shadow:0px -3px 3px rgba(0,0,0,0.2);
-	padding:5px 4px;
-	border-radius:8px 8px 0 0;
+	
+	/*padding:5px 4px;
+	/*border-radius:8px 8px 0 0;
+  box-shadow:0 -2px 3px rgba(0,0,0,0.4);
 	background: #eaeaea;
 	background: -moz-linear-gradient(top,  #eaeaea 0%, #ffffff 50%, #e5e5e5 97%, #b7b7b7 100%);
 	background: -webkit-linear-gradient(top,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
 	background: -o-linear-gradient(top,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
 	background: -ms-linear-gradient(top, #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
-	background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
+	background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);*/
 	color:#006CFF;
 	margin:0 -5px 0 0;
-    
+    border-style: solid; 
+    border-width: 5.5px; 
+    -moz-border-image: url(/core/img/border-3.png) 25 stretch; 
+    -webkit-border-image: url(border-3.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-3.png) 25 stretch; 
+    border-image: url(/core/img/border-3.png) fill 25 stretch;
 }
-span.tab-links:hover{
+span.tab-links:hover, span.linkDonate:hover{
     color:#00DCFE;
     cursor:pointer;
-    background: #eaeaea;
+    /*background: #eaeaea;
   background: -moz-linear-gradient(top,  #eaeaea 0%, #ffffff 50%);
   background: -webkit-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
   background: -o-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
   background: -ms-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
-  background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%);
+  background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%);*/
+    border-style: solid; 
+    border-width: 5.5px; 
+    -moz-border-image: url(/core/img/border-4.png) 25 stretch; 
+    -webkit-border-image: url(border-4.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-4.png) 25 stretch; 
+    border-image: url(/core/img/border-4.png) fill 25 stretch;
 }
 span.linkDonate {
 	float:right;
@@ -154,31 +171,38 @@ span.linkDonate {
 	background: -ms-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
 	background: linear-gradient(to bottom, #c9c9c9 0%,#ffffff 100%);
 }*/
-span.linkDonate:hover{
+/*span.linkDonate:hover{
   background: #9bd7ff;
   background: -moz-linear-gradient(top,  #9bd7ff 0%, #ffffff 50%);
   background: -webkit-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
   background: -o-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
   background: -ms-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
   background: linear-gradient(to bottom,  #9bd7ff 0%,#ffffff 50%);
-}
+}*/
 div.head {
-	width:100%;
-	padding:0.1px; /*stupid thing requires any positive padding value...?*/
-	background: #ffffff;
+	/*width:100%;
+	/*padding:0.1px; /*stupid thing requires any positive padding value...?*/
+	/*box-shadow:0px 0px 5px rgba(0,0,0,0.4);
+  background: #FFFFFF;
 	background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%);
 	background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%);
 	background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%);
 	background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%);
 	background: linear-gradient(to bottom, #ffffff 0%,#ededed 100%);
-	border-radius:0 0 4px 4px;
+	border-radius:0 0 4px 4px;*/
 	margin:5px 0 10px 0;
-	box-shadow:0px 0px 3px rgba(0,0,0,0.2);
 	height:80px; <?php //use to change the height of the header ?>
+    border-style: solid; /*Wanted to make it look futury (no rounded corners)*/
+    border-width: 10px; 
+    -moz-border-image: url(/core/img/border-2.png) 25 stretch; 
+    -webkit-border-image: url(border-2.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-2.png) 25 stretch; 
+    border-image: url(/core/img/border-2.png) fill 25 stretch;
 }
 div.headTitle {
 	margin:20px;
-	font-size: 40px;
+	font-size: 25px;
+  font-family:'Ethnocen', sans-serif;
 	padding:10px;
 	color:#006CFF;
 	text-shadow:0px 1px 10px rgba(0,0,0,0.4);
@@ -254,28 +278,40 @@ img.head-icons{
 }
 
 div.post , div.sub-box{
-    border-radius:0 0 4px 4px;
-    box-shadow:0px 0px 3px rgba(0,0,0,0.4);
     margin:0 auto;
-    background: -moz-linear-gradient(top,  rgba(237,237,237,0.9) 0%, rgba(211,211,211,0.9) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,237,237,0.9)), color-stop(100%,rgba(211,211,211,0.9)));
-background: -webkit-linear-gradient(top,  rgba(237,237,237,0.9) 0%,rgba(211,211,211,0.9) 100%);
-background: -o-linear-gradient(top,  rgba(237,237,237,0.9) 0%,rgba(211,211,211,0.9) 100%);
-background: -ms-linear-gradient(top,  rgba(237,237,237,0.9) 0%,rgba(211,211,211,0.9) 100%);
-background: linear-gradient(to bottom,  rgba(237,237,237,0.9) 0%,rgba(211,211,211,0.9) 100%);
+    /*border-radius:0 0 4px 4px;
+    box-shadow:0px 0px 5px #00FFFF;
+    background: -moz-linear-gradient(top,  rgba(237,237,237,1) 0%, rgba(211,211,211,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,237,237,1)), color-stop(100%,rgba(211,211,211,1)));
+background: -webkit-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);
+background: -o-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);
+background: -ms-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);
+background: linear-gradient(to bottom,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);*/
     margin-bottom:30px;
+    border-style: solid; /*Wanted to make it look futury (no rounded corners)*/
+    border-width: 10px; 
+    -moz-border-image: url(/core/img/border-0.png) 25 stretch; 
+    -webkit-border-image: url(/core/img/border-0.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-0.png) 25 stretch; 
+    border-image: url(/core/img/border-0.png) fill 25 stretch;
 }
 div.postTitle, div.sub-box-title {
     text-align:center;
+    /*padding:5px;
     text-shadow:0px 1px 0px rgba(255,255,255,0.5);
-    padding:5px;
     border-bottom:1px solid #50565B;
     background: #cfd2d7;
     background: -moz-linear-gradient(top,  #cfd2d7 0%, #848d96 100%);
     background: -webkit-linear-gradient(top,  #cfd2d7 0%,#848d96 100%);
     background: -o-linear-gradient(top,  #cfd2d7 0%,#848d96 100%);
     background: -ms-linear-gradient(top, #cfd2d7 0%,#848d96 100%);
-    background: linear-gradient(to bottom,  #cfd2d7 0%,#848d96 100%);
+    background: linear-gradient(to bottom,  #cfd2d7 0%,#848d96 100%);*/
+    border-style: solid; /*Wanted to make it look futury (no rounded corners)*/
+    border-width: 9px; 
+    -moz-border-image: url(/core/img/border-1.png) 25 stretch; 
+    -webkit-border-image: url(border-1.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-1.png) 25 stretch; 
+    border-image: url(/core/img/border-1.png) fill 25 stretch;
 }
 span.postTitle, span.sub-box-title  {
     font-size:18px;
@@ -299,7 +335,7 @@ div.postUser {
 }
 span.post-user {
   float:left;
-  background:rgba(255,255,255,.1);
+  background:rgba(0,0,0,.1);
   padding:0 5px 0 5px;
   border-radius:4px;
 }
@@ -403,7 +439,7 @@ a:link, a:visited {
   text-decoration:none;
 }
 a:hover, a:active {
-	color:#728AE7;
+	color:#18BCBC;
   text-decoration:none;
 }
 img.sitelogo {
@@ -476,7 +512,7 @@ div.header {
   top:0px;
   min-width:1000px;
   padding:5px 10px 3px 10px;
-  background: #444444;
+  background: #FFFFFF;
   background: -moz-linear-gradient(top,  #444444 0%, #515151 100%);
   background: -webkit-linear-gradient(top,  #444444 0%,#515151 100%);
   background: -o-linear-gradient(top,  #444444 0%,#515151 100%);
@@ -537,12 +573,19 @@ div.float-left{
 }
 
 div.user, div.link-box{
-  background-color:rgba(0,0,0,0.8);
-  padding:5px;
+  /*background-color:rgba(0,0,0,0.8);
+  background-image:url('/core/img/slash.png');
+  padding:5px;*/
 /*   margin:0px; */
   border-radius:0 0 4px 4px;
   width:94%;
-  background-image:url('/core/img/slash.png');
+  
+  border-style: solid; 
+    border-width: 5.5px; 
+    -moz-border-image: url(/core/img/border-5.png) 25 stretch; 
+    -webkit-border-image: url(border-5.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-5.png) 25 stretch; 
+    border-image: url(/core/img/border-5.png) fill 25 stretch;
 }
 
 div#user-info-box {
@@ -570,7 +613,6 @@ span#resources-title-span, span#categories-title-span, span#important-dates-titl
 
     cursor:pointer;
 }
-
 span#user-edit {
   float:right;
   margin-right:15px;
