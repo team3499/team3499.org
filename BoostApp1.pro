@@ -63,7 +63,9 @@ SOURCES += \
     pages/raytracepage.cpp \
     zlib/sqlite3.c \
     commands/user.cpp \
-    pages/pagebase.cpp
+    pages/pagebase.cpp \
+    staticfile.cpp \
+    request_switch.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
@@ -89,5 +91,4 @@ OTHER_FILES += \
     parts/commands/logout.html \
     parts/common/header.html
 
-RESOURCES += \
-    resource.qrc
+RESOURCES +=

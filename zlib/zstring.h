@@ -99,8 +99,11 @@ public:
     AsArZ strict_explode(char delim);
     AsArZ explode();
 
-    ZString toJSON(AsArZ);
+    ZString toJSON(AsArZ, bool modify = true);
+    bool validJSON();
     AsArZ fromJSON();
+
+    friend ostream &operator<<(ostream& lhs, ZString rhs);
 private:
     std::string data;
 };

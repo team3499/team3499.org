@@ -29,6 +29,7 @@ class WebSession {
         ZString sessid;
         UserData userdat;
         AsArZ sessdat;
+        bool newsession;
 private:
         unsigned long state[16];
         unsigned int index;

@@ -87,14 +87,14 @@ function sendCommand(value){
     return false;
 }
 function loadContent(value){
-    /*DEBUG*/console.log("  ::COMMAND::  \"" + value +'"');
+    //*DEBUG*/console.log("  ::COMMAND::  \"" + value +'"');
     var xmlhttp = new XMLHttpRequest();
     /*historyid++;
     history[historyid] = value;*/
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState == 4 /*&& xmlhttp.status == 200*/){
             cleanload = 0;
-            //*DEBUG*/console.log("  ::PLAIN::  " + xmlhttp.responseText);
+            /*DEBUG*/console.log("  ::PLAIN::  " + xmlhttp.responseText);
             response = JSON.parse(xmlhttp.responseText);
             /*if(history.pushState && history.replaceState) {
                 push current id, title and url
@@ -105,7 +105,7 @@ function loadContent(value){
             $('#contstyle').html(response.style);
             $('#pagecontent').html(response.content);
             $('#contscript').html(response.script);
-            $('#shellcont').append(response.shell);
+            $('#shellcont').append("<br/>"+response.shell);
             if(settings['shell-background-color'] != "#000"){
                 $('#shellin, #shellout').css("background-color", settings['shell-background-color']);
                 $('#shellout').css("box-shadow", "0 0 15px "+settings['shell-background-color']);
@@ -114,11 +114,13 @@ function loadContent(value){
             $('#pagecontent').fadeIn(500);
         }
     };
-    var c = "a="+value;
+    var c = '{"a":"'+value+'"';
     if(cleanload){
-        c += "&ps="+cleanload;
-        /*DEBUG*/console.log("  ::PS::  " + cleanload);
+        c += ',"ps":"'+cleanload+'"';
+        //*DEBUG*/console.log("  ::PS::  " + cleanload);
     }
+    c += "}";
+    console.log('  ::POST::  "'+c+'"');
     xmlhttp.open("POST", "/", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader("Content-Length", c.length);

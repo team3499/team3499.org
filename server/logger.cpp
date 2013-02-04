@@ -10,9 +10,9 @@ Logger::~Logger(){
 }
 
 void Logger::flush(){
-    std::cout << buffer.str() << std::flush;
+    std::cout << buffer << std::flush;
     logfile.open("logs/main.log", ios::out | ios::app);
-    logfile << buffer.str();
+    logfile << buffer;
     logfile.flush();
 }
 

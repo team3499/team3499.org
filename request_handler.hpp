@@ -4,16 +4,12 @@
 #include <string>
 #include <boost/noncopyable.hpp>
 #include <boost/thread.hpp>
-#include "homepage.h"
 #include "zstring.h"
+#include "reply.hpp"
+#include "request.hpp"
 
-struct Reply;
-struct Request;
-
-/// The common handler for all incoming requests.
 class RequestHandler : private boost::noncopyable {
 public:
-  /// Construct with a directory containing files to be served.
   explicit RequestHandler(const std::string& doc_root);
 
   /// Handle a request and produce a reply.

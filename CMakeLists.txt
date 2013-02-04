@@ -4,15 +4,20 @@ SET(CMAKE_GENERATOR "Unix Makefiles")
 
 PROJECT(BoostWebApp)
 
-FIND_PACKAGE(Qt4 REQUIRED)
 SET(QT_DONT_USE_QTGUI TRUE)
+FIND_PACKAGE(Qt4 REQUIRED)
+
+SET(BOOST_LIBRARYDIR /usr/lib/boost) # Set this to the location of your Boost Library Binaries
+SET(Boost_USE_STATIC_LIBS ON)
+FIND_PACKAGE(Boost COMPONENTS thread REQUIRED)
 
 ### !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! README !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ###
 # BoostWebApp should build on any Unix/Linux platform.
 # This app uses CMake to generate makefiles. Do NOT build this with Qmake, it will fail.
 # The Qmake project file is used to tell the IDE (QtCreator) how to parse the project, so AutoCompletion works correctly.
 # If you are using QtCreator, open the Qmake project file with QtCreator, and change the build commands to CMake.
-# Typical Build Command: (run in build directory) cmake -G"Unix Makefiles" <source_directory>
+# Typical Debug Command: (run in build directory) cmake -DDEBUG=1 <source_directory>
+# Typical Debug Command: (run in build directory) cmake -DRELEASE=1 <source_directory>
 #
 # You must have the Boost and Qt Libraries and Header Files installed correctly to build this application.
 #
@@ -48,20 +53,22 @@ SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
     pages/homepage.h
     pages/pagebase.h
     pages/pages.h
+    pages/raytracepages.h
 # Zennix Libs
     zlib/asar.h
     zlib/database.h
     zlib/zfile.h
     zlib/zstring.h
     zlib/sqlite3.h
-    #zlib/SQLite/sqlite3ext.h
 )
 
 SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     main.cpp
-    request_handler.cpp
-    websession.cpp
     pagescommon.cpp
+    request_handler.cpp
+    request_switch.cpp
+    staticfile.cpp
+    websession.cpp
 # Server
     server/connection.cpp
     server/logger.cpp
@@ -89,19 +96,10 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     lib/system/error_code.cpp
 )
 
-SET(BoostWebApp_RESOURCES resource.qrc)
-
-### =================== CONFIG =================== ###
-
-EXECUTE_PROCESS(COMMAND date OUTPUT_VARIABLE MAKE_BUILD_TIME)
-STRING(STRIP ${MAKE_BUILD_TIME} MAKE_BUILD_TIME)
-CONFIGURE_FILE(generated.h gen.h @ONLY)
-
 INCLUDE(${QT_USE_FILE})
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 
 INCLUDE_DIRECTORIES(
-    /usr/include
-    #lib/include
     ${CMAKE_BINARY_DIR}
     ./
     server/
@@ -110,6 +108,12 @@ INCLUDE_DIRECTORIES(
     zlib/
     zlib/SQLite/
 )
+
+### =================== CONFIG =================== ###
+
+EXECUTE_PROCESS(COMMAND date OUTPUT_VARIABLE MAKE_BUILD_TIME)
+STRING(STRIP ${MAKE_BUILD_TIME} MAKE_BUILD_TIME)
+CONFIGURE_FILE(generated.h gen.h @ONLY)
 
 ADD_CUSTOM_TARGET(resources
     COMMAND echo Refreshing Resources ...
@@ -129,31 +133,38 @@ ADD_CUSTOM_TARGET(resources
 ### =================== BUILD =================== ###
 
 ADD_DEFINITIONS(${QT_DEFINITIONS})
+ADD_DEFINITIONS(-DHAS_BOOST)
 
 # Required - Resolves some conditions that change during build
 ADD_DEFINITIONS(-D BUILDING)
 
-#ADD_DEFINITIONS(-D ZFILE_USE_QT)
-
 # Used for QDateTime
 ADD_DEFINITIONS(-D ZSTRING_USE_QT)
+#ADD_DEFINITIONS(-D ZFILE_USE_QT)
 
-ADD_DEFINITIONS(-g -pthread)
-#ADD_DEFINITIONS(-O3)
+IF(DEBUG)
+    ADD_DEFINITIONS(-g)
+    ADD_CUSTOM_TARGET(building
+        COMMAND echo Debug Build Starting...
+    )
+ELSEIF(RELEASE)
+    ADD_DEFINITIONS(-O3)
+    ADD_CUSTOM_TARGET(building
+        COMMAND echo Release Build Starting...
+    )
+ELSE()
+    ADD_CUSTOM_TARGET(building
+        COMMAND echo Normal Build Starting...
+    )
+ENDIF()
 
-LINK_DIRECTORIES(
-    /usr/lib/boost
-    /usr/include/boost/stage/lib
-)
-
-QT4_ADD_RESOURCES(BoostApp_RC_SRCS ${BoostApp_RESOURCES})
-
-ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES} ${BoostApp_RC_SRCS})
-TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} boost_thread)
-#TARGET_LINK_LIBRARIES(webapp boost_thread)
+ADD_DEFINITIONS(-pthread)
+ADD_EXECUTABLE(webapp ${BoostWebApp_SOURCES})
+TARGET_LINK_LIBRARIES(webapp ${QT_LIBRARIES} ${Boost_THREAD_LIBRARY})
 
 ADD_CUSTOM_COMMAND(TARGET webapp POST_BUILD
     COMMAND ./webapp db
 )
 
-ADD_DEPENDENCIES(webapp resources)
+ADD_DEPENDENCIES(webapp building)
+ADD_DEPENDENCIES(building resources)

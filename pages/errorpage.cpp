@@ -2,19 +2,6 @@
 
 ErrorPage::ErrorPage(){}
 
-void ErrorPage::page(int mode, Request &req, Reply &rep){
-    switch(mode){
-    case MISSING:
-        missing(req, rep);
-        break;
-    case BAD_REQUEST:
-        bad_request(req, rep);
-        break;
-    default:
-        missing(req, rep);
-        break;
-    }
-}
 void ErrorPage::missing(Request &req, Reply &rep){
     values["pagetitle"] = "ZS - Missing";
     ZFile errorfl("parts/pages/errors/missing.html");
@@ -34,10 +21,11 @@ void ErrorPage::missing(Request &req, Reply &rep){
     rep.status = Reply::not_found;
     finalDoc(req, rep, values);
 }
-void ErrorPage::bad_request(Request &req, Reply &rep){
+void ErrorPage::bad_request(ZString error, Request &req, Reply &rep){
     values["pagetitle"] = "ZS - Missing";
     ZFile errorfl("parts/pages/errors/bad_request.html");
     ZString cont = errorfl.read();
+    cont.label("errordesc", error);
     values["contout"] = cont;
     values["shellout"]= "Not Here";
     rep.status = Reply::bad_request;

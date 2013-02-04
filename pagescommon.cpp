@@ -2,14 +2,6 @@
 #include "request.hpp"
 
 AsArZ parseCookie(ZString value){
-    /*string val = value.str();
-    for(unsigned i = 0; i < val.size(); ++i){
-        switch(val[i]){
-            case '=':
-                val = val.susbtr(i);
-            break;
-        }
-    }*/
     AsArZ tmp = value.explode(';');
     AsArZ cookies;
     for(unsigned i = 0; i < tmp.size(); ++i){
@@ -27,26 +19,24 @@ void getSession(Request &request, Reply &reply){
             sessioncookie = tmp[COOKIE_NAME];
         }
     }
-    IF_LOG(sessioncookie == "", "SessionParser", "No Cookie Found", "Found Cookie:" << sessioncookie.str())
+    IF_LOG(sessioncookie == "", "SessionParser: ", "No Cookie Found", "Found Cookie:" << sessioncookie.str())
     request.sess.updateSessions(); // Deletes Sessions Past Expiry
-    // Get current session, or create a new one
     if(!(sessioncookie == "") && request.sess.exists(sessioncookie)){
-        LOG("SessionParser: Session Exists, Updating")
+        request.sess.newsession = false;
         request.sess.sessid = sessioncookie;
-        //reply.headers["Set Cookie"] = ZString(COOKIE_NAME"=") + request.sess.sessid;
         request.sess.readData();
         if(request.sess.userdat.uid > 0)
             request.sess.loggedin = true;
         else
             request.sess.loggedin = false;
     } else {
-        LOG("SessionParser: Session Doesn't Exist, Creating")
+        request.sess.newsession = true;
         request.sess.sessid = request.sess.generateId();
         reply.headers["Set-Cookie"] = ZString(COOKIE_NAME"=") + request.sess.sessid;
         request.sess.reset();
         request.sess.loggedin = false;
     }
-    LOG("SessionParser: Session: " << request.sess.sessid.str())
+    IF_LOG(request.sess.newsession, "SessionParser: ", "NewSession: " << request.sess.sessid, "Updated Session: " << request.sess.sessid)
 }
 
 ZString parseMacros(ZString cont, Request req, Reply rep){
@@ -111,12 +101,12 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         out["content"] = parseMacros(values["contout"], request, reply);
         out["script"] = values["script"];
         out["style"] = values["style"];
-        out["shell"] = values["shell"];
+        out["shell"] = values["shellout"];
         reply.body = ZString().toJSON(out);
     }
     reply.content = reply.body;
     reply.headers["Content-Length"] = reply.content.length();
     reply.headers["Cache-Control"] = "no-cache, no-store";
-    if(reply.status == 0)
+    if(reply.status == Reply::undetermined)
         reply.status = Reply::ok;
 }

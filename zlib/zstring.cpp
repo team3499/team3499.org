@@ -282,7 +282,7 @@ ZString ZString::replace(std::string before, std::string after, bool modify){
 }
 
 ZString ZString::label(AsArZ values, bool modify){
-    for(int i = 0; i < values.size(); ++i)
+    for(unsigned i = 0; i < values.size(); ++i)
         label(values.getIndex(i), values[i], modify);
     return ZString(data);
 }
@@ -410,34 +410,155 @@ ZString ZString::toLower(bool modify){
     }
 }
 
-ZString ZString::toJSON(AsArZ arr){
-    ZString tmp("{");
-    for(int i = 0; i < arr.size(); ++i){
-        ZString temp = arr[i];
-        temp.replace("\"", "\\\"");
-        //temp.replace(",", "\\,");
-        tmp << "\"" << arr.getIndex(i) << "\":\"" << temp << "\", ";
-    }
-    tmp = tmp.str().substr(0, tmp.length() - 2);
+ZString ZString::toJSON(AsArZ arr, bool modify){
+    ZString tmp;
+    tmp << "{\"" << ZString(arr.getIndex(0)).replace("\"", "\\\"").str() << "\":\"" << arr[0].replace("\"", "\\\"") << "\"";
+    for(unsigned i = 1; i < arr.size(); ++i)
+        tmp << ",\"" << ZString(arr.getIndex(i)).replace("\"", "\\\"").str() << "\":\"" << arr[i].replace("\"", "\\\"") << "\"";
     tmp << "}";
-    data = tmp.str();
+    if(modify)
+        data = tmp.str();
     return tmp;
 }
 
+bool ZString::validJSON(){
+    string s = data;
+    enum Locat {
+        start = 1,
+        firstc = 2,
+        skey = 3,
+        key = 4,
+        ekey = 5,
+        colon = 6,
+        svalue = 7,
+        value = 8,
+        evalue = 9,
+        //comma = 10,
+        space = 11,
+        trailing = 12
+    }loc = start;
+    for(unsigned i = 0; i < s.size()-2; ++i){
+        char c = s[i];
+        switch(loc){
+        case start:
+            if(c != '{') return false;
+            loc = firstc;
+            break;
+        case firstc:
+            if(c != '"') return false;
+            loc = skey;
+            break;
+        case skey:
+            if(c == '"') return false;
+            loc = key;
+            break;
+        case key:
+            if(c == '"' && s[i-1] != '\\') loc = ekey;
+            break;
+        case ekey:
+            if(c != ':') return false;
+            loc = colon;
+            break;
+        case colon:
+            if(c != '"') return false;
+            loc = svalue;
+            break;
+        case svalue:
+            if(c == '"' && s[i-1] != '\\') loc = evalue; else loc = value;
+            break;
+        case value:
+            if(c == '"' && s[i-1] != '\\') loc = evalue;
+            break;
+        case evalue:
+            if(c == ',') loc = firstc; else if(c == '}') loc = trailing; else return false;
+            break;
+        //case comma:
+        //    if(c != '"') return false;
+        //    loc = firstc;
+        //    break;
+        case trailing:
+            return false;
+            break;
+        default:
+            // Not Good.
+            break;
+        }
+    }
+    return true;
+}
+
 AsArZ ZString::fromJSON(){
+    if(!validJSON())
+        return AsArZ();
+    enum Locat {
+        start = 1,
+        firstc = 2,
+        skey = 3,
+        key = 4,
+        ekey = 5,
+        colon = 6,
+        svalue = 7,
+        value = 8,
+        evalue = 9,
+        //comma = 10,
+        space = 11,
+        trailing = 12
+    }loc = start;
     AsArZ final;
-    ZString copy = data;
-    copy.strip(' ');
-    copy.strip('{');
-    copy.strip('}');
-    AsArZ tmp = copy.strict_explode(',');
-    tmp.clean();
-    for(int i = 0; i < tmp.size(); ++i){
-        tmp[i].strip(' ');
+    string s = data;
+    string kbuff;
+    string vbuff;
+    for(unsigned i = 0; i < s.size()-2; ++i){
+        char c = s[i];
+        switch(loc){
+        case start:
+            loc = firstc;
+            break;
+        case firstc:
+            loc = skey;
+            break;
+        case skey:
+            kbuff += c;
+            loc = key;
+            break;
+        case key:
+            if(c == '"' && s[i-1] != '\\') loc = ekey; else kbuff += c;
+            break;
+        case ekey:
+            loc = colon;
+            break;
+        case colon:
+            loc = svalue;
+            break;
+        case svalue:
+            if(c == '"' && s[i-1] != '\\') loc = evalue; else { loc = value; vbuff += c; }
+            break;
+        case value:
+            if(c == '"' && s[i-1] != '\\'){ loc = evalue; } else vbuff += c;
+            break;
+        case evalue:
+            if(c == ',') loc = firstc; else if(c == '}') loc = trailing;
+            final[ZString(kbuff).replace("\\\"", "\"").str()] = ZString(vbuff).replace("\\\"", "\"");
+            kbuff.clear();
+            vbuff.clear();
+            break;
+        //case comma:
+        //    loc = firstc;
+        //    break;
+        case trailing:
+            break;
+        default:
+            // Not Good.
+            break;
+        }
     }
-    for(int i = 0; i < tmp.size(); ++i){
-        AsArZ subtmp = tmp[i].strict_explode(':');
-        final[subtmp[0].strip('"').str()] = subtmp[1].strip('"');
-    }
+    final[ZString(kbuff).replace("\\\"", "\"").str()] = ZString(vbuff).replace("\\\"", "\"");
+    kbuff.clear();
+    vbuff.clear();
     return final;
+}
+
+ostream &operator<<(ostream& lhs, ZString rhs){
+    lhs << rhs.str();
+    return lhs;
 }
