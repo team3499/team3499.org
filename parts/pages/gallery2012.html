@@ -1,0 +1,44 @@
+<div class="galleryYearContent">
+  <!--<table class="images"> <?php //add fade across when each image is loaded 1 by 1. ex: fade start on 1st img -> 2nd .... ?>
+    <tr>
+  $images = [
+            "/core/img/default.jpg",
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/2012/IMG_3863.JPG",
+
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/default.jpg",
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/2012/IMG_3863.JPG",
+
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/default.jpg",
+            "/core/img/2012/IMG_3863.JPG",
+
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/2012/IMG_3863.JPG",
+            "/core/img/default.jpg"
+            ];
+      $count = 0;
+      foreach($images as $imgname){
+        echo "<td class=\"tooltip-td\" id=\"";
+        echo $count++;
+        echo "\" img=\"". $imgname . "\"><span class=\"tooltip-span\">tooltip 1</span>";
+        echo "<span class=\"tooltip-span-2\">tooltip 2</span></td>";
+      }
+    </tr>
+  </table>
+  <script>
+  //alert(''+$('.tooltip-td').attr('img'));
+
+  while(counter < totalCount){
+    $('td.tooltip-td#'+counter).css(\"background-image\", \"url('\" + $('td.tooltip-td#'+counter).attr('img') + \"')\");
+    $('td.tooltip-td#'+counter).click(function(){
+      window.open($('td.tooltip-td#'+counter).attr('img'));
+    });
+  </script>
+</script>-->
+</div>

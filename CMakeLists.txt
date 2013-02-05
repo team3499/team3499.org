@@ -49,6 +49,7 @@ SET(BoostWebApp_HEADERS ### =================== HEADERS =================== ###
     pages/aboutpage.h
     pages/devpages.h
     pages/errorpage.h
+    pages/gallerypage.h
     pages/helppage.h
     pages/homepage.h
     pages/pagebase.h
@@ -82,6 +83,7 @@ SET(BoostWebApp_SOURCES ### =================== SOURCES =================== ###
     pages/aboutpage.cpp
     pages/devpages.cpp
     pages/errorpage.cpp
+    pages/gallerypage.cpp
     pages/helppage.cpp
     pages/homepage.cpp
     pages/pagebase.cpp

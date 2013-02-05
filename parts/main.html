@@ -2,33 +2,138 @@
 <html>
 <head>
 <title><?pagetitle?></title>
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="description" content="We are Team 3499, River\'s Edge Robotics part of Oyster River High School located in Hew Hampshire." />
+<meta name="keywords" content="team 3499, rivers edge robotics, first, oyster river, 3499" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.ico" />
 
 <style><?maincss?></style>
-<style><?secondcss?></style>
 
-<script src="/core/jquery-min.js"></script>
-<script src="/core/jquery.history.js" ></script>
+<script src="/core/jquery172.js"></script>
+<script src="/core/jquery.history.js"></script>
 <script><?mainjs?></script>
 
+<div id="contscript"></div>
+<div id="contstyle"></div>
 </head>
 <body>
-
-<div id="contscript"><script><?script?></script></div>
-<div id="contstyle"><style><?style?></style></div>
-
-<div id="pagecontent"><?contout?></div>
-
-<!--<div id="status"></div><div id="php">';  var_dump($command); echo $text; echo ' "'.session_id().'"'; echo' </div>-->
-<div id="shellout">
-    <div id="shellcont"><?shellout?></div>
+<br/>
+<br/>
+<div class="header">
+  <div class="float-right" width="30%">
+    <div class="headSearch">
+          <input class="searchBar" maxlength="200" type="textarea" name="search" value="Search..."/>
+    </div>
+    <div class="headIcons">
+    <img width="25px" src="/core/img/facebook.png" class="head-icons link-image" href="http://www.facebook.com/groups/137871619595813/"/>
+    <img width="24px" src="/core/img/rss.png" class="head-icons link-image" href="http://www.google.com"/>
+    </div>
+  </div>
+  <div class="float-left" style="width:600px">
+    <a href="/"><img class="sitelogo" height="25px" src="/core/img/logoSmall.png"/></a>
+    <p>River's Edge Robotics Team 3499 <i class="small">Our robot goes [--this--] fast.</i></p>
+  </div>
+<!-- </div>
+<div class="header header-left"> -->
+  <!-- home picture -->
 </div>
-<div id="shellinbox">
-    <div id="shellin">
-        <span id="shellblink">> </span><input id="shellline" type="text" value="<?prompttxt?>" />
+<div class="left-shadow">
+</div>
+<div class="right-shadow">
+</div>
+<div class="container">
+<!-- enter stuff here -->
+
+<!-- left column -->
+<div class="leftWrapper">
+<div class="left">
+  <a href="/"><img width="100%" src="/core/img/logo.png"/></a>
+    <div class="user">
+        <p>Logged in as:<br/>&nbsp;&nbsp;&nbsp;<span id="user-span">User</span><span id="user-edit" class="link" command="user"><i>edit</i></span></p>
+        <div id="user-info-box">
+        <p>Content goes here</p>
+        <p>Username</p>
+        <p>Something</p>
+        </div>
+    <!-- we should also have a guest account -->
+    </div>
+    <br/>
+    <div class="link-box">
+        <p><span id="resources-title-span">> Resources</span></p>
+        <ul id="resources">
+        <li><a href="http://www.usfirst.org/roboticsprograms/frc" target="_blank">FRC Website</a></li>
+            <ul>
+                <li><a href="http://www.usfirst.org/roboticsprograms/frc/competition-manual-and-related-documents" target="_blank">FRC Competition Manuals</a></li>
+                <li><a href="http://www.usfirst.org/roboticsprograms/frc/game-q-and-a" target="_blank">FRC Q&A System</a></li>
+            </ul>
+                <li><a href="http://firstforge.wpi.edu/sf/projects/wpilib" target="_blank">WPILib</a></li>
+            <ul>
+                <li><a href="http://firstforge.wpi.edu/sf/go/doc1297?nav=1" target="_blank">WPILib Cookbook</a></li>
+                <li><a href="http://firstforge.wpi.edu/sf/go/doc1196?nav=1" target="_blank">WPILib Users Guide</a></li>
+                <li><a href="http://firstforge.wpi.edu/sf/go/doc1197?nav=1" target="_blank">WPILib C++ Getting Started Guide</a></li>
+            </ul>
+        <li><a href="http://www.facebook.com/groups/137871619595813/" target="_blank">Facebook Page</a></li>
+            <li><a href="http://orcsd.org/school/orhs" target="_blank">ORHS</a></li>
+        </ul>
+        <p><span id="categories-title-span">> Categories</span></p>
+        <ul id="categories">
+            <li><a href="#">Blog and events</a></li>
+            <li><a href="#">Competition</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Meetings</a></li>
+            <li><a href="#">Programming</a></li>
+            <li><a href="#">Robot</a></li>
+            <li><a href="#">Sponsors</a></li>
+        </ul>
+        <p><span id="important-dates-title-span">> Important Dates</span></p>
+        <ul id="important-dates">
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+            <li><a href="#">Example</a></li>
+        </ul>
+    </div>
+    <br/>
+    <p class="sponsorsTitle"><strong>Sponsors</strong></p>
+    <div>
+<img src="/core/img/default.jpg" class="sponsor link-image" id="sponsor-img-1" href="http://www.yahoo.com"/>
+<img src="/core/img/default2.jpg" class="sponsor link-image" id="sponsor-img-2" href="http://www.google.com"/>
     </div>
 </div>
+</div>
 
+<!-- right column -->
+<div class="right">
+
+    <div class="navbar">
+        <div class="linksbox">
+            <span class="link tab-links" command="home">Home</span>
+            <span class="link tab-links" command="about">About</span>
+            <span class="link tab-links" command="gallery">Gallery</span>
+            <span class="link tab-links" command="task">Task Schedule</span> <!-- calender! -->
+            <a href="http://www.usfirst.org/roboticsprograms/frc" target="_blank"><span class="tab-links">FIRST</span></a>
+            <span class="tab-links linkDonate">Donate</span>
+            <div class="head">
+                <div class="headTitle"><p><strong>River's Edge Robotics </strong><p></div>
+                <span style="float:right;">#######TWITTER FEED</span> <!-- charlie or ethan plz -->
+            </div>
+        </div>
+        <br style="clear:both;" />
+    </div>
+
+    <div id="contscript"><script><?script?></script></div>
+    <div id="contstyle"><style><?style?></style></div>
+
+    <div id="pagecontent"><?contout?></div>
+    <div id="scroll-padding">
+    </div>
+</div>
+<!-- end stuff here -->
+</div>
+<div class="footer">
+Copyright &copy; 2013,<a href="/">Team3499.org</a>
+</div>
 </body>
 </html>

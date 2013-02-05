@@ -1,0 +1,651 @@
+/* *\-Css & Website code originally created by Jeremy Plsek, Ethan Stewart, and Charlie Waters - 2012/2013.-/* */
+
+@font-face{
+  font-family:Ethnocen;
+  src:url('/core/Ethnocen.ttf');
+}
+
+* {
+    margin: 0;**
+}
+
+html {
+  overflow-y:scroll;
+  /*overflow-x:hidden;*/
+}
+
+body {
+    font-family: "Lucida Grande", "Helvetica Neue", Helvetica, sans-serif, Arial;
+    padding-top:20px;
+    /*
+    background-color:#888888;
+    background-image:url('/core/img/background.jpg');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    background-size:100%; /*make full size*/
+
+    background:#2E4D6D;
+
+    background-image:url('/core/img/pattern.png');
+    background-repeat:repeat;
+
+    font-size:14px;
+    width:100%;
+    line-height:1.5em;
+    color:#3A3A3A
+}
+#sponsor-img-1{
+    position:absolute;
+    border-radius:15px;
+    visibility:visible;
+    z-index:1;
+}
+#sponsor-img-2{
+    position:absolute;
+    border-radius:15px;
+    visibility:visible;
+    z-index:2;
+}
+img.sponsor{
+    border-radius:15px;
+    width:95%;
+    box-shadow:0 0 3px rgba(0,0,0,.5);
+}
+div.container {
+    width:80%;
+    min-width:982px;
+    margin: 0 auto;
+    /*border:1px #000 solid;*/
+    background: rgba(0,0,0,1.0);
+}
+div.left {
+    float: left;
+    position:fixed;
+    width: 16%;
+    height:87%;
+    border-right:1px #bbb solid;
+    padding-right:5px;
+    color: #fff;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+    min-width:200px;
+/*     scrollbar:hidden; */
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+div.leftWrapper {
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+      width:8px;
+}
+::-webkit-scrollbar-track {
+      background:#4E4E4E;
+/*     border-radius:2em; */
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb {
+/*     border-radius:2em; */
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+      background:rgba(255,255,255,.5);
+      height:50%;
+}
+div.right {
+    width:78%;
+    /*border:1px #000 solid;*/
+    float:right;
+}
+div.footer, div.footer a{
+    position:fixed;
+    bottom:0px;
+    font-size:10px;
+    color:rgba(255,255,255,0.2);
+    text-shadow:0px 0px 2px rgba(0,0,0,0.5);
+    padding:0 8px 0;
+    z-index:5;
+    /*background:rgba(0,0,0,.2);
+    border-radius:0 4px 0 0;*/
+}
+div.navbar {
+    height: auto;
+    width:100%;
+    padding-bottom:10px;
+    margin: 0 auto;
+}
+div.linksbox{
+    width:100%;
+    float:left;
+    /*border:1px #000 solid;*/
+    font-size:18px;
+/*     margin:0px; */
+}
+span.tab-links {
+
+    /*padding:5px 4px;
+    /*border-radius:8px 8px 0 0;
+  box-shadow:0 -2px 3px rgba(0,0,0,0.4);
+    background: #eaeaea;
+    background: -moz-linear-gradient(top,  #eaeaea 0%, #ffffff 50%, #e5e5e5 97%, #b7b7b7 100%);
+    background: -webkit-linear-gradient(top,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
+    background: -o-linear-gradient(top,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
+    background: -ms-linear-gradient(top, #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);
+    background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%,#e5e5e5 97%,#b7b7b7 100%);*/
+    color:#006CFF;
+    margin:0 -5px 0 0;
+    border-style: solid; 
+    border-width: 5.5px; 
+    -moz-border-image: url(/core/img/border-3.png) 25 stretch; 
+    -webkit-border-image: url(border-3.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-3.png) 25 stretch; 
+    border-image: url(/core/img/border-3.png) fill 25 stretch;
+}
+span.tab-links:hover, span.linkDonate:hover{
+    color:#00DCFE;
+    cursor:pointer;
+    /*background: #eaeaea;
+  background: -moz-linear-gradient(top,  #eaeaea 0%, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
+  background: -o-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
+  background: -ms-linear-gradient(top,  #eaeaea 0%,#ffffff 50%);
+  background: linear-gradient(to bottom,  #eaeaea 0%,#ffffff 50%);*/
+    border-style: solid; 
+    border-width: 5.5px; 
+    -moz-border-image: url(/core/img/border-4.png) 25 stretch; 
+    -webkit-border-image: url(border-4.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-4.png) 25 stretch; 
+    border-image: url(/core/img/border-4.png) fill 25 stretch;
+}
+span.linkDonate {
+    float:right;
+    margin:-5px 0 0 -3px;
+}
+/*span.links:hover{
+    background: #c9c9c9;
+    background: -moz-linear-gradient(top, #c9c9c9 0%, #ffffff 100%);
+    background: -webkit-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
+    background: -o-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
+    background: -ms-linear-gradient(top, #c9c9c9 0%,#ffffff 100%);
+    background: linear-gradient(to bottom, #c9c9c9 0%,#ffffff 100%);
+}*/
+/*span.linkDonate:hover{
+  background: #9bd7ff;
+  background: -moz-linear-gradient(top,  #9bd7ff 0%, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
+  background: -o-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
+  background: -ms-linear-gradient(top,  #9bd7ff 0%,#ffffff 50%);
+  background: linear-gradient(to bottom,  #9bd7ff 0%,#ffffff 50%);
+}*/
+div.head {
+    /*width:100%;
+    /*padding:0.1px; /*stupid thing requires any positive padding value...?*/
+    /*box-shadow:0px 0px 5px rgba(0,0,0,0.4);
+  background: #FFFFFF;
+    background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%);
+    background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#ededed 100%);
+    border-radius:0 0 4px 4px;*/
+    margin:5px 0 10px 0;
+    height:80px; <?php //use to change the height of the header ?>
+    border-style: solid; /*Wanted to make it look futury (no rounded corners)*/
+    border-width: 10px; 
+    -moz-border-image: url(/core/img/border-2.png) 25 stretch; 
+    -webkit-border-image: url(border-2.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-2.png) 25 stretch; 
+    border-image: url(/core/img/border-2.png) fill 25 stretch;
+}
+div.headTitle {
+    margin:20px;
+    font-size: 25px;
+  font-family:'Ethnocen', sans-serif;
+    padding:10px;
+    color:#006CFF;
+    text-shadow:0px 1px 10px rgba(0,0,0,0.4);
+    border-bottom:1px solid #bbb;
+    border-left:1px solid #bbb;
+    float:left;
+}
+div.headSearch {
+/*     margin:0px; */
+    margin-right:18px;
+    width:200px;
+    float:left;
+}
+div.headImageBox {
+    position:absolute;
+    /*border:1px solid #000;*/
+    float:left;
+    margin:15px 0 0 45px;
+    width:450px;
+    height:75px;
+    -webkit-transform: skew(315deg);
+    -moz-transform: skew(315deg);
+    -o-transform: skew(315deg);
+    background:#006CFF;
+
+    overflow:hidden; /* comment out to see images */
+}
+/*div.headImages {
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    -o-transform: skew(45deg);
+    width:1000px;
+    margin-top:-30px;
+    margin-left:-65px;
+}*/
+input.searchBar {
+    box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+    font-size:16px;
+    border:1px solid #555555;
+    padding:2px 2px 2px 10px;
+    margin-right:auto;
+    margin-top:0px;
+    width:100px;
+    border-radius:40px;
+    margin-left:100px;
+    background: #ffffff;
+    background: -moz-radial-gradient(center, ellipse cover,  #ffffff 0%, #f3f3f3 50%, #d3d3d3 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  #ffffff 0%,#f3f3f3 50%,#d3d3d3 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #ffffff 0%,#f3f3f3 50%,#d3d3d3 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #ffffff 0%,#f3f3f3 50%,#d3d3d3 100%);
+    background: radial-gradient(ellipse at center,  #ffffff 0%,#f3f3f3 50%,#d3d3d3 100%);
+}
+input.searchBar:focus{
+  width:200px;
+  margin-left:000px;
+}
+div.headIcons {
+    /*border:1px solid #000;
+    margin:75px 20px 0 0;
+    position:fixed;
+    right:10px;
+    bottom:10px;*/
+    float:right;
+/*     margin:0px; */
+}
+
+img.head-icons{
+/*     margin:0px; */
+    padding:0px;
+    border:1px solid #555555;
+    border-radius:3px;
+    background-color:#555555;
+}
+
+div.post , div.sub-box{
+    margin:0 auto;
+    /*border-radius:0 0 4px 4px;
+    box-shadow:0px 0px 5px #00FFFF;
+    background: -moz-linear-gradient(top,  rgba(237,237,237,1) 0%, rgba(211,211,211,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,237,237,1)), color-stop(100%,rgba(211,211,211,1)));
+background: -webkit-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);
+background: -o-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);
+background: -ms-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);
+background: linear-gradient(to bottom,  rgba(237,237,237,1) 0%,rgba(211,211,211,1) 100%);*/
+    margin-bottom:30px;
+    border-style: solid; /*Wanted to make it look futury (no rounded corners)*/
+    border-width: 10px; 
+    -moz-border-image: url(/core/img/border-0.png) 25 stretch; 
+    -webkit-border-image: url(/core/img/border-0.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-0.png) 25 stretch; 
+    border-image: url(/core/img/border-0.png) fill 25 stretch;
+}
+div.postTitle, div.sub-box-title {
+    text-align:center;
+    /*padding:5px;
+    text-shadow:0px 1px 0px rgba(255,255,255,0.5);
+    border-bottom:1px solid #50565B;
+    background: #cfd2d7;
+    background: -moz-linear-gradient(top,  #cfd2d7 0%, #848d96 100%);
+    background: -webkit-linear-gradient(top,  #cfd2d7 0%,#848d96 100%);
+    background: -o-linear-gradient(top,  #cfd2d7 0%,#848d96 100%);
+    background: -ms-linear-gradient(top, #cfd2d7 0%,#848d96 100%);
+    background: linear-gradient(to bottom,  #cfd2d7 0%,#848d96 100%);*/
+    border-style: solid; /*Wanted to make it look futury (no rounded corners)*/
+    border-width: 9px; 
+    -moz-border-image: url(/core/img/border-1.png) 25 stretch; 
+    -webkit-border-image: url(border-1.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-1.png) 25 stretch; 
+    border-image: url(/core/img/border-1.png) fill 25 stretch;
+}
+span.postTitle, span.sub-box-title  {
+    font-size:18px;
+    margin-left:-3em;       /* remove if use original idea (with user image) */
+}
+div.postDate {
+    float:right;
+    font-size:10px;
+}
+div.postPadding, div.sub-box-padding{
+    padding:5px;
+}
+div.postImg, div.sub-box-img {
+    float:left;
+    width:100px;
+    padding:10px;
+}
+div.postUser {
+  margin:-3px 0 -12px 0;
+  line-height:1.2em;
+}
+span.post-user {
+  float:left;
+  background:rgba(0,0,0,.1);
+  padding:0 5px 0 5px;
+  border-radius:4px;
+}
+div.postText , div.sub-box-text {
+    padding:5px;
+    text-shadow:0px 1px 0px rgba(255,255,255,0.5);
+    border-bottom:1px solid #aaa;
+    min-height:110px;
+}
+div.postCata {
+    font-size:12px;
+    border-top:1px solid #bbb;
+}
+div.postCommentButton {
+    float:right;
+    font-size:12px;
+    margin-top: -20px;
+}
+div.postCommentNum {
+  margin: -20px 0 0 6px;
+  font-size:10px;
+}
+div.postComments {
+  padding:10px;
+  width:90%;
+  margin:0 auto;
+}
+div.postCommentsBar {
+  min-height:135px;
+}
+div.postCommentsUser {
+  float:left;
+  padding:0 10px 0 10px;
+}
+textarea.addComment {
+  min-width:50%;
+  max-width:80%;
+  min-height:60px;
+  max-height:400px;
+  border-radius:5px;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+  border:1px solid rgba(0,0,0,0.3);
+  background-color:rgba(255,255,255,0.4);
+  padding:5px;
+}
+textarea.addComment:hover {
+  background-color:rgba(255,255,255,0.9);
+}
+div.postCommentsBarMax {
+  position:absolute;
+  margin-left:90px;
+  font-size:12px;
+  color:#666;
+}
+div.postCommentsBarAddButton { /*charlie, can you make this follow the bottom right of the comment box?*/
+  position:absolute;
+  margin-left:300px;
+}
+button.addComment {
+  margin-top:3px;
+}
+div.postCommentsBarNotice {
+  border-bottom:1px solid #aaa;
+  margin:30px 0 15px 0;
+}
+div.postCommentsComment {
+  border:1px solid #bbb;
+  padding:0 0 10px 0;
+  border-radius:0 0 4px 4px;
+  min-height:100px;
+  width:90%;
+  background: #eaeaea;
+  background: -moz-linear-gradient(top, #eaeaea 1%, #e0e0e0 93%);
+  background: -webkit-linear-gradient(top, #eaeaea 1%,#e0e0e0 93%);
+  background: -o-linear-gradient(top, #eaeaea 1%,#e0e0e0 93%);
+  background: -ms-linear-gradient(top, #eaeaea 1%,#e0e0e0 93%);
+  background: linear-gradient(to bottom, #eaeaea 1%,#e0e0e0 93%);
+}
+div.postCommentsCommentUser {
+  padding:6px 10px 10px 10px;
+  line-height:20px;
+  border-bottom:1px solid #bbb;
+}
+i.small {
+  font-size:12px;
+  color:#666;
+}
+span.postCommentsCommentUserStatus {
+  float:right;
+  color:#666;
+}
+div.postCommentsCommentText {
+  padding:6px;
+}
+button.reply {
+  float:right;
+  margin-top:-12px;
+}
+a:link, a:visited {
+    color:#116DCC;
+  text-decoration:none;
+}
+a:hover, a:active {
+    color:#18BCBC;
+  text-decoration:none;
+}
+img.sitelogo {
+  float:left;
+  margin-right:20px;
+}
+p.sponsorsTitle {
+  margin: 10px 10px 10px 10px;
+  text-align:left;
+  font-size:16px;
+  border-bottom:1px solid #bbb;
+  width:70%;
+}
+input, textarea, span.link.tab-links, span.tab-links {
+    -webkit-transition: all 0.20s ease-in-out;
+    -moz-transition: all 0.20s ease-in-out;
+    -ms-transition: all 0.20s ease-in-out;
+    -o-transition: all 0.20s ease-in-out;
+    outline: none;
+}
+li{
+  margin-left: -5px;
+}
+input:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+  background-color:rgba(255,255,255,0.9);
+}
+a img, a:hover img {
+    text-decoration:none;
+    border:none;
+}
+
+img.head-icons:hover{
+  border:1px solid #555555;
+  border-radius: 3px;
+}
+
+div.left-shadow {
+  width:10%;
+  position:fixed;
+  left:0px;
+  top:0px;
+  bottom:0px;
+  background: -moz-linear-gradient(left, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(left, rgba(0,0,0,1) 10%,rgba(0,0,0,0) 100%);
+  background: -o-linear-gradient(left, rgba(0,0,0,1) 10%,rgba(0,0,0,0) 100%); 
+  background: -ms-linear-gradient(left, rgba(0,0,0,1) 10%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,1) 10%,rgba(0,0,0,0) 100%);
+  z-index:-10;
+}
+div.right-shadow {
+  width:10%;
+  position:fixed;
+  right:0px;
+  top:0px;
+  margin-left:auto;
+  bottom:0px;
+  background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
+  background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 90%);
+  background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 90%);
+  background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 90%);
+  background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 90%);
+  z-index:-10;
+}
+
+div.header {
+  height:25px;
+  position:fixed;
+  top:0px;
+  min-width:1000px;
+  padding:5px 10px 3px 10px;
+  background: #FFFFFF;
+  background: -moz-linear-gradient(top,  #444444 0%, #515151 100%);
+  background: -webkit-linear-gradient(top,  #444444 0%,#515151 100%);
+  background: -o-linear-gradient(top,  #444444 0%,#515151 100%);
+  background: -ms-linear-gradient(top,  #444444 0%,#515151 100%);
+  background: linear-gradient(to bottom,  #444444 0%,#515151 100%);
+  border-bottom:1px solid #777;
+  left:0px;
+  right:0px;
+  font-size:20px;
+  color:#e5e5e5;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+  z-index:10;
+}
+
+div.header-right{
+  border-bottom-left-radius:10px;
+  border-left:1px solid white; 
+  right:0px;
+  margin:0px auto;
+}
+div.header-left{
+  margin:0px auto;
+  border-bottom-right-radius:5px;
+  border-right:1px solid white;
+  left:0px;
+  width:auto;
+}
+
+form{
+/*   margin:0px; */
+  padding:0px;
+}
+button {
+  border:1px solid rgba(0,0,0,0.3);
+  border-radius:0 0 2px 2px;
+  padding:2px;
+  background: #f3f3f3;
+  background: -moz-linear-gradient(top, #f3f3f3 0%, #c6c6c6 100%);
+  background: -webkit-linear-gradient(top, #f3f3f3 0%,#c6c6c6 100%);
+  background: -o-linear-gradient(top, #f3f3f3 0%,#c6c6c6 100%);
+  background: -ms-linear-gradient(top, #f3f3f3 0%,#c6c6c6 100%);
+  background: linear-gradient(to bottom, #f3f3f3 0%,#c6c6c6 100%);
+}
+button:hover {
+  background: #f3f3f3;
+  background: -moz-linear-gradient(top, #f3f3f3 0%, #bababa 68%);
+  background: -webkit-linear-gradient(top, #f3f3f3 0%,#bababa 68%);
+  background: -o-linear-gradient(top, #f3f3f3 0%,#bababa 68%);
+  background: -ms-linear-gradient(top, #f3f3f3 0%,#bababa 68%);
+  background: linear-gradient(to bottom, #f3f3f3 0%,#bababa 68%);
+}
+
+div.float-right{
+  float:right;
+}
+div.float-left{
+  float:left;
+}
+
+div.user, div.link-box{
+  /*background-color:rgba(0,0,0,0.8);
+  background-image:url('/core/img/slash.png');
+  padding:5px;*/
+/*   margin:0px; */
+  border-radius:0 0 4px 4px;
+  width:94%;
+  
+  border-style: solid; 
+    border-width: 5.5px; 
+    -moz-border-image: url(/core/img/border-5.png) 25 stretch; 
+    -webkit-border-image: url(border-5.png) 25 stretch; 
+    -o-border-image: url(/core/img/border-5.png) 25 stretch; 
+    border-image: url(/core/img/border-5.png) fill 25 stretch;
+}
+
+div#user-info-box {
+}
+
+.link-image:hover{
+  cursor:pointer;
+}
+
+div.sub-box {
+    border-radius:4px;
+    box-shadow:0px 0px 3px rgba(0,0,0,0.4);
+    margin:0 auto;
+    background: #ededed;
+    background: -moz-linear-gradient(top, #ededed 0%, #d3d3d3 100%);
+    background: -webkit-linear-gradient(top, #ededed 0%,#d3d3d3 100%);
+    background: -o-linear-gradient(top, #ededed 0%,#d3d3d3 100%);
+    background: -ms-linear-gradient(top, #ededed 0%,#d3d3d3 100%);
+    background: linear-gradient(to bottom, #ededed 0%,#d3d3d3 100%);
+    margin-bottom:30px;
+}
+
+ <?php // note: this does make the pointer (cursor) show on the right of the 'links' ?>
+span#resources-title-span, span#categories-title-span, span#important-dates-title-span, span#user-span {
+
+    cursor:pointer;
+}
+span#user-edit {
+  float:right;
+  margin-right:15px;
+  color:#006CFF;
+  cursor:pointer;
+}
+
+<?php // easter egg that originally had purpose. ?>
+div#scroll-padding {
+    position:fixed;
+    bottom:-10px;
+    top:101%;
+}
+
+.indent {
+  margin-left:30px;
+}
+code {
+ font-family:Monaco,Consolas,"Andale Mono","DejaVu Sans Mono",monospace; 
+ font-size:13px;
+}
+.smallBorderShadow {
+ box-shadow:0px 0px 1px rgba(0,0,0,0.4);
+}
+.center {
+    text-align:center;
+}
+.underline {
+    border-bottom:1px solid #0070FA;
+    color:#0070FA;
+}
+.green {
+  color:#398E26;
+}
+.red {
+  color:#D33B39;
+}
+.yellow {
+  color:#8E8723;
+} 

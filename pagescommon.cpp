@@ -19,7 +19,7 @@ void getSession(Request &request, Reply &reply){
             sessioncookie = tmp[COOKIE_NAME];
         }
     }
-    IF_LOG(sessioncookie == "", "SessionParser: ", "No Cookie Found", "Found Cookie:" << sessioncookie.str())
+    IF_LOG(sessioncookie == "", "SessionParser: ", "No Cookie Found", "Found Cookie: " << sessioncookie.str())
     request.sess.updateSessions(); // Deletes Sessions Past Expiry
     if(!(sessioncookie == "") && request.sess.exists(sessioncookie)){
         request.sess.newsession = false;
@@ -64,7 +64,7 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         reply.body = fl.read();
         fl.close();
 
-        ZFile maincssfl("parts/main.css");
+        ZFile maincssfl("parts/style.css");
         ZString maincss = maincssfl.read();
         maincssfl.close();
         maincss.replace("\n", "");
@@ -72,18 +72,19 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         maincss.replace("    ", " ");
         reply.body.label("maincss", maincss);
 
-        ZFile secondcssfl("parts/secondary.css");
+        /*ZFile secondcssfl("parts/secondary.css");
         ZString secondcss = secondcssfl.read();
         secondcssfl.close();
         secondcss.replace("\n", "");
         secondcss.replace("\r", "");
         secondcss.replace("    ", " ");
-        reply.body.label("secondcss", secondcss);
+        reply.body.label("secondcss", secondcss);*/
 
-        ZFile funcjsfl("parts/functions.js");
+        //ZFile funcjsfl("parts/functions.js");
         ZFile mainjsfl("parts/main.js");
-        ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
-        funcjsfl.close();
+        //ZString alljs = funcjsfl.read() + "var loadonload = \""+request.path[0]+"\";\n"  + mainjsfl.read();
+        ZString alljs = ZString("var loadonload = \"") + request.path[0] + "\";\n"  + mainjsfl.read();
+        //funcjsfl.close();
         mainjsfl.close();
         reply.body.label("mainjs", alljs);
 
@@ -99,8 +100,8 @@ void finalDoc(Request &request, Reply &reply, AsArZ values){
         }
         out["pagetitle"] = values["pagetitle"];
         out["content"] = parseMacros(values["contout"], request, reply);
-        out["script"] = values["script"];
-        out["style"] = values["style"];
+        out["script"] = ZString("<script>") + values["script"] + "</script>";
+        out["style"] = ZString("<style>") + values["style"] + "</style>";
         out["shell"] = values["shellout"];
         reply.body = ZString().toJSON(out);
     }

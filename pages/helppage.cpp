@@ -3,7 +3,7 @@
 HelpPage::HelpPage(){}
 
 void HelpPage::page(Request &req, Reply &rep){
-    values["pagetitle"] = "ZS - Help";
+    values["pagetitle"] = "3499 - Help";
     ZString cont;
 
     if(req.comm[1].str() != ""){

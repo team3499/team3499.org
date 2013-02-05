@@ -9,19 +9,6 @@ RequestHandler::RequestHandler(const std::string& doc_root) : doc_root_(doc_root
 void RequestHandler::handle_request(Request &req, Reply &rep){
     LOG("-- " << req.method << " Request Handling Started --")
     rep.status = Reply::undetermined;
-    if(!urlDecode(req.uri, req.rawpath)){
-        ErrorPage().bad_request("Invalid URI (ZE0002)", req, rep);
-        return;
-    }
-    if(req.headers["Referer"] != "" && req.headers["Referer"] != "http://znnxs.com" && req.headers["Referer"] != "http://localhost:8080/"){
-        ErrorPage().bad_request("Asyncronous Request Generated from Foreign Domain (ZE0003)", req, rep);
-        return;
-    }
-    if(req.method == "POST")
-        req.ispost = true;
-    else
-        req.ispost = false;
-    req.path = ZString(req.rawpath).explode('/').shift();
 
     /*ZString tmpheads;
     for(unsigned i = 0; i < req.headers.size(); ++i){
@@ -29,12 +16,37 @@ void RequestHandler::handle_request(Request &req, Reply &rep){
     }
     LOG(tmpheads)*/
 
+    if(!urlDecode(req.uri, req.rawpath)){
+        ErrorPage().bad_request("Invalid URI (ZE0002)", req, rep);
+        LOG("!! RequestHandler: Invalid URI")
+        LOG("== Request Handling Finished : " << rep.status << " ==")
+        return;
+    }
+    // Gave up on this
+    /*if( req.headers["Referer"] != "" &&
+        req.headers["Referer"] != "http://team3499.org/" &&
+        req.headers["Referer"] != "http://www.team3499.org/" &&
+        req.headers["Referer"] != "http://localhost:8080/" &&
+        req.headers["Referer"] != "http://localhost/"){
+        ErrorPage().bad_request("Asyncronous Request Generated from Foreign Domain (ZE0003)", req, rep);
+        LOG("!! RequestHandler: Referred from Foreign Domain")
+        LOG("== Request Handling Finished : " << rep.status << " ==")
+        return;
+    }*/
+    if(req.method == "POST")
+        req.ispost = true;
+    else
+        req.ispost = false;
+    req.path = ZString(req.rawpath).explode('/').shift();
+
     if(req.headers["Content-Length"] != ""){
         req.reqbody = ZString(req.raw_request).replace(req.raw_headers, "", false);
         int len = atoi(req.headers["Content-Length"].cc());
         ZString buff = req.reqbody.str().substr(0, len);
         if(!buff.validJSON()){
             ErrorPage().bad_request("Invalid JSON (ZE0004)", req, rep);
+            LOG("!! RequestHandler: Invalid JSON")
+            LOG("== Request Handling Finished : " << rep.status << " ==")
             return;
         }
         req.postvars = buff.fromJSON();

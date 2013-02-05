@@ -9,7 +9,7 @@
 AboutPage::AboutPage(){}
 
 void AboutPage::page(Request &req, Reply &rep){
-    values["pagetitle"] = "ZS - About";
+    values["pagetitle"] = "3499 - About";
     ZFile aboutfl("parts/pages/about.html");
     ZString cont = aboutfl.read();
     aboutfl.close();

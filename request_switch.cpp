@@ -50,6 +50,12 @@ void RequestHandler::commandSwitch(Request &req, Reply &rep){
         else
             matched = false;
         break;
+    case 7:
+        if(com == GALLERY)
+            GalleryPage().page(req, rep);
+        else
+            matched = false;
+        break;
     case 11:
         if(com == "favicon.ico")
             staticFile(req, rep);

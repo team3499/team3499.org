@@ -8,6 +8,7 @@
 #include "devpages.h"
 #include "raytracepage.h"
 #include "user.h"
+#include "gallerypage.h"
 
 #define HOME "home"
 #define DERP "derp"
@@ -18,5 +19,6 @@
 #define LOGIN "login"
 #define LOGOUT "logout"
 #define ME "me"
+#define GALLERY "gallery"
 
 #endif // PAGES_H

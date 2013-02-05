@@ -4,7 +4,14 @@ HomePage::HomePage(){}
 
 void HomePage::page(Request &req, Reply &rep){
     values["path"] = "/";
-    values["pagetitle"] = "Zennix Studios";
+    values["pagetitle"] = "Team 3499";
+    ZFile srcfl("parts/pages/home.js");
+    ZString script = srcfl.read();
+    srcfl.close();
+    script.replace("    ", "");
+    script.replace("\n", "");
+    script.replace("\r", "");
+    values["script"] = script;
     ZFile homefl("parts/pages/home.html");
     ZString cont = homefl.read();
     homefl.close();

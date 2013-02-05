@@ -1,7 +1,7 @@
 #include "pagebase.h"
 
 PageBase::PageBase(){
-    values["pagetitle"] = "Zennix Studios";
+    values["pagetitle"] = "Team 3499";
     values["path"] = "";
     values["style"] = "";
     values["script"] = "";

@@ -36,7 +36,8 @@ HEADERS += \
     pages/raytracepage.h \
     zlib/sqlite3.h \
     commands/user.h \
-    commands/userdata.h
+    commands/userdata.h \
+    pages/gallerypage.h
 
 SOURCES += \
     main.cpp \
@@ -65,15 +66,13 @@ SOURCES += \
     commands/user.cpp \
     pages/pagebase.cpp \
     staticfile.cpp \
-    request_switch.cpp
+    request_switch.cpp \
+    pages/gallerypage.cpp
 
 OTHER_FILES += \
     CMakeLists.txt \
-    parts/secondary.css \
     parts/main.js \
-    parts/main.css \
     parts/jquery.js \
-    parts/functions.js \
     parts/main.html \
     parts/pages/home.html \
     parts/pages/about.html \
@@ -89,6 +88,11 @@ OTHER_FILES += \
     parts/commands/login-2.html \
     parts/commands/login-1.html \
     parts/commands/logout.html \
-    parts/common/header.html
+    parts/common/header.html \
+    parts/pages/home.js \
+    parts/style.css \
+    parts/pages/gallery.html \
+    parts/pages/gallery.css \
+    parts/pages/gallery2012.html
 
 RESOURCES +=
